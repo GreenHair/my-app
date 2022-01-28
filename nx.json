@@ -1,0 +1,19 @@
+{
+  "npmScope": "my-app",
+  "affected": {
+    "defaultBase": "undefined"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
+  },
+  "cli": {
+    "analytics": "5c9cb51c-c12b-4c95-ae63-d9cd77c18496",
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "my-app"
+}
