@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/guards/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
   }
+  message: string;
+  username: string = ""
+  password: string = ""
 
+  constructor(public authService: AuthService, public router: Router) {
+    this.message = this.getMessage();
+  }
+
+  getMessage() {
+    return 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
+  }
+
+  login() {
+    this.message = 'Trying to log in ...';
+
+    this.authService.login(this.username, this.password).subscribe(() => {
+      this.message = this.getMessage();
+      if (this.authService.isLoggedIn) {
+        // Usually you would use the redirect URL from the auth service.
+        // However to keep the example simple, we will always redirect to `/dashboard`.
+        const redirectUrl = '/dashboard';
+
+        // Redirect the user
+        this.router.navigate([redirectUrl]);
+      }
+    });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.message = this.getMessage();
+  }
 }

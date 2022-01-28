@@ -1,0 +1,7 @@
+<ul ngbNav [activeId]="route.fragment | async" class="nav-tabs">
+    <li [ngbNavItem]="link.fragment" *ngFor="let link of menu">
+      <a ngbNavLink routerLink="." [fragment]="link.fragment">{{ link.title }}</a>
+    </li>
+</ul>
+<p>main works! Welcome, {{ user?.username }}</p>
+<router-outlet></router-outlet>
