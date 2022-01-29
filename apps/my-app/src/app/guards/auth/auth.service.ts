@@ -20,7 +20,7 @@ export class AuthService {
   constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
   
   login(username: string, password:string): Observable<boolean> {
-    return this.http.post('http://localhost:4000/auth/login', {name: username, password: password})
+    return this.http.post(`${environment.apiUrl}/auth/login`, {name: username, password: password})
     .pipe(
       map(response => {
         console.log("response", response)
