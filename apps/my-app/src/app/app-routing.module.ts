@@ -13,21 +13,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent,
+        loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule),
         canActivateChild: [AuthGuard],
         children: [
           {
             path: "dashboard",
-            component: DashboardComponent
+            loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
           },
-          { path: 'add', loadChildren: () => import('./components/add/add.module').then(m => m.AddModule) }
+          { 
+            path: 'add', 
+            loadChildren: () => import('./components/add/add.module').then(m => m.AddModule) }
         ]
       },
     ]
   },
   {
     path: 'login',
-    component: LoginComponent
+    loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)
   },
 ];
 
