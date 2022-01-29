@@ -118,6 +118,29 @@
       },
       "tags": [],
       "implicitDependencies": ["my-app"]
+    },
+    "web-main-feature": {
+      "root": "libs/web/main/feature",
+      "sourceRoot": "libs/web/main/feature/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/web/main/feature/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/main/feature"],
+          "options": {
+            "jestConfig": "libs/web/main/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
     }
   }
 }

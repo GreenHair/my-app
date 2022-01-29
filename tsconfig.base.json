@@ -17,11 +17,10 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
-    "paths": {},
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"]
+    },
     "rootDir": "."
   },
   "angularCompilerOptions": {
