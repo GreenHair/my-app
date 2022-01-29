@@ -22,13 +22,8 @@
             "main": "apps/my-app/src/main.ts",
             "polyfills": "apps/my-app/src/polyfills.ts",
             "tsConfig": "apps/my-app/tsconfig.app.json",
-            "assets": [
-              "apps/my-app/src/favicon.ico",
-              "apps/my-app/src/assets"
-            ],
-            "styles": [
-              "apps/my-app/src/styles.css"
-            ],
+            "assets": ["apps/my-app/src/favicon.ico", "apps/my-app/src/assets"],
+            "styles": ["apps/my-app/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -89,17 +84,40 @@
             "polyfills": "apps/my-app/src/polyfills.ts",
             "tsConfig": "apps/my-app/tsconfig.spec.json",
             "karmaConfig": "apps/my-app/karma.conf.js",
-            "assets": [
-              "apps/my-app/src/favicon.ico",
-              "apps/my-app/src/assets"
-            ],
-            "styles": [
-              "apps/my-app/src/styles.css"
-            ],
+            "assets": ["apps/my-app/src/favicon.ico", "apps/my-app/src/assets"],
+            "styles": ["apps/my-app/src/styles.css"],
             "scripts": []
           }
         }
       }
+    },
+    "my-app-e2e": {
+      "root": "apps/my-app-e2e",
+      "sourceRoot": "apps/my-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/my-app-e2e/cypress.json",
+            "devServerTarget": "my-app:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "my-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/my-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["my-app"]
     }
   }
 }
