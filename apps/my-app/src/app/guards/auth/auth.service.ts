@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'apps/my-app/src/environments/environment';
 import { catchError, delay, map, Observable, of, tap } from 'rxjs';
-import { LocalStorageService } from 'src/app/shared/local-storage.service';
+import { LocalStorageService } from '../../shared/local-storage.service';
 
 @Injectable({
   providedIn: 'root'

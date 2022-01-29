@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'src/app/shared/interfaces/IUser';
-import { LocalStorageService } from 'src/app/shared/local-storage.service';
+import { User } from '../../shared/interfaces/IUser';
+import { LocalStorageService } from '../../shared/local-storage.service';
 
 @Component({
   selector: 'app-main',
