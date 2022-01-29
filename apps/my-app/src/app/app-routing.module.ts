@@ -20,6 +20,7 @@ const routes: Routes = [
             path: "dashboard",
             component: DashboardComponent
           },
+          { path: 'add', loadChildren: () => import('./components/add/add.module').then(m => m.AddModule) }
         ]
       },
     ]
@@ -27,7 +28,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }
+  },
 ];
 
 @NgModule({
