@@ -13,8 +13,7 @@ export class MainComponent implements OnInit {
   user: User | null = null
   menu = [
     {title: "Dashboard", fragment: "dashboard"},
-    {title: "income", fragment: "income"},
-    {title: "search", fragment: "search"}
+    {title: "add", fragment: "add"},
   ]
 
   constructor(private localStorage: LocalStorageService, public route: ActivatedRoute) { }

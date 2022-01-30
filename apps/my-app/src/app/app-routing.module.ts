@@ -4,32 +4,32 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { AddComponent } from './components/add/add.component'
 
 const routes: Routes = [
   {
     path: "",
     component: MainComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
-        loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule),
-        canActivateChild: [AuthGuard],
-        children: [
-          {
-            path: "dashboard",
-            loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
-          },
-          { 
-            path: 'add', 
-            loadChildren: () => import('./components/add/add.module').then(m => m.AddModule) }
-        ]
+        component: DashboardComponent
       },
+      {
+        path: "dashboard",
+        component: DashboardComponent
+      },
+      { 
+        path: 'add',
+        component: AddComponent
+      }      
     ]
   },
   {
     path: 'login',
-    loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)
+    component: LoginComponent
   },
 ];
 
