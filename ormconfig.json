@@ -1,0 +1,51 @@
+[
+  {
+    "name": "default",
+    "type": "mariadb",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "haushaltsbuch",
+    "synchronize": false,
+    "entities": [
+      "./apps/api/src/entities/*.js", "./dist/apps/api/entities/*.js"
+    ],
+    "migrations": [
+      "./src/migration/*.js", "./dist/migration/*.js"
+    ],
+    "subscribers": [      
+      "./src/subscribers/*.js", "./dist/subscribers/*.js"
+    ],
+    "cli": {
+      "entitiesDir": "src",
+      "migrationsDir": "./src/migration",
+      "subscribersDir": "./src/subscriber"
+    }
+  },
+  {
+    "name": "development",
+    "type": "mariadb",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "haushaltsbuch",
+    "synchronize": false,
+    "entities": [
+      "./src/entities/*.js", "./dist/entities/*.js"
+    ],
+    "migrations": [
+      "./src/migrations/*.js", "./dist/migrations/*.js"
+      
+    ],
+    "subscribers": [      
+      "./src/subscribers/*.js", "./dist/subscribers/*.js"
+    ],
+    "cli": {
+      "entitiesDir": "./src",
+      "migrationsDir": "./src/migration",
+      "subscribersDir": "./src/subscriber"
+    }
+  }
+]
