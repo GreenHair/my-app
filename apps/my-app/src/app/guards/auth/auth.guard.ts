@@ -22,6 +22,9 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   checkLogin(url: string): true|UrlTree {
     if (this.authService.isLoggedIn) { 
+      if(url == '/') {
+        return this.router.parseUrl('dashboard')
+      }
       return true; 
     }
 
