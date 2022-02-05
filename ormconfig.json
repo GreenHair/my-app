@@ -1,0 +1,17 @@
+{
+    "type": "mariadb",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "haushaltsbuch",
+    "entities": [
+      "apps/api/**/*.entity.js"
+    ],
+    "migrations": [
+      "apps/api/src/migrations/*"
+    ],
+    "cli": {
+      "migrationsDir": "apps/api/src/migrations"
+    }
+  }
