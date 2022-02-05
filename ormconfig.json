@@ -9,9 +9,10 @@
       "apps/api/**/*.entity.js"
     ],
     "migrations": [
-      "apps/api/src/migrations/*"
+      "apps/api/src/migrations/*.js"
     ],
     "cli": {
-      "migrationsDir": "apps/api/src/migrations"
+      "migrationsDir": "apps/api/src/migrations",
+      "entitiesDir": "apps/api/src/entities"
     }
   }

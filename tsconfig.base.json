@@ -19,6 +19,9 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
+      "@my-app/api/auth/feature/auth": [
+        "libs/api/auth/feature/auth/src/index.ts"
+      ],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"]
     },
     "rootDir": "."

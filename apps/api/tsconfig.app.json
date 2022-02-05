@@ -6,7 +6,8 @@
     "types": ["node"],
     "emitDecoratorMetadata": true,
     "target": "es2015",
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "noPropertyAccessFromIndexSignature": false
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
   "include": ["**/*.ts"]

@@ -55,6 +55,29 @@
       },
       "tags": []
     },
+    "api-auth-feature-auth": {
+      "root": "libs/api/auth/feature/auth",
+      "sourceRoot": "libs/api/auth/feature/auth/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/auth/feature/auth/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/auth/feature/auth"],
+          "options": {
+            "jestConfig": "libs/api/auth/feature/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "my-app": {
       "projectType": "application",
       "schematics": {
