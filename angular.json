@@ -55,23 +55,115 @@
       },
       "tags": []
     },
-    "api-auth-feature-auth": {
-      "root": "libs/api/auth/feature/auth",
-      "sourceRoot": "libs/api/auth/feature/auth/src",
+    "api-data-access-entities": {
+      "root": "libs/api/data-access/entities",
+      "sourceRoot": "libs/api/data-access/entities/src",
       "projectType": "library",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/api/auth/feature/auth/**/*.ts"]
+            "lintFilePatterns": ["libs/api/data-access/entities/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/auth/feature/auth"],
+          "outputs": ["coverage/libs/api/data-access/entities"],
           "options": {
-            "jestConfig": "libs/api/auth/feature/auth/jest.config.js",
+            "jestConfig": "libs/api/data-access/entities/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-data-access-user-user": {
+      "root": "libs/api/data-access/user/user",
+      "sourceRoot": "libs/api/data-access/user/user/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/data-access/user/user/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/data-access/user/user"],
+          "options": {
+            "jestConfig": "libs/api/data-access/user/user/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-feature-auth": {
+      "root": "libs/api/feature/auth",
+      "sourceRoot": "libs/api/feature/auth/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/feature/auth/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/feature/auth"],
+          "options": {
+            "jestConfig": "libs/api/feature/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-utils-decorators": {
+      "root": "libs/api/utils/decorators",
+      "sourceRoot": "libs/api/utils/decorators/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/utils/decorators/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/utils/decorators"],
+          "options": {
+            "jestConfig": "libs/api/utils/decorators/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-utils-mapper": {
+      "root": "libs/api/utils/mapper",
+      "sourceRoot": "libs/api/utils/mapper/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/utils/mapper/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/utils/mapper"],
+          "options": {
+            "jestConfig": "libs/api/utils/mapper/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -196,6 +288,29 @@
       },
       "tags": [],
       "implicitDependencies": ["my-app"]
+    },
+    "shared-util-dto": {
+      "root": "libs/shared/util/dto",
+      "sourceRoot": "libs/shared/util/dto/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared/util/dto/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/util/dto"],
+          "options": {
+            "jestConfig": "libs/shared/util/dto/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
     },
     "web-main-feature": {
       "root": "libs/web/main/feature",

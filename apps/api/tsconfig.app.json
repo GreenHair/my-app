@@ -10,5 +10,5 @@
     "noPropertyAccessFromIndexSignature": false
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../../libs/api/data-access/entities/src/lib/Users.ts"]
 }
