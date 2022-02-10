@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
 import { catchError, delay, map, Observable, of, tap } from 'rxjs';
 import { LocalStorageService } from '../../shared/local-storage.service';
 
@@ -19,8 +20,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
   
-  login(username: string, password:string): Observable<boolean> {
-    return this.http.post(`${environment.apiUrl}/auth/login`, {name: username, password: password})
+  login(loginDto: LoginUserDto): Observable<boolean> {
+    return this.http.post(`${environment.apiUrl}/auth/login`, loginDto)
     .pipe(
       map(response => {
         console.log("response", response)

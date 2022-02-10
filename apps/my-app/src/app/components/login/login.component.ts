@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
 import { AuthService } from '../../guards/auth/auth.service';
 
 @Component({
@@ -12,8 +13,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   message: string;
-  username: string = ""
-  password: string = ""
+  loginDto: LoginUserDto = new LoginUserDto();
 
   constructor(public authService: AuthService, public router: Router) {
     this.message = this.getMessage();
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.message = 'Trying to log in ...';
 
-    this.authService.login(this.username, this.password).subscribe(() => {
+    this.authService.login(this.loginDto).subscribe(() => {
       this.message = this.getMessage();
       if (this.authService.isLoggedIn) {
         // Usually you would use the redirect URL from the auth service.

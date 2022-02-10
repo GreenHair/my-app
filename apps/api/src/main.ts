@@ -18,6 +18,8 @@ async function bootstrap() {
   const reflector = app.get(Reflector);
   app.useGlobalGuards(new AuthGuard(reflector));
 
+  app.enableCors()
+
   const port = process.env.PORT || 3333;
   await app.listen(port);
   Logger.log(
