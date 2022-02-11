@@ -1,4 +1,4 @@
-import { UserService } from '@my-app/api/data-access/user/user';
+import { UserService } from 'libs/api/data-access/user/src';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUserDto';
