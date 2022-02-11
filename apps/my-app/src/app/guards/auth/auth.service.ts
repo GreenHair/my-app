@@ -4,12 +4,14 @@ import { environment } from 'apps/my-app/src/environments/environment';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
 import { catchError, delay, map, Observable, of, tap } from 'rxjs';
 import { LocalStorageService } from '../../shared/local-storage.service';
+import { Credentials } from 'libs/api/feature/auth/src/lib/interfaces/credentials.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private loginUri = 'auth/login'
   private _isLoggedIn = false;
   get isLoggedIn() : boolean {
     return this.localStorage.get('isLoggedIn') ?? false
@@ -21,7 +23,7 @@ export class AuthService {
   constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
   
   login(loginDto: LoginUserDto): Observable<boolean> {
-    return this.http.post(`${environment.apiUrl}/auth/login`, loginDto)
+    return this.http.post<Credentials>(`${environment.apiUrl}/${this.loginUri}`, loginDto)
     .pipe(
       map(response => {
         console.log("response", response)

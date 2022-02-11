@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUserDto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
 import { UserDto } from 'libs/shared/util/dto/src/lib/userDto';
-import { LoginStatus } from './interfaces/login-status.interface';
+import { Credentials } from './interfaces/credentials.interface';
 import { JwtPayload } from './interfaces/payload.interface';
 import { RegistrationStatus } from './interfaces/registrattionStatus.interface';
 
@@ -29,7 +29,7 @@ export class AuthService {
         return status;  
     }
 
-    async login(loginUserDto: LoginUserDto): Promise<LoginStatus> {    
+    async login(loginUserDto: LoginUserDto): Promise<Credentials> {    
         // find user in db    
         const user = await this.usersService.findByLogin(loginUserDto);
         

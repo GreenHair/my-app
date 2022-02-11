@@ -3,7 +3,7 @@ import { Public } from 'libs/api/utils/decorators/src/lib/public.decorator';
 import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUserDto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
 import { AuthService } from './auth.service';
-import { LoginStatus } from './interfaces/login-status.interface';
+import { Credentials } from './interfaces/credentials.interface';
 import { RegistrationStatus } from './interfaces/registrattionStatus.interface';
 
 @Controller('auth')
@@ -22,7 +22,7 @@ export class AuthController {
 
   @Post('login')
   @Public()
-  public async login(@Body() loginUserDto: LoginUserDto): Promise<LoginStatus> {
+  public async login(@Body() loginUserDto: LoginUserDto): Promise<Credentials> {
     return await this.authService.login(loginUserDto);
   }
 }

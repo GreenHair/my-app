@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '../../shared/interfaces/IUser';
+import { Credentials } from 'libs/api/feature/auth/src/lib/interfaces/credentials.interface';
 import { LocalStorageService } from '../../shared/local-storage.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { LocalStorageService } from '../../shared/local-storage.service';
 })
 export class MainComponent implements OnInit {
 
-  user: User | null = null
+  user: Credentials | null = null
   menu = [
     {title: "Dashboard", fragment: "dashboard"},
     {title: "add", fragment: "add"},
@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
   constructor(private localStorage: LocalStorageService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.user = this.localStorage.get<User>('user')
+    this.user = this.localStorage.get<Credentials>('user')
   }
 
 }
