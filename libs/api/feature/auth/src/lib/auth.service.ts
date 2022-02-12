@@ -4,9 +4,9 @@ import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUser.dto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
 import { UserDto } from 'libs/shared/util/dto/src/lib/user.dto';
-import { Credentials } from './interfaces/credentials.dto';
+import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
 import { JwtPayload } from './interfaces/payload.dto';
-import { RegistrationStatus } from './interfaces/registrattionStatus.dto';
+import { RegistrationStatus } from '../../../../../shared/util/dto/src/lib/registrattionStatus.dto';
 
 @Injectable()
 export class AuthService {

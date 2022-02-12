@@ -3,8 +3,8 @@ import { Public } from 'libs/api/utils/decorators/src/lib/public.decorator';
 import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUser.dto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
 import { AuthService } from './auth.service';
-import { Credentials } from './interfaces/credentials.dto';
-import { RegistrationStatus } from './interfaces/registrattionStatus.dto';
+import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
+import { RegistrationStatus } from '../../../../../shared/util/dto/src/lib/registrattionStatus.dto';
 import { ApiTags } from '@nestjs/swagger'
 
 @ApiTags('Authorization')

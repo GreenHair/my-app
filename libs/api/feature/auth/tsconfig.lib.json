@@ -6,8 +6,9 @@
     "declaration": true,
     "types": ["node"],
     "target": "es6",
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+    "strictPropertyInitialization": false
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../../../shared/util/dto/src/lib/registrattionStatus.dto.ts"]
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Credentials } from 'libs/api/feature/auth/src/lib/interfaces/credentials.dto';
+import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
 import { LocalStorageService } from '../../shared/local-storage.service';
 
 @Component({
