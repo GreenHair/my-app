@@ -26,6 +26,9 @@
         "libs/api/data-access/user/src/index.ts"
       ],
       "@my-app/api/feature/auth": ["libs/api/feature/auth/src/index.ts"],
+      "@my-app/api/feature/category": [
+        "libs/api/feature/category/src/index.ts"
+      ],
       "@my-app/api/utils/mapper": ["libs/api/utils/mapper/src/index.ts"],
       "@my-app/shared/util/dto": ["libs/shared/util/dto/src/index.ts"],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"],

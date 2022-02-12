@@ -1,8 +1,5 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "65e24e7a-5f8c-4f6b-b7df-900f288748b5"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -27,7 +24,7 @@
                   "introspectComments": true
                 }
               }
-           ]
+            ]
           },
           "configurations": {
             "production": {
@@ -130,6 +127,29 @@
           "outputs": ["coverage/libs/api/feature/auth"],
           "options": {
             "jestConfig": "libs/api/feature/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-feature-category": {
+      "root": "libs/api/feature/category",
+      "sourceRoot": "libs/api/feature/category/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/feature/category/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/feature/category"],
+          "options": {
+            "jestConfig": "libs/api/feature/category/jest.config.js",
             "passWithNoTests": true
           }
         }

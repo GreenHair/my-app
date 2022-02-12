@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { AuthController, AuthModule } from '@my-app/api/feature/auth';
 import { Users } from 'libs/api/data-access/entities/src/lib/Users';
+import { CategoryController, CategoryModule } from '@my-app/api/feature/category';
 
 @Module({
   imports: [
@@ -17,9 +18,14 @@ import { Users } from 'libs/api/data-access/entities/src/lib/Users';
           entities: [Users]
         }),
     }),
-    AuthModule
+    AuthModule,
+    CategoryModule
   ],
-  controllers: [AppController, AuthController],
+  controllers: [
+    AppController,
+    AuthController,
+    CategoryController,
+  ],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
