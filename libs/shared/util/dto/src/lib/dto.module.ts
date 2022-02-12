@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { CreateUserDto } from './createUserDto';
-import { LoginUserDto } from './loginUserDto';
-import { UserDto } from './userDto';
+import { CreateUserDto } from './createUser.dto';
+import { LoginUserDto } from './loginUser.dto';
+import { UserDto } from './user.dto';
 
 @Module({
   controllers: [],

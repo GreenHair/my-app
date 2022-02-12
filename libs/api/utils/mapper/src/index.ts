@@ -1,5 +1,5 @@
 import { Users } from 'libs/api/data-access/entities/src/lib/Users';
-import { UserDto } from 'libs/shared/util/dto/src/lib/userDto';
+import { UserDto } from 'libs/shared/util/dto/src/lib/user.dto';
 
 export * from './lib/api-utils-mapper.module';
 

@@ -1,12 +1,12 @@
 import { UserService } from 'libs/api/data-access/user/src';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUserDto';
-import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
-import { UserDto } from 'libs/shared/util/dto/src/lib/userDto';
-import { Credentials } from './interfaces/credentials.interface';
-import { JwtPayload } from './interfaces/payload.interface';
-import { RegistrationStatus } from './interfaces/registrattionStatus.interface';
+import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUser.dto';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
+import { UserDto } from 'libs/shared/util/dto/src/lib/user.dto';
+import { Credentials } from './interfaces/credentials.dto';
+import { JwtPayload } from './interfaces/payload.dto';
+import { RegistrationStatus } from './interfaces/registrattionStatus.dto';
 
 @Injectable()
 export class AuthService {

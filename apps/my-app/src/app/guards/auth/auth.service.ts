@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
-import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
 import { catchError, delay, map, Observable, of, tap } from 'rxjs';
 import { LocalStorageService } from '../../shared/local-storage.service';
 import { Credentials } from 'libs/api/feature/auth/src/lib/interfaces/credentials.interface';

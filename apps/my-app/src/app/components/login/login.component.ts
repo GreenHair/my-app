@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
 import { AuthService } from '../../guards/auth/auth.service';
 
 @Component({

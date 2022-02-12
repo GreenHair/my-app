@@ -1,11 +1,13 @@
 import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { Public } from 'libs/api/utils/decorators/src/lib/public.decorator';
-import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUserDto';
-import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
+import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUser.dto';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
 import { AuthService } from './auth.service';
-import { Credentials } from './interfaces/credentials.interface';
-import { RegistrationStatus } from './interfaces/registrattionStatus.interface';
+import { Credentials } from './interfaces/credentials.dto';
+import { RegistrationStatus } from './interfaces/registrattionStatus.dto';
+import { ApiTags } from '@nestjs/swagger'
 
+@ApiTags('Authorization')
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) { }

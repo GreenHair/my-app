@@ -3,9 +3,9 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from 'libs/api/data-access/entities/src/lib/Users';
 import { toUserDto } from 'libs/api/utils/mapper/src';
-import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUserDto';
-import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUserDto';
-import { UserDto } from 'libs/shared/util/dto/src/lib/userDto';
+import { CreateUserDto } from 'libs/shared/util/dto/src/lib/createUser.dto';
+import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
+import { UserDto } from 'libs/shared/util/dto/src/lib/user.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()

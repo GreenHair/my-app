@@ -23,7 +23,7 @@
         "libs/api/data-access/entities/src/index.ts"
       ],
       "@my-app/api/data-access/user/user": [
-        "libs/api/data-access/user/user/src/index.ts"
+        "libs/api/data-access/user/src/index.ts"
       ],
       "@my-app/api/feature/auth": ["libs/api/feature/auth/src/index.ts"],
       "@my-app/api/utils/mapper": ["libs/api/utils/mapper/src/index.ts"],
