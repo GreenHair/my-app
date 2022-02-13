@@ -156,6 +156,29 @@
       },
       "tags": []
     },
+    "api-utils-db-access": {
+      "root": "libs/api/utils/db-access",
+      "sourceRoot": "libs/api/utils/db-access/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/utils/db-access/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/utils/db-access"],
+          "options": {
+            "jestConfig": "libs/api/utils/db-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "api-utils-decorators": {
       "root": "libs/api/utils/decorators",
       "sourceRoot": "libs/api/utils/decorators/src",

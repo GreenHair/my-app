@@ -1,5 +1,7 @@
-{
-    "type": "mariadb",
+[
+  {
+    "name": "default",
+    "type": "mysql",
     "host": "localhost",
     "port": 3306,
     "username": "root",
@@ -15,4 +17,30 @@
       "migrationsDir": "apps/api/src/migrations",
       "entitiesDir": "apps/api/src/entities"
     }
+  },
+  {
+    "name": "development",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "",
+    "database": "haushaltsbuch",
+    "synchronize": false,
+    "entities": [
+      "src/entities/*.js", "dist/entities/*.js"
+    ],
+    "migrations": [
+      "src/migrations/*.js", "dist/migrations/*.js"
+      
+    ],
+    "subscribers": [      
+      "src/subscribers/*.js", "dist/subscribers/*.js"
+    ],
+    "cli": {
+      "entitiesDir": "src",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+    }
   }
+]

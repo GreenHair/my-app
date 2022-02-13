@@ -8,9 +8,12 @@ import { Logger } from '@nestjs/common';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
+import { getDbConnectionOptions } from '@my-app/utils/db-access';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule.forRoot(await
+    getDbConnectionOptions()  
+  ));
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
