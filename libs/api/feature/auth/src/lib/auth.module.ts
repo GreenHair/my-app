@@ -1,4 +1,4 @@
-import { UserModule } from 'libs/api/data-access/user/src';
+import { UserModule } from 'libs/api/feature/user/src';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';

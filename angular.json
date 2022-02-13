@@ -87,23 +87,23 @@
       },
       "tags": []
     },
-    "api-data-access-user": {
-      "root": "libs/api/data-access/user",
-      "sourceRoot": "libs/api/data-access/user/src",
+    "api-feature-user": {
+      "root": "libs/api/feature/user",
+      "sourceRoot": "libs/api/feature/user/src",
       "projectType": "library",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/api/data-access/user/**/*.ts"]
+            "lintFilePatterns": ["libs/api/feature/user/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/data-access/user"],
+          "outputs": ["coverage/libs/api/feature/user"],
           "options": {
-            "jestConfig": "libs/api/data-access/user/jest.config.js",
+            "jestConfig": "libs/api/feature/user/jest.config.js",
             "passWithNoTests": true
           }
         }

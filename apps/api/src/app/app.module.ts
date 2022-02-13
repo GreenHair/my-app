@@ -4,12 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConnectionOptions, getConnectionOptions } from 'typeorm';
-import { AuthController, AuthModule } from '@my-app/api/feature/auth';
-import { Users } from 'libs/api/data-access/entities/src/lib/Users';
-import { CategoryController, CategoryModule } from '@my-app/api/feature/category';
-import { Produktgruppe } from 'libs/api/data-access/entities/src/lib/Produktgruppe';
-import { UserModule } from '@my-app/api/data-access/user/user';
+import { ConnectionOptions } from 'typeorm';
+import { AuthModule } from '@my-app/api/feature/auth';
+import { CategoryModule } from '@my-app/api/feature/category';
+import { UserModule } from '@my-app/api/feature/user';
 
 @Module({
   imports: [
