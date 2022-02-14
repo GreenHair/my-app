@@ -87,29 +87,6 @@
       },
       "tags": []
     },
-    "api-feature-user": {
-      "root": "libs/api/feature/user",
-      "sourceRoot": "libs/api/feature/user/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/api/feature/user/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/user"],
-          "options": {
-            "jestConfig": "libs/api/feature/user/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      },
-      "tags": []
-    },
     "api-feature-auth": {
       "root": "libs/api/feature/auth",
       "sourceRoot": "libs/api/feature/auth/src",
@@ -150,6 +127,52 @@
           "outputs": ["coverage/libs/api/feature/category"],
           "options": {
             "jestConfig": "libs/api/feature/category/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-feature-shop": {
+      "root": "libs/api/feature/shop",
+      "sourceRoot": "libs/api/feature/shop/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/feature/shop/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/feature/shop"],
+          "options": {
+            "jestConfig": "libs/api/feature/shop/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-feature-user": {
+      "root": "libs/api/feature/user",
+      "sourceRoot": "libs/api/feature/user/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/feature/user/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/feature/user"],
+          "options": {
+            "jestConfig": "libs/api/feature/user/jest.config.js",
             "passWithNoTests": true
           }
         }

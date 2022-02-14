@@ -22,13 +22,12 @@
       "@my-app/api/data-access/entities": [
         "libs/api/data-access/entities/src/index.ts"
       ],
-      "@my-app/api/feature/user": [
-        "libs/api/feature/user/src/index.ts"
-      ],
       "@my-app/api/feature/auth": ["libs/api/feature/auth/src/index.ts"],
       "@my-app/api/feature/category": [
         "libs/api/feature/category/src/index.ts"
       ],
+      "@my-app/api/feature/shop": ["libs/api/feature/shop/src/index.ts"],
+      "@my-app/api/feature/user": ["libs/api/feature/user/src/index.ts"],
       "@my-app/api/utils/mapper": ["libs/api/utils/mapper/src/index.ts"],
       "@my-app/shared/util/dto": ["libs/shared/util/dto/src/index.ts"],
       "@my-app/utils/db-access": ["libs/api/utils/db-access/src/index.ts"],
