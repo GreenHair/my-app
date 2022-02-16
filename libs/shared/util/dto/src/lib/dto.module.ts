@@ -3,11 +3,11 @@ import { CategoryDto } from './category.dto';
 import { CategoryListDto } from './categoryList.dto';
 import { CreateUserDto } from './createUser.dto';
 import { Credentials } from './credentials.dto';
-import { LadenDto } from './ladenDto';
-import { LadenListDto } from './ladenList';
+import { ShopDto } from './shop.dto';
+import { ShopListDto } from './shopList.dto';
 import { LoginUserDto } from './loginUser.dto';
 import { NewCategoryDto } from './newCategory.dto';
-import { NewLadenDto } from './newLadenDto';
+import { NewShopDto } from './newShop.dto';
 import { RegistrationStatus } from './registrattionStatus.dto';
 import { UserDto } from './user.dto';
 
@@ -23,9 +23,9 @@ import { UserDto } from './user.dto';
     CategoryDto,
     NewCategoryDto,
     CategoryListDto,
-    LadenDto,
-    LadenListDto,
-    NewLadenDto
+    ShopDto,
+    ShopListDto,
+    NewShopDto
   ],
 })
 export class DtoModule { }

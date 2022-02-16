@@ -1,6 +1,6 @@
-import { IsIn, IsInt, IsNotEmpty, IsNumber } from "class-validator"
+import { IsIn, IsNotEmpty } from "class-validator"
 
-export class LadenDto {
+export class ShopDto {
     @IsNotEmpty()
     id: number
     @IsNotEmpty()

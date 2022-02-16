@@ -1,3 +1,3 @@
-export * from './lib/api-feature-shop.controller';
-export * from './lib/api-feature-shop.service';
-export * from './lib/api-feature-shop.module';
+export * from './lib/shop.controller';
+export * from './lib/shop.service';
+export * from './lib/shop.module';

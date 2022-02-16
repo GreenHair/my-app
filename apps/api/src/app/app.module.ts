@@ -8,7 +8,7 @@ import { ConnectionOptions } from 'typeorm';
 import { AuthModule } from '@my-app/api/feature/auth';
 import { CategoryModule } from '@my-app/api/feature/category';
 import { UserModule } from '@my-app/api/feature/user';
-import { ApiFeatureShopModule } from '@my-app/api/feature/shop';
+import { ShopModule } from '@my-app/api/feature/shop';
 
 @Module({
   imports: [
@@ -28,7 +28,7 @@ export class AppModule {
         AuthModule,
         UserModule,
         CategoryModule,
-        ApiFeatureShopModule
+        ShopModule
       ],
       providers: [ AppService ]
     }

@@ -1,4 +1,4 @@
-import { ApiFeatureShopService } from '@my-app/api/feature/shop';
+import { ShopService } from '@my-app/api/feature/shop';
 import { Injectable } from '@nestjs/common';
 import {
     registerDecorator,
@@ -11,7 +11,7 @@ import {
 @ValidatorConstraint({ async: true })
 @Injectable()
 export class IsUniqueLadenConstraint implements ValidatorConstraintInterface {
-    constructor(private readonly service: ApiFeatureShopService){}
+    constructor(private readonly service: ShopService){}
 
     validate(name: any, args: ValidationArguments) {
         return this.service.findByName(name).then(laden => {
