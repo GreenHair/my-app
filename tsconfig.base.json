@@ -22,6 +22,7 @@
       "@my-app/api/data-access/entities": [
         "libs/api/data-access/entities/src/index.ts"
       ],
+      "@my-app/api/feature/article": ["libs/api/feature/article/src/index.ts"],
       "@my-app/api/feature/auth": ["libs/api/feature/auth/src/index.ts"],
       "@my-app/api/feature/category": [
         "libs/api/feature/category/src/index.ts"

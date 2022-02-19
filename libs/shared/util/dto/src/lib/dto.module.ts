@@ -16,6 +16,8 @@ import { NewFamilienmitgliedDto } from './newFamilienmitglied.dto';
 import { EinkommenDto } from './einkommen.dto';
 import { NewEinkommenDto } from './newEinkommen.dto';
 import { RechnungQuery } from './RechnungQuery';
+import { AusgabenDto } from './ausgaben.dto';
+import { NewAusgabenDto } from './newAusgaben.dto';
 
 @Module({
   controllers: [],
@@ -37,7 +39,9 @@ import { RechnungQuery } from './RechnungQuery';
     NewFamilienmitgliedDto,
     EinkommenDto,
     NewEinkommenDto,
-    RechnungQuery
+    RechnungQuery,
+    AusgabenDto,
+    NewAusgabenDto
   ],
 })
 export class DtoModule { }
