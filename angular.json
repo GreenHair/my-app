@@ -202,6 +202,29 @@
       },
       "tags": []
     },
+    "api-feature-invoice": {
+      "root": "libs/api/feature/invoice",
+      "sourceRoot": "libs/api/feature/invoice/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/feature/invoice/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/feature/invoice"],
+          "options": {
+            "jestConfig": "libs/api/feature/invoice/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "api-feature-shop": {
       "root": "libs/api/feature/shop",
       "sourceRoot": "libs/api/feature/shop/src",
