@@ -10,6 +10,7 @@ import { CategoryModule } from '@my-app/api/feature/category';
 import { UserModule } from '@my-app/api/feature/user';
 import { ShopModule } from '@my-app/api/feature/shop';
 import { ApiFeatureFamilyMemberModule } from '@my-app/api/feature/family-member';
+import { ApiFeatureIncomeModule } from '@my-app/api/feature/income';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ export class AppModule {
         UserModule,
         CategoryModule,
         ShopModule,
-        ApiFeatureFamilyMemberModule
+        ApiFeatureFamilyMemberModule,
+        ApiFeatureIncomeModule,
       ],
       providers: [ AppService ]
     }

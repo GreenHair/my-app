@@ -10,9 +10,12 @@ import { NewCategoryDto } from './newCategory.dto';
 import { NewShopDto } from './newShop.dto';
 import { RegistrationStatus } from './registrattionStatus.dto';
 import { UserDto } from './user.dto';
-import { FamilienmitgliedDto } from './familienmitgliedDto';
-import { FamilienmitgliederDto } from './familienmitgliederDto';
-import { NewFamilienmitgliedDto } from './newFamilienmitgliedDto';
+import { FamilienmitgliedDto } from './familienmitglied.dto';
+import { FamilienmitgliederDto } from './familienmitglieder.dto';
+import { NewFamilienmitgliedDto } from './newFamilienmitglied.dto';
+import { EinkommenDto } from './einkommen.dto';
+import { NewEinkommenDto } from './newEinkommen.dto';
+import { RechnungQuery } from './RechnungQuery';
 
 @Module({
   controllers: [],
@@ -31,7 +34,10 @@ import { NewFamilienmitgliedDto } from './newFamilienmitgliedDto';
     NewShopDto,
     FamilienmitgliedDto,
     FamilienmitgliederDto,
-    NewFamilienmitgliedDto
+    NewFamilienmitgliedDto,
+    EinkommenDto,
+    NewEinkommenDto,
+    RechnungQuery
   ],
 })
 export class DtoModule { }
