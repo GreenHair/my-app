@@ -1,8 +1,8 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Familienmitglied } from 'libs/api/data-access/entities/src/lib/Familienmitglied';
-import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitgliedDto';
-import { NewFamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/newFamilienmitgliedDto';
+import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
+import { NewFamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/newFamilienmitglied.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()

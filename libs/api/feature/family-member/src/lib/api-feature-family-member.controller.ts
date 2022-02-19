@@ -1,7 +1,7 @@
 import { toEntityDto } from '@my-app/api/utils/mapper';
 import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
-import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitgliedDto';
-import { NewFamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/newFamilienmitgliedDto';
+import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
+import { NewFamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/newFamilienmitglied.dto';
 import { FamilyMemberService } from './family-member.service';
 
 @Controller('family-member')
