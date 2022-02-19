@@ -133,6 +133,29 @@
       },
       "tags": []
     },
+    "api-feature-family-member": {
+      "root": "libs/api/feature/family-member",
+      "sourceRoot": "libs/api/feature/family-member/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/feature/family-member/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/feature/family-member"],
+          "options": {
+            "jestConfig": "libs/api/feature/family-member/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "api-feature-shop": {
       "root": "libs/api/feature/shop",
       "sourceRoot": "libs/api/feature/shop/src",

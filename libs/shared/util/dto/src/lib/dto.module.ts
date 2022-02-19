@@ -10,6 +10,9 @@ import { NewCategoryDto } from './newCategory.dto';
 import { NewShopDto } from './newShop.dto';
 import { RegistrationStatus } from './registrattionStatus.dto';
 import { UserDto } from './user.dto';
+import { FamilienmitgliedDto } from './familienmitgliedDto';
+import { FamilienmitgliederDto } from './familienmitgliederDto';
+import { NewFamilienmitgliedDto } from './newFamilienmitgliedDto';
 
 @Module({
   controllers: [],
@@ -25,7 +28,10 @@ import { UserDto } from './user.dto';
     CategoryListDto,
     ShopDto,
     ShopListDto,
-    NewShopDto
+    NewShopDto,
+    FamilienmitgliedDto,
+    FamilienmitgliederDto,
+    NewFamilienmitgliedDto
   ],
 })
 export class DtoModule { }
