@@ -481,6 +481,32 @@
       },
       "tags": []
     },
+    "web-invoice-feature": {
+      "projectType": "library",
+      "root": "libs/web/invoice/feature",
+      "sourceRoot": "libs/web/invoice/feature/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/invoice/feature"],
+          "options": {
+            "jestConfig": "libs/web/invoice/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/invoice/feature/src/**/*.ts",
+              "libs/web/invoice/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-main-feature": {
       "root": "libs/web/main/feature",
       "sourceRoot": "libs/web/main/feature/src",

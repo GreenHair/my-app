@@ -13,10 +13,13 @@ const routes: Routes = [
         path: "dashboard",
         loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-      /* { 
-        path: 'add',
-        loadChildren: () => import('../add/add.module').then(m => m.AddModule)
-      }, */
+      {
+        path: 'invoice',
+        loadChildren: () =>
+          import('@my-app/web/invoice/feature').then(
+            (module) => module.WebInvoiceFeatureModule
+          ),
+      },
       {
         path: '',
         redirectTo: 'Dashboard',

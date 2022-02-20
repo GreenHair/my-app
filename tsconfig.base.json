@@ -37,6 +37,7 @@
       "@my-app/api/utils/mapper": ["libs/api/utils/mapper/src/index.ts"],
       "@my-app/shared/util/dto": ["libs/shared/util/dto/src/index.ts"],
       "@my-app/utils/db-access": ["libs/api/utils/db-access/src/index.ts"],
+      "@my-app/web/invoice/feature": ["libs/web/invoice/feature/src/index.ts"],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"],
       "@myorg/api/decorators": ["libs/api/utils/decorators/src/index.ts"]
     },
