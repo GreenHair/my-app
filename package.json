@@ -25,7 +25,7 @@
     "graph": "nx graph",
     "workspace-schematic": "nx workspace-schematic",
     "help": "nx help",
-    "postinstall": "node ./decorate-angular-cli.js"
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main"
   },
   "private": true,
   "dependencies": {
@@ -65,8 +65,12 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^13.2.2",
+    "@angular-eslint/eslint-plugin": "~13.0.1",
+    "@angular-eslint/eslint-plugin-template": "~13.0.1",
+    "@angular-eslint/template-parser": "~13.0.1",
     "@angular/cli": "~13.1.4",
     "@angular/compiler-cli": "~13.1.0",
+    "@angular/language-service": "~13.1.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
     "@nrwl/eslint-plugin-nx": "13.6.1",
@@ -87,6 +91,7 @@
     "eslint-plugin-cypress": "^2.10.3",
     "jasmine-core": "~3.10.0",
     "jest": "27.2.3",
+    "jest-preset-angular": "11.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",

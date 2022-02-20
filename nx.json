@@ -15,5 +15,16 @@
     "analytics": "5c9cb51c-c12b-4c95-ae63-d9cd77c18496",
     "defaultCollection": "@nrwl/angular"
   },
-  "defaultProject": "my-app"
+  "defaultProject": "my-app",
+  "generators": {
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
+  }
 }
