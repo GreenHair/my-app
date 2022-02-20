@@ -9,6 +9,7 @@
   "include": [
     "src/**/*.d.ts",
     "../../libs/web/invoice/feature/src/index.ts",
-    "../../libs/web/dashboard/feature/src/index.ts"
+    "../../libs/web/dashboard/feature/src/index.ts",
+    "../../libs/web/login/feature/src/index.ts"
   ]
 }

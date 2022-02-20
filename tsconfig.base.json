@@ -41,6 +41,7 @@
         "libs/web/dashboard/feature/src/index.ts"
       ],
       "@my-app/web/invoice/feature": ["libs/web/invoice/feature/src/index.ts"],
+      "@my-app/web/login/feature": ["libs/web/login/feature/src/index.ts"],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"],
       "@myorg/api/decorators": ["libs/api/utils/decorators/src/index.ts"]
     },
