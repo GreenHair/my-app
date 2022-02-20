@@ -6,5 +6,9 @@
     "strictPropertyInitialization": false
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
-  "include": ["src/**/*.d.ts", "../../libs/web/invoice/feature/src/index.ts"]
+  "include": [
+    "src/**/*.d.ts",
+    "../../libs/web/invoice/feature/src/index.ts",
+    "../../libs/web/dashboard/feature/src/index.ts"
+  ]
 }

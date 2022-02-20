@@ -8,10 +8,13 @@ const routes: Routes = [
     path: '',
     component: MainComponent,
     canActivateChild: [AuthGuard],
-    children: [      
+    children: [
       {
-        path: "dashboard",
-        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'dashboard',
+        loadChildren: () =>
+          import('@my-app/web/dashboard/feature').then(
+            (module) => module.WebDashboardFeatureModule
+          ),
       },
       {
         path: 'invoice',
@@ -22,15 +25,16 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'Dashboard',
-        pathMatch: 'full'
-      }      
-    ]
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+    ],
   },
+  
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}
