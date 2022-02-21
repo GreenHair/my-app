@@ -533,6 +533,32 @@
       },
       "tags": []
     },
+    "web-login-data-access": {
+      "projectType": "library",
+      "root": "libs/web/login/data-access",
+      "sourceRoot": "libs/web/login/data-access/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/login/data-access"],
+          "options": {
+            "jestConfig": "libs/web/login/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/login/data-access/src/**/*.ts",
+              "libs/web/login/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-login-feature": {
       "projectType": "library",
       "root": "libs/web/login/feature",
