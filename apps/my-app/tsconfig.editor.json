@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts", "../../libs/web/shared/local-storage-service/src/lib/local-storage.service.ts"],
+  "include": ["**/*.ts", "../../libs/web/shared/local-storage-service/src/lib/local-storage.service.ts", "../../libs/web/main/feature/src/lib/main-routing.module.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }

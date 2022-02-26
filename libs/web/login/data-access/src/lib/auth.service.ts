@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'apps/my-app/src/app/shared/local-storage.service';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
+import { LocalStorageService } from 'libs/web/shared/local-storage-service/src/lib/local-storage.service';
 import { catchError, delay, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
