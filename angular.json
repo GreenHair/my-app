@@ -585,6 +585,32 @@
       },
       "tags": []
     },
+    "web-login-guard": {
+      "projectType": "library",
+      "root": "libs/web/login/guard",
+      "sourceRoot": "libs/web/login/guard/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/login/guard"],
+          "options": {
+            "jestConfig": "libs/web/login/guard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/login/guard/src/**/*.ts",
+              "libs/web/login/guard/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-main-feature": {
       "root": "libs/web/main/feature",
       "sourceRoot": "libs/web/main/feature/src",
