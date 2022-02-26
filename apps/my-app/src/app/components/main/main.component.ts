@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
-import { LocalStorageService } from '../../shared/local-storage.service';
+import { LocalStorageService } from 'libs/web/shared/local-storage-service/src/lib/local-storage.service';
 
 @Component({
   selector: 'app-main',

@@ -633,6 +633,32 @@
         }
       },
       "tags": []
+    },
+    "web-shared-local-storage-service": {
+      "projectType": "library",
+      "root": "libs/web/shared/local-storage-service",
+      "sourceRoot": "libs/web/shared/local-storage-service/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/shared/local-storage-service"],
+          "options": {
+            "jestConfig": "libs/web/shared/local-storage-service/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/shared/local-storage-service/src/**/*.ts",
+              "libs/web/shared/local-storage-service/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }

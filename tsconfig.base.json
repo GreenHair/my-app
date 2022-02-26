@@ -47,6 +47,9 @@
       "@my-app/web/login/feature": ["libs/web/login/feature/src/index.ts"],
       "@my-app/web/login/guard": ["libs/web/login/guard/src/index.ts"],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"],
+      "@my-app/web/shared/local-storage-service": [
+        "libs/web/shared/local-storage-service/src/index.ts"
+      ],
       "@myorg/api/decorators": ["libs/api/utils/decorators/src/index.ts"]
     },
     "rootDir": "."
