@@ -26,7 +26,6 @@ export class AuthService {
     return this.http.post<Credentials>(`${environment.apiUrl}/${this.loginUri}`, loginDto)
     .pipe(
       map(response => {
-        console.log("response", response)
         this.localStorage.set('isLoggedIn', JSON.stringify(true))
         this.localStorage.set('user', JSON.stringify(response))
         return true
