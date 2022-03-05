@@ -634,6 +634,32 @@
       },
       "tags": []
     },
+    "web-shared-interceptor": {
+      "projectType": "library",
+      "root": "libs/web/shared/interceptor",
+      "sourceRoot": "libs/web/shared/interceptor/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/shared/interceptor"],
+          "options": {
+            "jestConfig": "libs/web/shared/interceptor/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/shared/interceptor/src/**/*.ts",
+              "libs/web/shared/interceptor/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-shared-invoice-data-access": {
       "projectType": "library",
       "root": "libs/web/shared/invoice/data-access",
