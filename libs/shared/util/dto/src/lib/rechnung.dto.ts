@@ -1,7 +1,7 @@
 import { IsDate, IsIn, IsNotEmpty, IsOptional, ValidateIf } from "class-validator";
-import { Ausgaben } from "libs/api/data-access/entities/src/lib/Ausgaben";
-import { Familienmitglied } from "libs/api/data-access/entities/src/lib/Familienmitglied";
-import { Laden } from "libs/api/data-access/entities/src/lib/Laden";
+import { AusgabenDto } from "./ausgaben.dto"
+import { FamilienmitgliedDto } from "./familienmitglied.dto"
+import { ShopDto } from "./shop.dto"
 
 
 export class RechnungDto {
@@ -9,7 +9,7 @@ export class RechnungDto {
     id: number
     
     @IsNotEmpty()
-    laden: Laden
+    laden: ShopDto
     
     @IsNotEmpty()
     @IsDate()
@@ -21,8 +21,8 @@ export class RechnungDto {
     einmalig: number
 
     @IsNotEmpty()
-    person: Familienmitglied
+    person: FamilienmitgliedDto
 
     @IsNotEmpty()
-    posten: Ausgaben[]
+    posten: AusgabenDto[]
 }
