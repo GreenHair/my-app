@@ -1,28 +1,40 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-//import { environment } from 'apps/my-app/src/environments/environment';
+import { Injectable } from '@angular/core';
+import { environment } from 'apps/my-app/src/environments/environment';
+import { plainToClass } from 'class-transformer';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Invoice } from './invoice';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InvoiceService implements OnInit {
+export class InvoiceService {
 
   private invoiceUrl: string = 'invoice'
-  private apiUrl: string = 'localhost/api'
 
-  private _invoices$: BehaviorSubject<RechnungDto[]> = new BehaviorSubject<RechnungDto[]>([])
+  private invoices$: BehaviorSubject<Invoice[]> = new BehaviorSubject<Invoice[]>([])
 
-  get invoices$(): Observable<RechnungDto[]> {
-    return this._invoices$
+  getInvoices(): Observable<Invoice[]> {
+    return this.invoices$
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.fetchInvoices()
+   }
 
-  ngOnInit(): void {
-    this.http.get<RechnungDto[]>(`${this.apiUrl}/${this.invoiceUrl}`).pipe(
-      map(res => this._invoices$.next(res))
+  private fetchInvoices(): void {
+    this.http.get<RechnungDto[]>(`${environment.apiUrl}/${this.invoiceUrl}`).pipe(
+      map(invoices => {
+        const temp: Invoice[] = []
+        for(let i = 0; i < invoices.length; i++) {
+          temp.push(plainToClass(Invoice, invoices[i]))
+        }
+        return temp
+      })
+    )
+    .subscribe(
+      invoices => this.invoices$.next(invoices)
     )
   }
 }
