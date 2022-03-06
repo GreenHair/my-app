@@ -1,4 +1,4 @@
-import { IsIn, IsInt, IsNotEmpty, IsNumber } from "class-validator"
+import { IsIn, IsNotEmpty } from "class-validator"
 
 export class CategoryDto {
     @IsNotEmpty()

@@ -1,6 +1,6 @@
 import { Type } from "class-transformer";
 import { IsDate, IsIn, IsNotEmpty, IsOptional, ValidateIf } from "class-validator";
-import { Ausgaben } from "libs/api/data-access/entities/src/lib/Ausgaben";
+import { AusgabenDto } from "./ausgaben.dto";
 import { FamilienmitgliedDto } from "./familienmitglied.dto";
 import { ShopDto } from "./shop.dto";
 
@@ -25,5 +25,5 @@ export class NewRechnungDto {
     person: FamilienmitgliedDto
 
     @IsNotEmpty()
-    ausgaben: Ausgaben[]
+    ausgaben: AusgabenDto[]
 }

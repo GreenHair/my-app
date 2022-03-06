@@ -13,7 +13,7 @@ export class RechnungDto {
     
     @IsNotEmpty()
     @IsDate()
-    date: Date
+    datum: string
 
     @IsOptional()
     @IsIn([0,1])
@@ -24,5 +24,5 @@ export class RechnungDto {
     person: FamilienmitgliedDto
 
     @IsNotEmpty()
-    posten: AusgabenDto[]
+    ausgaben: AusgabenDto[]
 }
