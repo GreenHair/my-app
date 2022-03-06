@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
+import { InvoiceService } from 'libs/web/shared/invoice/data-access/src/lib/invoice.service';
+import { Invoice } from 'libs/web/shared/invoice/data-access/src/lib/invoice';
+import { filter, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  invoices$: Observable<Invoice[]>
+
+  constructor(private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
+    this.invoices$ = this.invoiceService.getInvoices().pipe(
+      map(invoices => {
+        console.log("invoices", invoices)
+        return invoices.sort((a,b) => b.date.getTime() - a.date.getTime())
+      })
+    )
   }
 
 }
