@@ -1,1 +1,3 @@
-<p>dashboard works!</p>
+<div *ngFor="let invoice of invoices$ | async">
+    <p>{{invoice.laden.name}} {{invoice.datum}} {{invoice.sum}}</p>
+</div>
