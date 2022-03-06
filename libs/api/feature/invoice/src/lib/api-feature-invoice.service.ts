@@ -1,3 +1,4 @@
+import { toEntityDto } from '@my-app/api/utils/mapper';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Rechnung } from 'libs/api/data-access/entities/src/lib/Rechnung';
@@ -20,7 +21,7 @@ export class ApiFeatureInvoiceService {
         return ausgabe
     }
 
-    async getAll(query?: any): Promise<Rechnung[]> {
+    async getAll(query?: any): Promise<RechnungDto[]> {
         const {year, month, week} = query
         let selectQuery = this.repo.createQueryBuilder('rechnung')
         .leftJoinAndSelect("rechnung.laden", "laden")
@@ -38,17 +39,22 @@ export class ApiFeatureInvoiceService {
         }
         
         const list = await selectQuery.getMany()
-        return list
+        return toEntityDto([], list) // list
     }
 
     async create(newRechnungDto: NewRechnungDto): Promise<Rechnung> {
-        
-        return this.repo.save(newRechnungDto)
+        const rechnung = new Rechnung()
+        rechnung.datum = newRechnungDto.datum
+        rechnung.laden = newRechnungDto.laden
+        rechnung.einmalig = newRechnungDto.einmalig
+        rechnung.person = newRechnungDto.person
+        //rechnung.ausgaben = newRechnungDto.ausgaben
+        return this.repo.save(rechnung)
     }
 
     async update(id: number, rechnungDto: RechnungDto): Promise<Rechnung> {
         let rechnung = await this.getone(id)
-        rechnung.datum = rechnungDto.date
+        rechnung.datum = new Date(rechnungDto.datum)
         rechnung.einmalig = rechnungDto.einmalig
         rechnung.laden = rechnungDto.laden
         rechnung.person = rechnungDto.person
