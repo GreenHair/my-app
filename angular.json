@@ -711,6 +711,32 @@
         }
       },
       "tags": []
+    },
+    "web-shared-shop-data-access": {
+      "projectType": "library",
+      "root": "libs/web/shared/shop/data-access",
+      "sourceRoot": "libs/web/shared/shop/data-access/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/shared/shop/data-access"],
+          "options": {
+            "jestConfig": "libs/web/shared/shop/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/shared/shop/data-access/src/**/*.ts",
+              "libs/web/shared/shop/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }

@@ -56,6 +56,9 @@
       "@my-app/web/shared/local-storage-service": [
         "libs/web/shared/local-storage-service/src/index.ts"
       ],
+      "@my-app/web/shared/shop/data-access": [
+        "libs/web/shared/shop/data-access/src/index.ts"
+      ],
       "@myorg/api/decorators": ["libs/api/utils/decorators/src/index.ts"]
     },
     "rootDir": "."
