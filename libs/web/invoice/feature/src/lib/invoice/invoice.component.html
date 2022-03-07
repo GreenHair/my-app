@@ -12,7 +12,10 @@
     <div class="row">
         <div class="col-3">
             <label for="datum" class="form-label">Datum</label>
-            <input type="text" ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control datepicker" name="datum" value="Datum auswählen">
+            <div class="input-group">
+                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" name="datum" value="Datum auswählen">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
         </div>
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>

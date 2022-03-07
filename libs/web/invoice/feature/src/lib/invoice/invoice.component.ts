@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'my-app-invoice',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
+
+  model: NgbDateStruct;
 
   constructor() { }
 
