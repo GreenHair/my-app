@@ -1,6 +1,6 @@
 <fieldset class="border" style="padding:20px">
     <legend>Neue Rechnung</legend>
-<form>
+<form [formGroup]="invoiceForm" (ngSubmit)="submit()">
     <div class="row">
         <div class="col-10">
             <button class="btn-secondary" type="reset">Zurücksetzen</button>
@@ -13,49 +13,32 @@
         <div class="col-3">
             <label for="datum" class="form-label">Datum</label>
             <div class="input-group">
-                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" name="datum" value="Datum auswählen">
+                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" formControlName="date" value="Datum auswählen">
                 <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
             </div>
         </div>
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>
-            <select name="laden" class="form-select mr-sm-2">
-                <option *ngFor="let shop of shops$ | async">{{shop.name}}</option>
+            <select formControlName="laden" class="form-select mr-sm-2">
+                <option *ngFor="let shop of shops$ | async" [value]="shop">{{shop.name}}</option>
             </select>
         </div>
         <div class="col-3">
             <label class="form-label" for="person">Person</label>
-            <select name="person" class="form-select mr-sm-2">
+            <select formControlName="person" class="form-select mr-sm-2">
                 <option *ngFor="let familyMember of familyMembers$ | async" [value]="familyMember">{{familyMember.vorname}}</option>
             </select>
         </div>
         <div class="col-3">
             <div class="form-check" style='margin-top:35px'>
-                <input type="checkbox" name="einmal" value="1" checked class="form-check-input" id="customCheck1">
+                <input type="checkbox" formControlName="einmalig" [value]="true" checked class="form-check-input" id="customCheck1">
                 <label class="form-check-label" for="customCheck1">Einmalig</label>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-6">
-            <label>Bezeichnung</label>
-        </div>
-        <div class="col-3">
-            <label>Preis</label>
-        </div>
-        <div class="col-3">
-            <label>Kategorie</label>
-        </div>
-    </div>
-    <div class='row'>
-        <div class='col-6'><input type='text' class='form-control' name='bezeichnung[]'></div>
-        <div class='col-3'><input type='text' class='form-control' name='preis[]'></div>
-        <div class='col-3'>
-            <select class='form-select mr-sm-2' name='kat[]'>
-                <option></option>
-            </select>
-        </div>
-    </div>
+    
+    <my-app-article-form></my-app-article-form>
+    
 </form>
 </fieldset>

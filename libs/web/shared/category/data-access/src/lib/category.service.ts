@@ -14,6 +14,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { 
     this.http.get<CategoryDto[]>(`${environment.apiUrl}/${this.categoryUrl}`)
+    .subscribe(categories => this.categories$.next(categories))
   }
 
   getCategories() : Observable<CategoryDto[]> {

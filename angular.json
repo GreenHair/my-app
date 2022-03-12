@@ -536,6 +536,32 @@
       },
       "tags": []
     },
+    "web-invoice-ui-article-form": {
+      "projectType": "library",
+      "root": "libs/web/invoice/ui/article-form",
+      "sourceRoot": "libs/web/invoice/ui/article-form/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/invoice/ui/article-form"],
+          "options": {
+            "jestConfig": "libs/web/invoice/ui/article-form/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/invoice/ui/article-form/src/**/*.ts",
+              "libs/web/invoice/ui/article-form/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-login-data-access": {
       "projectType": "library",
       "root": "libs/web/login/data-access",

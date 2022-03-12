@@ -1,0 +1,9 @@
+<div class='row'>
+    <div class='col-6'><input type='text' class='form-control' ></div>
+    <div class='col-3'><input type='text' class='form-control' ></div>
+    <div class='col-3'>
+        <select class='form-select mr-sm-2' name='kat[]'>
+            <option *ngFor="let category of categories$ | async">{{category.bezeichnung}}</option>
+        </select>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
@@ -20,7 +21,7 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string | null = null;
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private http: HttpClient, private localStorage: LocalStorageService, private router: Router) { }
   
   login(loginDto: LoginUserDto): Observable<boolean> {
     return this.http.post<Credentials>(`${environment.apiUrl}/${this.loginUri}`, loginDto)
@@ -38,6 +39,8 @@ export class AuthService {
   }
 
   logout(): void {
+    this.localStorage.set('user', '')
     this.localStorage.set('isLoggedIn', JSON.stringify(false))
+    this.router.navigateByUrl('login')  
   }
 }

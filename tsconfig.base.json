@@ -44,6 +44,9 @@
         "libs/web/dashboard/feature/src/index.ts"
       ],
       "@my-app/web/invoice/feature": ["libs/web/invoice/feature/src/index.ts"],
+      "@my-app/web/invoice/ui/article-form": [
+        "libs/web/invoice/ui/article-form/src/index.ts"
+      ],
       "@my-app/web/login/data-access": [
         "libs/web/login/data-access/src/index.ts"
       ],

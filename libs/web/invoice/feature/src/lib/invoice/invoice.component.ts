@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
 import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
@@ -21,9 +22,17 @@ export class InvoiceComponent implements OnInit {
   familyMembers$ : Observable<FamilienmitgliedDto[]>
   shops$ : Observable<ShopDto[]>
 
+  invoiceForm = this.fb.group({
+    date: [''],
+    laden: [''],
+    person: [''],
+    einmalig: [true]
+  })
+
   constructor(
     private familyMemberService: FamilyMemberService,
-    private shopService: ShopService
+    private shopService: ShopService,
+    private fb: FormBuilder
     ) { }
 
   ngOnInit(): void {
@@ -31,4 +40,7 @@ export class InvoiceComponent implements OnInit {
     this.shops$ = this.shopService.getShops()
   }
 
+  submit() {
+    console.log(this.invoiceForm.getRawValue())
+  }
 }
