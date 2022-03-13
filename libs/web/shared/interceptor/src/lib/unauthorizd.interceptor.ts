@@ -7,7 +7,10 @@ import { catchError, Observable, Subject, throttleTime, throwError } from "rxjs"
 export class UnauthorizedInterceptor implements HttpInterceptor {
     
     private throttleLogout = new Subject();
+
     constructor(private authService: AuthService) {
+        // if a page has multiple http requests, each will result in a 401
+        // throttle logout lets the first one go through and debounce the rest for 5 sec.
         this.throttleLogout.pipe(throttleTime(5000)).subscribe(url => {
             this.authService.logout()
         });
