@@ -20,13 +20,13 @@
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>
             <select formControlName="laden" class="form-select mr-sm-2">
-                <option *ngFor="let shop of shops$ | async" [value]="shop">{{shop.name}}</option>
+                <option *ngFor="let shop of shops$ | async" [ngValue]="shop">{{shop.name}}</option>
             </select>
         </div>
         <div class="col-3">
             <label class="form-label" for="person">Person</label>
             <select formControlName="person" class="form-select mr-sm-2">
-                <option *ngFor="let familyMember of familyMembers$ | async" [value]="familyMember">{{familyMember.vorname}}</option>
+                <option *ngFor="let familyMember of familyMembers$ | async" [ngValue]="familyMember">{{familyMember.vorname}}</option>
             </select>
         </div>
         <div class="col-3">
