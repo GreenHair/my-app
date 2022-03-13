@@ -2,7 +2,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from './lib/auth.interceptor';
-import { UnauthorizedInterceptor } from './lib/unauthorizd.interceptor';
+import { UnauthorizedInterceptor } from './lib/unauthorized.interceptor';
 
 /** Http interceptor providers in outside-in order */
 export const httpInterceptorProviders = [
