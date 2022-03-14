@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { FormArray, FormBuilder } from '@angular/forms';
+import {NgbDateAdapter, NgbDateNativeAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { plainToClass } from 'class-transformer';
 import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
+import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
+import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
 import { FamilyMemberService } from 'libs/web/shared/family-member/data-access/src/lib/family-member.service'
+import { InvoiceService } from 'libs/web/shared/invoice/data-access/src/lib/invoice.service'
 import { Invoice } from 'libs/web/shared/invoice/data-access/src/lib/invoice';
 import { ShopService } from 'libs/web/shared/shop/data-access/src/lib/shop.service'
 import { Observable } from 'rxjs';
@@ -11,11 +15,11 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'my-app-invoice',
   templateUrl: './invoice.component.html',
-  styleUrls: ['./invoice.component.css']
+  styleUrls: ['./invoice.component.css'],
 })
 export class InvoiceComponent implements OnInit {
 
-  model: NgbDateStruct;
+  //model: NgbDateStruct;
 
   invoice: Invoice = new Invoice()
 
@@ -23,15 +27,20 @@ export class InvoiceComponent implements OnInit {
   shops$ : Observable<ShopDto[]>
 
   invoiceForm = this.fb.group({
+    id: [''],
     date: [''],
     laden: [''],
     person: [''],
-    einmalig: [true]
+    einmalig: [true],
+    ausgaben: this.fb.array([
+      this.fb.control('')
+    ])
   })
 
   constructor(
     private familyMemberService: FamilyMemberService,
     private shopService: ShopService,
+    private invoiceService: InvoiceService,
     private fb: FormBuilder
     ) { }
 
@@ -40,7 +49,25 @@ export class InvoiceComponent implements OnInit {
     this.shops$ = this.shopService.getShops()
   }
 
+  get ausgaben() {
+    return this.invoiceForm.get('ausgaben') as FormArray
+  }
+
+  addArticle() {
+    this.ausgaben.push(this.fb.control(''))
+  }
+
   submit() {
-    console.log(this.invoiceForm.getRawValue())
+    //console.log(this.invoiceForm.getRawValue())
+    const rawValue = this.invoiceForm.getRawValue()
+    const rechnungDto: RechnungDto = {
+      ...rawValue,
+      datum: `${rawValue.date.year}-${rawValue.date.month}-${rawValue.date.day}`,
+      einmalig: Number(rawValue.einmalig)
+    }
+    //console.log(rechnungDto)
+    this.invoiceService.saveInvoice(rechnungDto).subscribe(() => {
+      this.invoiceForm.reset()
+    })
   }
 }

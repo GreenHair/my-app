@@ -1,6 +1,7 @@
 import { toEntityDto } from '@my-app/api/utils/mapper';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
 import { Rechnung } from 'libs/api/data-access/entities/src/lib/Rechnung';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
@@ -48,7 +49,16 @@ export class ApiFeatureInvoiceService {
         rechnung.laden = newRechnungDto.laden
         rechnung.einmalig = newRechnungDto.einmalig
         rechnung.person = newRechnungDto.person
-        //rechnung.ausgaben = newRechnungDto.ausgaben
+        const temp: Ausgaben[] = []
+        for(const ausgabe of newRechnungDto.ausgaben)
+        {
+            const ent: Ausgaben = new Ausgaben()
+            ent.betrag = ausgabe.betrag
+            ent.bezeichnung = ausgabe.bezeichnung
+            ent.prodGr = ausgabe.prodGr
+            temp.push(ent)
+        }
+        rechnung.ausgaben = temp
         return this.repo.save(rechnung)
     }
 
