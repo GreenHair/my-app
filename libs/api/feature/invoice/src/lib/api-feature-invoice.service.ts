@@ -1,7 +1,6 @@
-import { toEntityDto, toRechnungEntity } from '@my-app/api/utils/mapper';
+import { toEntityDto, toInvoiceEntity } from '@my-app/api/utils/mapper';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { instanceToPlain } from 'class-transformer';
 import { Rechnung } from 'libs/api/data-access/entities/src/lib/Rechnung';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
@@ -12,14 +11,14 @@ export class ApiFeatureInvoiceService {
     constructor(@InjectRepository(Rechnung) private readonly repo: Repository<Rechnung>) {}
 
     async getone(id: number): Promise<Rechnung> {
-        const ausgabe = await this.repo.findOne(id)
+        const invoice = await this.repo.findOne(id)
 
-        if(!ausgabe) {
+        if(!invoice) {
             throw new HttpException("Rechnung nicht gefunden",
             HttpStatus.NOT_FOUND)
         }
 
-        return ausgabe
+        return invoice
     }
 
     async getAll(query?: any): Promise<RechnungDto[]> {
@@ -44,17 +43,14 @@ export class ApiFeatureInvoiceService {
     }
 
     async create(newRechnungDto: NewRechnungDto): Promise<Rechnung> {
-        const data = instanceToPlain(newRechnungDto)
-        const invoice = toRechnungEntity(newRechnungDto)
+        const invoice = toInvoiceEntity(newRechnungDto)
         return this.repo.save(invoice)
     }
 
     async update(id: number, rechnungDto: RechnungDto): Promise<Rechnung> {
         let rechnung = await this.getone(id)
-        rechnung.datum = new Date(rechnungDto.datum)
-        rechnung.einmalig = rechnungDto.einmalig
-        rechnung.laden = rechnungDto.laden
-        rechnung.person = rechnungDto.person
+        const update = toInvoiceEntity(rechnungDto)
+        rechnung = {...update, id: rechnung.id}
 
         return this.repo.save(rechnung)
     }

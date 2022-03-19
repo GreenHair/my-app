@@ -1,7 +1,8 @@
-import { instanceToPlain, plainToClass } from 'class-transformer';
+import { instanceToPlain, plainToClass, plainToInstance } from 'class-transformer';
 import { Rechnung } from 'libs/api/data-access/entities/src/lib/Rechnung';
 import { Users } from 'libs/api/data-access/entities/src/lib/Users';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
+import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { UserDto } from 'libs/shared/util/dto/src/lib/user.dto';
 
 export * from './lib/api-utils-mapper.module';
@@ -18,7 +19,15 @@ export const toEntityDto = (entityDto: any, repository: any) => {
     return entityDto
 }
 
-export function toRechnungEntity(invoice: NewRechnungDto) : Rechnung{
-    const data = instanceToPlain(invoice)
-    return plainToClass(Rechnung, data)
+export function toInvoiceEntity(invoice: NewRechnungDto) : Rechnung {
+    return convert<Rechnung>(invoice, Rechnung)
+}
+
+export function toInvoiceDto(invoice: Rechnung) : RechnungDto {
+    return convert<RechnungDto>(invoice, RechnungDto)
+}
+
+function convert<T>(from: any, To: any) : T {
+    const data = instanceToPlain(from)
+    return plainToInstance(To, data)
 }

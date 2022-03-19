@@ -1,4 +1,4 @@
-import { toEntityDto } from '@my-app/api/utils/mapper';
+import { toEntityDto, toInvoiceDto } from '@my-app/api/utils/mapper';
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
@@ -23,9 +23,9 @@ export class ApiFeatureInvoiceController {
 
     @Post()
     @UsePipes(new ValidationPipe())
-    async create(@Body() kategorie: NewRechnungDto): Promise<RechnungDto> {
-        const newKategorie = await this.service.create(kategorie)
-        return toEntityDto(new RechnungDto(), newKategorie)
+    async create(@Body() invoice: NewRechnungDto): Promise<RechnungDto> {
+        const newInvoice = await this.service.create(invoice)
+        return toInvoiceDto(newInvoice)
     }
 
     @Put(":id")
