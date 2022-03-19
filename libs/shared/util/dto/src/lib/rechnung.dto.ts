@@ -1,3 +1,4 @@
+import { Type } from "class-transformer";
 import { IsDate, IsIn, IsNotEmpty, IsOptional, ValidateIf } from "class-validator";
 import { AusgabenDto } from "./ausgaben.dto"
 import { FamilienmitgliedDto } from "./familienmitglied.dto"
@@ -11,9 +12,10 @@ export class RechnungDto {
     @IsNotEmpty()
     laden: ShopDto
     
+    @Type(() => Date)
     @IsNotEmpty()
     @IsDate()
-    datum: string
+    datum: Date
 
     @IsOptional()
     @IsIn([0,1])
