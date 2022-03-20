@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## TODO
+1. conversion entity-dto and back with generics od wrapper
+1. date-string conversion
+1. restore subscriptionafter 401
+1. separation dumb-smart components
+    1. Dashboard
+    1. Invoice
+1. conversion boolean to number on client or server or orm?
