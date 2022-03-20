@@ -12,10 +12,9 @@ export class RechnungDto {
     @IsNotEmpty()
     laden: ShopDto
     
-    @Type(() => Date)
     @IsNotEmpty()
     @IsDate()
-    datum: Date
+    datum: string
 
     @IsOptional()
     @IsIn([0,1])
