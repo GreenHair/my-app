@@ -34,3 +34,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     1. Dashboard
     1. Invoice
 1. conversion boolean to number on client or server or orm?
+1. dupllication calculating sum
+1. date input ngbDatestruct?
