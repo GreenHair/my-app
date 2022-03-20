@@ -34,7 +34,8 @@ export class InvoiceComponent implements OnInit {
     einmalig: [true],
     ausgaben: this.fb.array([
       this.fb.control('')
-    ])
+    ]),
+    sum: ['']
   })
 
   constructor(
@@ -47,6 +48,12 @@ export class InvoiceComponent implements OnInit {
   ngOnInit(): void {
     this.familyMembers$ = this.familyMemberService.getShops()
     this.shops$ = this.shopService.getShops()
+    
+    this.ausgaben.valueChanges.subscribe(() => {
+      const sum = this.ausgaben.getRawValue().map(a => a.betrag)
+        .reduce((previous, current) => current ? previous + current : previous, 0)
+      this.invoiceForm.get('sum')?.patchValue(sum)
+    })
   }
 
   get ausgaben() {

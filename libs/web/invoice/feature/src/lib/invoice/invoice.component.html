@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-auto">
             <label for="datum" class="form-label">Datum</label>
             <div class="input-group">
                 <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" formControlName="date" placeholder="Datum auswählen">
@@ -29,11 +29,15 @@
                 <option *ngFor="let familyMember of familyMembers$ | async" [ngValue]="familyMember">{{familyMember.vorname}}</option>
             </select>
         </div>
-        <div class="col-3">
+        <div class="col-auto">
             <div class="form-check" style='margin-top:35px'>
                 <input type="checkbox" formControlName="einmalig" [value]="true" checked class="form-check-input" id="customCheck1">
                 <label class="form-check-label" for="customCheck1">Einmalig</label>
             </div>
+        </div>
+        <div class="col-auto">
+            <label for="sum" class="form-label">Sum</label>
+            <input type="text" readonly formControlName="sum" class="form-control">
         </div>
     </div>
 
