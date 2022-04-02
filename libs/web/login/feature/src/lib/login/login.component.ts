@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   }
   message: string;
   loginDto: LoginUserDto = new LoginUserDto();
+  error: string
 
   constructor(public authService: AuthService, public router: Router) {
     this.message = this.getMessage();
@@ -35,6 +36,10 @@ export class LoginComponent implements OnInit {
 
         // Redirect the user
         this.router.navigate([redirectUrl]);
+      } else {
+        if(this.authService.error) {
+          this.error = JSON.stringify(this.authService.error)
+        }
       }
     });
   }

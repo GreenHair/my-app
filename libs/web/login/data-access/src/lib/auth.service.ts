@@ -14,6 +14,8 @@ export class AuthService {
 
   private loginUri = 'auth/login'
   private _isLoggedIn = false;
+  error: any
+  
   get isLoggedIn() : boolean {
     return this.localStorage.get('isLoggedIn') ?? false
   }
@@ -32,6 +34,8 @@ export class AuthService {
         return true
       }),
       catchError(error => {
+        console.log(error)
+        this.error = error
         this.localStorage.set('isLoggedIn', JSON.stringify(false))
         return of(false)
       })
