@@ -1,0 +1,6 @@
+<p>camera works!</p>
+
+<input type="file" class="form-control" accept="image/*" capture="environment" #fileInput
+(change)="fileInputChange($event)">
+
+<img [src]="dataUrl" class="img">

@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   menu = [
     {title: "Dashboard", fragment: "dashboard"},
     {title: "Invoice", fragment: "invoice"},
+    {title: "Camera", fragment: "camera"},
   ]
 
   constructor(private localStorage: LocalStorageService, public route: ActivatedRoute, private authService: AuthService) { }

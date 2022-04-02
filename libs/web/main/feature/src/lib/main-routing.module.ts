@@ -24,6 +24,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'camera',
+        loadChildren: () =>
+          import('@my-app/web/camera/feature').then(
+            (module) => module.WebCameraFeatureModule
+          )
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

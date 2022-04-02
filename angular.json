@@ -484,6 +484,32 @@
       },
       "tags": []
     },
+    "web-camera-feature": {
+      "projectType": "library",
+      "root": "libs/web/camera/feature",
+      "sourceRoot": "libs/web/camera/feature/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/camera/feature"],
+          "options": {
+            "jestConfig": "libs/web/camera/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/camera/feature/src/**/*.ts",
+              "libs/web/camera/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-dashboard-feature": {
       "projectType": "library",
       "root": "libs/web/dashboard/feature",
