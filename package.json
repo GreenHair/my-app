@@ -60,6 +60,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
     "swagger-ui-express": "^4.3.0",
+    "tesseract.js": "^2.1.5",
     "tslib": "^2.3.0",
     "typedi": "^0.10.0",
     "typeorm": "^0.2.41",
