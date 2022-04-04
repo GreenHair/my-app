@@ -1,24 +1,46 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { createWorker } from "tesseract.js";
+import * as Tesseract from 'tesseract.js';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'my-app-camera',
   templateUrl: './camera.component.html',
   styleUrls: ['./camera.component.css']
 })
-export class CameraComponent implements OnInit, AfterViewInit {
+export class CameraComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('fileInput') fileInput : ElementRef
-  dataUrl : string | undefined | null | ArrayBuffer
+  dataUrl : any
 
+  progress : number = 0
+
+  worker : Tesseract.Worker = createWorker({
+    logger : m => {
+      console.log("progress", m)
+      if(m.status == 'recognizing text' && m.progress > 0){
+        this.progress = m.progress * 100
+      }
+    },
+    langPath: 'apps/my-app/src/assets'
+  })
+  isReady: boolean = false
+  text : string
+  error = false
+  errorText = ""
   
   constructor(private fb : FormBuilder) { }
   
   ngOnInit(): void {
-    
+    this.initialize()
   }
   
   ngAfterViewInit(): void {
+  }
+
+  ngOnDestroy() {
+    this.worker.terminate()
   }
   
   fileInputChange(event: any) {
@@ -30,6 +52,25 @@ export class CameraComponent implements OnInit, AfterViewInit {
         this.dataUrl = e.target?.result
       }
       reader.readAsDataURL(this.fileInput.nativeElement.files[0])
+    }
+  }
+
+  async initialize(): Promise<void> {
+    await this.worker.load();
+    await this.worker.loadLanguage("deu");
+    await this.worker.initialize("deu");
+    this.isReady = true;
+  }
+
+  async ocr(){
+    try{
+      this.progress = 100
+      const result = await this.worker.recognize(this.dataUrl)
+      console.log(result)
+    this.text = result.data.text
+    } catch (exception) {
+      this.error = true
+      this.errorText = JSON.stringify(exception)
     }
   }
 

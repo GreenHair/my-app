@@ -1,6 +1,18 @@
 <p>camera works!</p>
 
-<input type="file" class="form-control" accept="image/*" capture="environment" #fileInput
-(change)="fileInputChange($event)">
+<div *ngIf="!isReady" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
 
-<img [src]="dataUrl" class="img">
+<input type="file" class="form-control" accept="image/*" capture="environment" #fileInput
+    (change)="fileInputChange($event)">
+
+<ng-template [ngIf]="dataUrl">
+    <img [src]="dataUrl" class="img">
+    <button class="btn btn-primary" (click)="ocr()">scan text</button>
+</ng-template>
+
+<p><ngb-progressbar type="success" [value]="progress" [striped]="true" [animated]="true"></ngb-progressbar></p>
+
+<p>{{ text }}</p>
+<p *ngIf="error">{{ errorText }}</p>
