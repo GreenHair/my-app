@@ -41,22 +41,12 @@
         </div>
     </div>
 
-    
-    <div class="row">
-        <div class="col-6">
-            <label>Bezeichnung</label>
-        </div>
-        <div class="col-3">
-            <label>Preis</label>
-        </div>
-        <div class="col-3">
-            <label>Kategorie</label>
-        </div>
-    </div>
-    <div formArrayName="ausgaben">
+    <my-app-article-form formArrayName="ausgaben">
         <my-app-article-form-row *ngFor="let article of ausgaben.controls; let i=index" [formControlName]="i"></my-app-article-form-row>
-    </div>
-    <button type="button" class="btn btn-success mt-2" (click)="addArticle()">+</button>
+        <!-- <div formArrayName="ausgaben">
+        </div> -->
+        <button type="button" class="btn btn-success mt-2" (click)="addArticle()">+</button>
+    </my-app-article-form>
     
     
 </form>
