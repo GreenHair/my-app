@@ -6,15 +6,8 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './article-form.component.html',
   styleUrls: ['./article-form.component.css']
 })
-export class ArticleFormComponent implements OnInit {
+export class ArticleFormComponent {
 
-  articles = this.fb.array([
-    this.fb.control('')
-  ])
-
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
-  }
+  constructor() { }
 
 }
