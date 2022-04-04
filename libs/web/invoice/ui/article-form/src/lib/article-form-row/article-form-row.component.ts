@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { Observable, Subscription } from 'rxjs';
 import  { CategoryService } from 'libs/web/shared/category/data-access/src/lib/category.service'
@@ -17,8 +16,9 @@ import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/f
     }
   ]
 })
-export class ArticleFormRowComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlValueAccessor, OnDestroy {
 
+  @ViewChild('bezeichnung') bezeichnug : ElementRef
   categories$ : Observable<CategoryDto[]>
 
   onChangeSubs: Subscription[] = [];
@@ -31,6 +31,7 @@ export class ArticleFormRowComponent implements OnInit, ControlValueAccessor, On
   })  
 
   constructor(private categoryService: CategoryService, private fb: FormBuilder) { }
+  
   writeValue(value: any) {
     if (value) {
       this.articleForm.setValue(value, {emitEvent: false});
@@ -55,6 +56,10 @@ export class ArticleFormRowComponent implements OnInit, ControlValueAccessor, On
 
   ngOnInit(): void {
     this.categories$ = this.categoryService.getCategories()
+  }
+
+  ngAfterViewInit(): void {
+    this.bezeichnug.nativeElement.focus()
   }
 
   ngOnDestroy() {

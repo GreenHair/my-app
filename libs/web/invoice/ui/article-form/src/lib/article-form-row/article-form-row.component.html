@@ -1,5 +1,5 @@
 <div class='row mt-1' [formGroup]="articleForm">
-    <div class='col-6'><input type='text' class='form-control' formControlName="bezeichnung"></div>
+    <div class='col-6'><input type='text' class='form-control' formControlName="bezeichnung" #bezeichnung></div>
     <div class='col-3'><input type='number' step="0.1" class='form-control' formControlName="betrag"></div>
     <div class='col-3'>
         <select class='form-select mr-sm-2' formControlName="prodGr">
