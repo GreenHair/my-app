@@ -50,7 +50,7 @@ export class InvoiceComponent implements OnInit {
     this.shops$ = this.shopService.getShops()
     
     this.ausgaben.valueChanges.subscribe(() => {
-      const sum = this.ausgaben.getRawValue().map(a => a.betrag)
+      const sum = this.ausgaben.getRawValue().map(a => a ? a.betrag : 0)
         .reduce((previous, current) => current ? previous + current : previous, 0)
       this.invoiceForm.get('sum')?.patchValue(sum)
     })
@@ -75,6 +75,7 @@ export class InvoiceComponent implements OnInit {
     //console.log(rechnungDto)
     this.invoiceService.saveInvoice(rechnungDto).subscribe(() => {
       this.invoiceForm.reset()
+      this.ausgaben.clear()
     })
   }
 }
