@@ -25,6 +25,16 @@ export class ApiFeatureArticleService {
         return list
     }
 
+    async getAllDescriptions(query: { startsWith: string }) : Promise<string[]> {
+        const list = await this.repo.createQueryBuilder()
+        .select('bezeichnung')
+        .distinct(true)
+        .where('bezeichnung LIKE :query', {query: `${query.startsWith}%`})
+        .orderBy('bezeichnung', 'ASC')
+        .getRawMany()
+        return list.map(a => a.bezeichnung)
+    }
+
     async create(newAusgabenDto: NewAusgabenDto): Promise<Ausgaben> {
         
         let ausgabe =  await this.repo.create(newAusgabenDto)

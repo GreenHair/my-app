@@ -1,17 +1,23 @@
 import { toEntityDto } from '@my-app/api/utils/mapper';
-import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
 import { NewAusgabenDto } from 'libs/shared/util/dto/src/lib/newAusgaben.dto';
 import { ApiFeatureArticleService } from './api-feature-article.service';
 
 @Controller('article')
 export class ApiFeatureArticleController {
-  constructor(private service: ApiFeatureArticleService) {}
+    constructor(private service: ApiFeatureArticleService) { }
 
-  @Get()
+    @Get()
     async getAll(): Promise<AusgabenDto[]> {
         const list = await this.service.getAll()
         return toEntityDto([], list)
+    }
+
+    @Get('description')
+    async getArticleDescription(@Query() query: { startsWith: string }): Promise<string[]> {
+        console.log("right", query)
+        return this.service.getAllDescriptions(query)
     }
 
     @Get(":id")
