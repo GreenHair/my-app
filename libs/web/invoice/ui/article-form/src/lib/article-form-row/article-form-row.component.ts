@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { Observable, Subscription } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
 import  { CategoryService } from 'libs/web/shared/category/data-access/src/lib/category.service'
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { environment } from 'apps/my-app/src/environments/environment';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'my-app-article-form-row',
@@ -24,13 +26,18 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
   onChangeSubs: Subscription[] = [];
   onTouched: Function = () => {};
 
+  articleUrl = `${environment.apiUrl}/article/description`
+  searching : boolean = false
+  searchFailed = false
+  params = new HttpParams()
+
   articleForm = this.fb.group({
     bezeichnung: [''],
     betrag: [''],
     prodGr: ['']
   })  
 
-  constructor(private categoryService: CategoryService, private fb: FormBuilder) { }
+  constructor(private categoryService: CategoryService, private fb: FormBuilder, private http: HttpClient) { }
   
   writeValue(value: any) {
     if (value) {
@@ -53,6 +60,23 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
       this.articleForm.enable();
     }
   }
+
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      tap(() => this.searching = true),
+      switchMap(term =>
+        this.http.get<string[]>(this.articleUrl, { params: this.params.set('startsWith', term)})
+        .pipe(
+          tap(() => this.searchFailed = false),
+          catchError(() => {
+            this.searchFailed = true;
+            return of([]);
+          }))
+      ),
+      tap(() => this.searching = false)
+    )
 
   ngOnInit(): void {
     this.categories$ = this.categoryService.getCategories()
