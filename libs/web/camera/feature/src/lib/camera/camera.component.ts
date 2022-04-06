@@ -66,11 +66,14 @@ export class CameraComponent implements OnInit, AfterViewInit, OnDestroy {
     try{
       this.progress = 100
       const result = await this.worker.recognize(this.dataUrl)
+      this.text = result.data.text
       console.log(result)
-    this.text = result.data.text
+      const lines = result.data.lines.map(line => line.text)
+      console.log(JSON.stringify(lines))
     } catch (exception) {
       this.error = true
       this.errorText = JSON.stringify(exception)
+      console.log(exception)
     }
   }
 
