@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
 import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
 import { NewAusgabenDto } from 'libs/shared/util/dto/src/lib/newAusgaben.dto';
-import { Repository } from 'typeorm';
+import { createQueryBuilder, getConnection, Repository } from 'typeorm';
 
 @Injectable()
 export class ApiFeatureArticleService {
@@ -25,7 +25,7 @@ export class ApiFeatureArticleService {
         return list
     }
 
-    async getAllDescriptions(query: { startsWith: string }) : Promise<string[]> {
+    async getAllDescriptions(query: { startsWith: string }) : Promise<any[]> {
         const list = await this.repo.createQueryBuilder()
         .select('bezeichnung')
         .distinct(true)
@@ -33,6 +33,16 @@ export class ApiFeatureArticleService {
         .orderBy('bezeichnung', 'ASC')
         .getRawMany()
         return list.map(a => a.bezeichnung)
+       /*  const result = await getConnection()
+        .getRepository(Ausgaben)
+        .createQueryBuilder('ausgaben')
+        .leftJoinAndSelect('ausgaben.prodGr', "produktgruppe")
+        .where('ausgaben.bezeichnung LIKE :query', {query: `${query.startsWith}%`})
+        .groupBy('ausgaben.bezeichnung')
+        .orderBy('ausgaben.bezeichnung', 'ASC')
+        .addOrderBy('ausgaben.id', 'DESC')
+        .getMany()
+        return result */
     }
 
     async create(newAusgabenDto: NewAusgabenDto): Promise<Ausgaben> {
