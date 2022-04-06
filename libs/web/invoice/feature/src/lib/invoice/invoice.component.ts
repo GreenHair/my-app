@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder } from '@angular/forms';
-import {NgbDateAdapter, NgbDateNativeAdapter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { plainToClass } from 'class-transformer';
 import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
-import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
 import { FamilyMemberService } from 'libs/web/shared/family-member/data-access/src/lib/family-member.service'
@@ -18,8 +16,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./invoice.component.css'],
 })
 export class InvoiceComponent implements OnInit {
-
-  //model: NgbDateStruct;
 
   invoice: Invoice = new Invoice()
 
@@ -54,6 +50,13 @@ export class InvoiceComponent implements OnInit {
         .reduce((previous, current) => current ? previous + current : previous, 0)
       this.invoiceForm.get('sum')?.patchValue(sum)
     })
+
+    console.log(history.state)
+    if(history.state.data) {
+      this.invoice = plainToClass(Invoice, history.state.data)
+      this.invoiceForm.patchValue(this.invoice)
+      console.log(this.invoice.date)
+    }
   }
 
   get ausgaben() {
@@ -77,5 +80,9 @@ export class InvoiceComponent implements OnInit {
       this.invoiceForm.reset()
       this.ausgaben.clear()
     })
+  }
+
+  compareShops(shop1: ShopDto, shop2: ShopDto) : boolean {
+    return shop1?.id === shop2?.id
   }
 }

@@ -32,9 +32,11 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
   params = new HttpParams()
 
   articleForm = this.fb.group({
+    //id: [''],
     bezeichnung: [''],
     betrag: [''],
-    prodGr: ['']
+    prodGr: [''],
+    //rechnungsnr: ['']
   })  
 
   constructor(private categoryService: CategoryService, private fb: FormBuilder, private http: HttpClient) { }

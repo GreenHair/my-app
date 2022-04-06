@@ -1,6 +1,7 @@
 <fieldset class="border" style="padding:20px">
     <legend>Neue Rechnung</legend>
 <form [formGroup]="invoiceForm" (ngSubmit)="submit()">
+    <input type="hidden" formControlName="id">
     <div class="row">
         <div class="col-10">
             <button class="btn-secondary" type="reset">Zurücksetzen</button>
@@ -19,7 +20,7 @@
         </div>
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>
-            <select formControlName="laden" class="form-select mr-sm-2">
+            <select formControlName="laden" class="form-select mr-sm-2" [compareWith]="compareShops">
                 <option *ngFor="let shop of shops$ | async" [ngValue]="shop">{{shop.name}}</option>
             </select>
         </div>
@@ -50,4 +51,5 @@
     
     
 </form>
+<!-- <pre>{{ invoiceForm.getRawValue() | json }}</pre> -->
 </fieldset>
