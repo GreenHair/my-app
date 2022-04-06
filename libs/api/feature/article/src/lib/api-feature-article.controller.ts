@@ -16,7 +16,6 @@ export class ApiFeatureArticleController {
 
     @Get('description')
     async getArticleDescription(@Query() query: { startsWith: string }): Promise<string[]> {
-        console.log("right", query)
         return this.service.getAllDescriptions(query)
     }
 
