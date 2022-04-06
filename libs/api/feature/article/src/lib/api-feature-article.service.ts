@@ -13,7 +13,7 @@ export class ApiFeatureArticleService {
         const ausgabe = await this.repo.findOne(id, {relations: ["prodGr"] })
 
         if(!ausgabe) {
-            throw new HttpException("Person nicht gefunden",
+            throw new HttpException("Ausgabe nicht gefunden",
             HttpStatus.NOT_FOUND)
         }
 
