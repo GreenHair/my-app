@@ -1,5 +1,5 @@
 import { Rechnung } from "./Rechnung";
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Produktgruppe } from "./Produktgruppe";
 
 @Entity("ausgaben", { schema: "haushaltsbuch" })
