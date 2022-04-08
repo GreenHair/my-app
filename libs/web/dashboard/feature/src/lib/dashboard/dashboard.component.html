@@ -12,7 +12,7 @@
             <td>{{ invoice.date | date:'dd.MM.yyyy' }}</td>
             <td>{{ invoice.laden.name }}</td>
             <td>{{ invoice.sum | currency:'EUR' }}</td>
-            <td><a routerLink="/invoice" [state]="{ data: invoice }">=></a></td>
+            <td><a class="btn btn-secondary btn-sm" routerLink="/invoice" [state]="{ data: invoice }">=></a></td>
         </tr>
     </tbody>
 </table>
