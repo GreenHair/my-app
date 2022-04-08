@@ -1,6 +1,8 @@
 import { instanceToPlain, plainToClass, plainToInstance } from 'class-transformer';
+import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
 import { Rechnung } from 'libs/api/data-access/entities/src/lib/Rechnung';
 import { Users } from 'libs/api/data-access/entities/src/lib/Users';
+import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { UserDto } from 'libs/shared/util/dto/src/lib/user.dto';
@@ -25,6 +27,10 @@ export function toInvoiceEntity(invoice: NewRechnungDto) : Rechnung {
 
 export function toInvoiceDto(invoice: Rechnung) : RechnungDto {
     return convert<RechnungDto>(invoice, RechnungDto)
+}
+
+export function toArticleDto(article: Ausgaben): AusgabenDto {
+    return convert<AusgabenDto>(article, AusgabenDto)
 }
 
 function convert<T>(from: any, To: any) : T {
