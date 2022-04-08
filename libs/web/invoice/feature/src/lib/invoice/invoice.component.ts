@@ -28,9 +28,7 @@ export class InvoiceComponent implements OnInit {
     laden: [''],
     person: [''],
     einmalig: [true],
-    ausgaben: this.fb.array([
-      this.fb.control('')
-    ]),
+    ausgaben: this.fb.array([]),
     sum: ['']
   })
 
