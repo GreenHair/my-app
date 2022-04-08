@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { plainToClass } from 'class-transformer';
@@ -13,6 +13,8 @@ export class InvoiceService {
 
   private invoiceUrl: string = `${environment.apiUrl}/invoice`
 
+  private params = new HttpParams()
+
   private invoices$: BehaviorSubject<Invoice[]> = new BehaviorSubject<Invoice[]>([])
 
   getInvoices(): Observable<Invoice[]> {
@@ -24,7 +26,7 @@ export class InvoiceService {
    }
 
   private fetchInvoices(): void {
-    this.http.get<RechnungDto[]>(this.invoiceUrl).pipe(
+    this.http.get<RechnungDto[]>(this.invoiceUrl, { params: this.params.set('year', 2022).set('month', 4)}).pipe(
       map(invoices => {
         const temp: Invoice[] = []
         for(let i = 0; i < invoices.length; i++) {
