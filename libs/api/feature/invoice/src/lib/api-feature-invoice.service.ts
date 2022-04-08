@@ -21,7 +21,7 @@ export class ApiFeatureInvoiceService {
         return invoice
     }
 
-    async getAll(query?: any): Promise<RechnungDto[]> {
+    async getAll(query?: any): Promise<Rechnung[]> {
         const {year, month, week} = query
         let selectQuery = this.repo.createQueryBuilder('rechnung')
         .leftJoinAndSelect("rechnung.laden", "laden")
@@ -39,7 +39,7 @@ export class ApiFeatureInvoiceService {
         }
         
         const list = await selectQuery.getMany()
-        return toEntityDto([], list) // list
+        return list
     }
 
     async getYears(): Promise<number[]> {
