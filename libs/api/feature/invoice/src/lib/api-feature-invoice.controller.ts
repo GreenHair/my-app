@@ -7,12 +7,17 @@ import { ApiFeatureInvoiceService } from './api-feature-invoice.service';
 
 @Controller('invoice')
 export class ApiFeatureInvoiceController {
-  constructor(private service: ApiFeatureInvoiceService) {}
+    constructor(private service: ApiFeatureInvoiceService) { }
 
-  @Get()
+    @Get()
     async getAll(@Query(new ValidationPipe()) query: RechnungQuery): Promise<RechnungDto[]> {
         const list = await this.service.getAll(query)
         return toEntityDto([], list)
+    }
+
+    @Get('years')
+    async getYears(): Promise<number[]> {
+        return this.service.getYears()
     }
 
     @Get(":id")

@@ -42,6 +42,15 @@ export class ApiFeatureInvoiceService {
         return toEntityDto([], list) // list
     }
 
+    async getYears(): Promise<number[]> {
+        const years = await this.repo.createQueryBuilder('rechnung')
+        .select('YEAR(datum) AS year')
+        .distinct()
+        .orderBy('year', 'DESC')
+        .getRawMany()
+        return years.map(r => r.year)
+    }
+
     async create(newRechnungDto: NewRechnungDto): Promise<Rechnung> {
         const invoice = toInvoiceEntity(newRechnungDto)
         return this.repo.save(invoice)
