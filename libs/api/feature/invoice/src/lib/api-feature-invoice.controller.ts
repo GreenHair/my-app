@@ -1,5 +1,6 @@
 import { toEntityDto, toInvoiceDto } from '@my-app/api/utils/mapper';
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { plainToInstance } from 'class-transformer';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { RechnungQuery } from 'libs/shared/util/dto/src/lib/RechnungQuery';
@@ -12,7 +13,7 @@ export class ApiFeatureInvoiceController {
     @Get()
     async getAll(@Query(new ValidationPipe()) query: RechnungQuery): Promise<RechnungDto[]> {
         const list = await this.service.getAll(query)
-        return toEntityDto([], list)
+        return plainToInstance(RechnungDto, list)
     }
 
     @Get('years')
