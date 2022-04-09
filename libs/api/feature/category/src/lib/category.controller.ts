@@ -1,8 +1,10 @@
 import { toEntityDto } from '@my-app/api/utils/mapper';
-import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { plainToInstance } from 'class-transformer';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { NewCategoryDto } from 'libs/shared/util/dto/src/lib/newCategory.dto';
+import { threadId } from 'worker_threads';
 import { CategoryService } from './category.service';
 
 @ApiTags('Category')
@@ -11,7 +13,14 @@ export class CategoryController {
   constructor(private service: CategoryService) { }
 
   @Get()
-  async getAll(): Promise<CategoryDto[]> {
+  async getAll(@Query() query : {article : string}): Promise<CategoryDto[]> {
+    if(query.article){
+      const category = await this.service.getByArticle(query.article)
+      const ret = plainToInstance(CategoryDto, category)
+      const temp = []
+      temp.push(ret)
+      return temp
+    }
     const list = await this.service.getAll()
     return toEntityDto([], list)
   }

@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
 import { Produktgruppe } from 'libs/api/data-access/entities/src/lib/Produktgruppe';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { NewCategoryDto } from 'libs/shared/util/dto/src/lib/newCategory.dto';
@@ -18,6 +19,18 @@ export class CategoryService {
         }
 
         return kategorie
+    }
+
+    async getByArticle(article: string): Promise<Produktgruppe | undefined> {
+        const category = await this.repo.createQueryBuilder("category")
+        .addSelect("COUNT(category.ID)", "count")
+        .leftJoin(Ausgaben, "article", "article.prodGr = category.id" )
+        .groupBy("category.ID")
+        .where("article.bezeichnung = :article", { article : article })
+        .orderBy("count", "DESC")
+        .getOne()
+        
+        return category
     }
 
     async findByName(name: string): Promise<Produktgruppe | undefined> {
