@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
-import  { CategoryService } from 'libs/web/shared/category/data-access/src/lib/category.service'
+import { CategoryService } from 'libs/web/shared/category/data-access/src/lib/category.service'
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { compareById } from '@my-app/web/shared/utils';
 
 @Component({
   selector: 'my-app-article-form-row',
@@ -20,30 +22,34 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlValueAccessor, OnDestroy {
 
-  @ViewChild('bezeichnung') bezeichnug : ElementRef
-  categories$ : Observable<CategoryDto[]>
+  @ViewChild('bezeichnung') bezeichnug: ElementRef
+  categories$: Observable<CategoryDto[]>
 
   onChangeSubs: Subscription[] = [];
-  onTouched: Function = () => {};
+  onTouched: Function = () => { };
 
   articleUrl = `${environment.apiUrl}/article/description`
-  searching : boolean = false
+  searching: boolean = false
   searchFailed = false
   params = new HttpParams()
 
   articleForm = this.fb.group({
-    //id: [''],
+    id: [''],
     bezeichnung: [''],
     betrag: [''],
     prodGr: [''],
     //rechnungsnr: ['']
-  })  
+  })
+
+  get prodGr() {
+    return this.articleForm.get('prodGr')
+  }
 
   constructor(private categoryService: CategoryService, private fb: FormBuilder, private http: HttpClient) { }
-  
+
   writeValue(value: any) {
     if (value) {
-      this.articleForm.setValue(value, {emitEvent: false});
+      this.articleForm.setValue(value, { emitEvent: false });
     }
   }
   registerOnChange(onChange: any): void {
@@ -69,16 +75,27 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
       distinctUntilChanged(),
       tap(() => this.searching = true),
       switchMap(term =>
-        this.http.get<string[]>(this.articleUrl, { params: this.params.set('startsWith', term)})
-        .pipe(
-          tap(() => this.searchFailed = false),
-          catchError(() => {
-            this.searchFailed = true;
-            return of([]);
-          }))
+        this.http.get<string[]>(this.articleUrl, { params: this.params.set('startsWith', term) })
+          .pipe(
+            tap(() => this.searchFailed = false),
+            catchError(() => {
+              this.searchFailed = true;
+              return of([]);
+            }))
       ),
       tap(() => this.searching = false)
     )
+
+  /* formatter = (x: CategoryDto) => x.bezeichnung; */
+
+  onSelectItem(event: NgbTypeaheadSelectItemEvent) {
+    this.categoryService.getByArticle(event.item)
+    .subscribe(category => this.prodGr?.setValue(category))
+  }
+
+  compareId(obj1: any, obj2: any): boolean {
+    return compareById(obj1, obj2)
+  }
 
   ngOnInit(): void {
     this.categories$ = this.categoryService.getCategories()
