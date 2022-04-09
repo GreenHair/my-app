@@ -849,6 +849,32 @@
         }
       },
       "tags": []
+    },
+    "web-shared-utils": {
+      "projectType": "library",
+      "root": "libs/web/shared/utils",
+      "sourceRoot": "libs/web/shared/utils/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/shared/utils"],
+          "options": {
+            "jestConfig": "libs/web/shared/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/shared/utils/src/**/*.ts",
+              "libs/web/shared/utils/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }
