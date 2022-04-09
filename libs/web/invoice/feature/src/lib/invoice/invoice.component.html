@@ -14,19 +14,19 @@
         <div class="col-auto">
             <label for="datum" class="form-label">Datum</label>
             <div class="input-group">
-                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" formControlName="date" placeholder="Datum auswählen">
+                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" formControlName="datum" placeholder="Datum auswählen">
                 <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
             </div>
         </div>
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>
-            <select formControlName="laden" class="form-select mr-sm-2" [compareWith]="compareShops">
+            <select formControlName="laden" class="form-select mr-sm-2" [compareWith]="compareId">
                 <option *ngFor="let shop of shops$ | async" [ngValue]="shop">{{shop.name}}</option>
             </select>
         </div>
         <div class="col-3">
             <label class="form-label" for="person">Person</label>
-            <select formControlName="person" class="form-select mr-sm-2">
+            <select formControlName="person" class="form-select mr-sm-2" [compareWith]="compareId">
                 <option *ngFor="let familyMember of familyMembers$ | async" [ngValue]="familyMember">{{familyMember.vorname}}</option>
             </select>
         </div>

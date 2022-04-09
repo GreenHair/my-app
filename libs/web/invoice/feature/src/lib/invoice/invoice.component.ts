@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl } from '@angular/forms';
 import { plainToClass } from 'class-transformer';
 import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
@@ -9,11 +9,39 @@ import { InvoiceService } from 'libs/web/shared/invoice/data-access/src/lib/invo
 import { Invoice } from 'libs/web/shared/invoice/data-access/src/lib/invoice';
 import { ShopService } from 'libs/web/shared/shop/data-access/src/lib/shop.service'
 import { Observable } from 'rxjs';
+import { compareById } from '@my-app/web/shared/utils';
+import { NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+
+@Injectable()
+export class CustomAdapter extends NgbDateAdapter<string> {
+
+  readonly DELIMITER = '-';
+
+  fromModel(value: string | null): NgbDateStruct | null {
+    if (value) {
+      const date = value.split(this.DELIMITER);
+      return {
+        day : parseInt(date[2], 10),
+        month : parseInt(date[1], 10),
+        year : parseInt(date[0], 10)
+      };
+    }
+    return null;
+  }
+
+  toModel(date: NgbDateStruct | null): string | null {
+    return date ? date.year + this.DELIMITER + date.month + this.DELIMITER + date.day : null;
+  }
+}
+
 
 @Component({
   selector: 'my-app-invoice',
   templateUrl: './invoice.component.html',
   styleUrls: ['./invoice.component.css'],
+  providers: [
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
+  ]
 })
 export class InvoiceComponent implements OnInit {
 
@@ -24,7 +52,7 @@ export class InvoiceComponent implements OnInit {
 
   invoiceForm = this.fb.group({
     id: [''],
-    date: [''],
+    datum: [''],
     laden: [''],
     person: [''],
     einmalig: [true],
@@ -52,6 +80,9 @@ export class InvoiceComponent implements OnInit {
     console.log(history.state)
     if(history.state.data) {
       this.invoice = plainToClass(Invoice, history.state.data)
+      for(let i = 0; i < this.invoice.ausgaben.length; i++) {
+        this.addArticle()
+      }
       this.invoiceForm.patchValue(this.invoice)
       console.log(this.invoice.date)
     }
@@ -70,7 +101,6 @@ export class InvoiceComponent implements OnInit {
     const rawValue = this.invoiceForm.getRawValue()
     const rechnungDto: RechnungDto = {
       ...rawValue,
-      datum: `${rawValue.date.year}-${rawValue.date.month}-${rawValue.date.day}`,
       einmalig: Number(rawValue.einmalig)
     }
     //console.log(rechnungDto)
@@ -80,7 +110,10 @@ export class InvoiceComponent implements OnInit {
     })
   }
 
-  compareShops(shop1: ShopDto, shop2: ShopDto) : boolean {
-    return shop1?.id === shop2?.id
+  compareId(obj1: any, obj2: any) : boolean {
+    return compareById(obj1, obj2)
+    //return shop1?.id === shop2?.id
   }
+
+  
 }
