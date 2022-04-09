@@ -42,6 +42,11 @@ export class InvoiceService {
 
   saveInvoice(invoice: RechnungDto) {
     console.log(invoice)
+    if(invoice.id) {
+      return this.http.put(`${this.invoiceUrl}/${invoice.id}`, invoice).pipe(
+        tap(()  => this.fetchInvoices())
+      )
+    }
     return this.http.post(this.invoiceUrl, invoice).pipe(
       tap(() => this.fetchInvoices())
     )
