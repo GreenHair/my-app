@@ -13,7 +13,7 @@ export class RechnungDto {
     laden: ShopDto
     
     @IsNotEmpty()
-    @IsDate()
+    //@IsDate()
     datum: string
 
     @IsOptional()
