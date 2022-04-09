@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +10,27 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CategoryService {
 
   private categoryUrl = "category"
+  private url = `${environment.apiUrl}/${this.categoryUrl}`
   private categories$ = new BehaviorSubject<CategoryDto[]>([])
 
   constructor(private http: HttpClient) { 
-    this.http.get<CategoryDto[]>(`${environment.apiUrl}/${this.categoryUrl}`)
+    this.fetchCategories()
+  }
+
+  fetchCategories() : void {
+    this.http.get<CategoryDto[]>(this.url)
     .subscribe(categories => this.categories$.next(categories))
   }
 
   getCategories() : Observable<CategoryDto[]> {
     return this.categories$
+  }
+
+  getByArticle(article: string) : Observable<CategoryDto> {
+    const params = new HttpParams()
+    return this.http.get<CategoryDto[]>(this.url, { params : params.set("article", article)})
+    .pipe(
+      map(category => category[0])
+    )
   }
 }
