@@ -9,6 +9,7 @@ import { NestFactory, Reflector } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
 import { getDbConnectionOptions } from '@my-app/utils/db-access';
+import { useContainer } from 'class-validator';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule.forRoot(await
@@ -22,6 +23,9 @@ async function bootstrap() {
   app.useGlobalGuards(new AuthGuard(reflector));
 
   app.enableCors()
+
+  // necessary for decorators with injected services
+  useContainer(app.select(AppModule.forRoot(await getDbConnectionOptions())), { fallbackOnErrors: true })
 
   const port = process.env.PORT || 3333;
   
