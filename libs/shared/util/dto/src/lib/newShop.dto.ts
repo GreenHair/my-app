@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator"
-import { IsUniqueLaden } from "libs/api/utils/decorators/src/lib/isuniqueladen.decorator"
+import { IsUniqueLaden } from "libs/api/feature/shop/src/lib/isuniqueladen.decorator"
 
 export class NewShopDto {
     @IsNotEmpty()

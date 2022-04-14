@@ -24,5 +24,6 @@ export class NewRechnungDto {
     person: FamilienmitgliedDto
 
     @IsNotEmpty()
+    @Type(() => NewAusgabenDto)
     ausgaben: NewAusgabenDto[]
 }

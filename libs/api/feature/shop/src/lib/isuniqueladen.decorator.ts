@@ -1,4 +1,4 @@
-import { ShopService } from '@my-app/api/feature/shop';
+import { ShopService } from './shop.service';
 import { Injectable } from '@nestjs/common';
 import {
     registerDecorator,
