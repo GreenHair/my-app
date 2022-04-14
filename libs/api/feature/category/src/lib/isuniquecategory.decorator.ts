@@ -1,4 +1,4 @@
-import { CategoryService } from '@my-app/api/feature/category';
+import { CategoryService } from './category.service';
 import { Injectable } from '@nestjs/common';
 import {
     registerDecorator,
