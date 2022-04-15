@@ -51,6 +51,9 @@
       "@my-app/web/invoice/ui/article-form": [
         "libs/web/invoice/ui/article-form/src/index.ts"
       ],
+      "@my-app/web/invoice/ui/invoice-form": [
+        "libs/web/invoice/ui/invoice-form/src/index.ts"
+      ],
       "@my-app/web/login/data-access": [
         "libs/web/login/data-access/src/index.ts"
       ],

@@ -5,6 +5,7 @@ import { InvoiceComponent } from './invoice/invoice.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { ReactiveFormsModule } from '@angular/forms';
 import { WebInvoiceUiArticleFormModule } from 'libs/web/invoice/ui/article-form/src';
+import { WebInvoiceUiInvoiceFormModule } from 'libs/web/invoice/ui/invoice-form/src';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { WebInvoiceUiArticleFormModule } from 'libs/web/invoice/ui/article-form/
     ]),
     ReactiveFormsModule,
     WebInvoiceUiArticleFormModule,
+    WebInvoiceUiInvoiceFormModule
   ],
   declarations: [
     InvoiceComponent
