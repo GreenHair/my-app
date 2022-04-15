@@ -5,8 +5,8 @@ import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitgli
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
 import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
 import { FamilyMemberService } from 'libs/web/shared/family-member/data-access/src/lib/family-member.service'
-import { InvoiceService } from 'libs/web/shared/invoice/data-access/src/lib/invoice.service'
-import { Invoice } from 'libs/web/shared/invoice/data-access/src/lib/invoice';
+import { InvoiceService } from 'libs/web/invoice/data-access/src/lib/invoice.service'
+import { Invoice } from 'libs/web/invoice/data-access/src/lib/invoice';
 import { ShopService } from 'libs/web/shared/shop/data-access/src/lib/shop.service'
 import { Observable } from 'rxjs';
 import { compareById } from '@my-app/web/shared/utils';

@@ -541,6 +541,32 @@
       },
       "tags": []
     },
+    "web-invoice-data-access": {
+      "projectType": "library",
+      "root": "libs/web/invoice/data-access",
+      "sourceRoot": "libs/web/invoice/data-access/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/invoice/data-access"],
+          "options": {
+            "jestConfig": "libs/web/invoice/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/invoice/data-access/src/**/*.ts",
+              "libs/web/invoice/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-invoice-feature": {
       "projectType": "library",
       "root": "libs/web/invoice/feature",

@@ -13,10 +13,4 @@ describe('InvoiceService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('should emit invoices', () => {
-    service.invoices$.subscribe((invoices) => {
-      console.log("response", invoices)
-    })
-  })
 });

@@ -1,9 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { plainToClass } from 'class-transformer';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
-import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { Invoice } from './invoice';
 
 @Injectable({

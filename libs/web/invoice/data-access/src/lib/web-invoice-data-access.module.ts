@@ -1,0 +1,9 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { InvoiceService } from './invoice.service';
+
+@NgModule({
+  imports: [CommonModule],
+  exports: [InvoiceService]
+})
+export class WebInvoiceDataAccessModule {}

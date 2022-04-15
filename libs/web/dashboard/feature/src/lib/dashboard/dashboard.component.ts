@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
-import { InvoiceService } from 'libs/web/shared/invoice/data-access/src/lib/invoice.service';
-import { Invoice } from 'libs/web/shared/invoice/data-access/src/lib/invoice';
+import { Invoice } from 'libs/web/invoice/data-access/src/lib/invoice';
+import { InvoiceService } from 'libs/web/invoice/data-access/src/lib/invoice.service';
 import { filter, map, Observable } from 'rxjs';
 
 @Component({
