@@ -18,33 +18,36 @@ export class InvoiceService {
   private invoices$: BehaviorSubject<Invoice[]> = new BehaviorSubject<Invoice[]>([])
 
   getInvoices(): Observable<Invoice[]> {
+    if(this.invoices$.value === []) {
+      this.fetchInvoices()
+    }
     return this.invoices$
   }
 
   constructor(private http: HttpClient) {
     this.fetchInvoices()
-   }
+  }
 
   private fetchInvoices(): void {
-    this.http.get<RechnungDto[]>(this.invoiceUrl, { params: this.params.set('year', 2022).set('month', 4)}).pipe(
+    this.http.get<RechnungDto[]>(this.invoiceUrl, { params: this.params.set('year', 2022).set('month', 4) }).pipe(
       map(invoices => {
         const temp: Invoice[] = []
-        for(let i = 0; i < invoices.length; i++) {
+        for (let i = 0; i < invoices.length; i++) {
           temp.push(plainToClass(Invoice, invoices[i]))
         }
         return temp
       })
     )
-    .subscribe(
-      invoices => this.invoices$.next(invoices)
-    )
+      .subscribe(
+        invoices => this.invoices$.next(invoices)
+      )
   }
 
   saveInvoice(invoice: RechnungDto) {
     console.log(invoice)
-    if(invoice.id) {
+    if (invoice.id) {
       return this.http.put(`${this.invoiceUrl}/${invoice.id}`, invoice).pipe(
-        tap(()  => this.fetchInvoices())
+        tap(() => this.fetchInvoices())
       )
     }
     return this.http.post(this.invoiceUrl, invoice).pipe(
