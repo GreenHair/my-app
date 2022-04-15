@@ -1,6 +1,6 @@
 <fieldset class="border" style="padding:20px">
     <legend>Neue Rechnung</legend>
-<my-app-invoice-form></my-app-invoice-form>
+<my-app-invoice-form [invoice]="invoice"></my-app-invoice-form>
 <form [formGroup]="invoiceForm" (ngSubmit)="submit()">
     <input type="hidden" formControlName="id">
     <div class="row">
