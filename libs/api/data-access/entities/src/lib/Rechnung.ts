@@ -24,7 +24,7 @@ export class Rechnung {
   @Column("int", { name: "person", nullable: true })
   person: Familienmitglied;
 
-  @OneToMany(type => Ausgaben, ausgaben => ausgaben.rechnungsnr, {eager: true, cascade: ["insert"]})
+  @OneToMany(type => Ausgaben, ausgaben => ausgaben.rechnungsnr, {eager: true, cascade: true})
   //@JoinColumn({name: "rechnungsnr"})
   ausgaben: Ausgaben[]
 }

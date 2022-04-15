@@ -24,7 +24,7 @@ export class Ausgaben {
   prodGr: Produktgruppe;
 
   @Column("int", { name: "rechnungsnr", nullable: true })
-  @ManyToOne(type => Rechnung, rechnung => rechnung.id, { cascade: true, onDelete: "CASCADE"})
+  @ManyToOne(type => Rechnung, rechnung => rechnung.id )
   @JoinColumn({name: "rechnungsnr", referencedColumnName: "id"})
   rechnungsnr: Rechnung;
 }

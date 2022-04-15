@@ -1,6 +1,7 @@
 import { toEntityDto, toInvoiceEntity } from '@my-app/api/utils/mapper';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { plainToInstance } from 'class-transformer';
 import { Rechnung } from 'libs/api/data-access/entities/src/lib/Rechnung';
 import { NewRechnungDto } from 'libs/shared/util/dto/src/lib/newRechnung.dto';
 import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
@@ -52,15 +53,15 @@ export class ApiFeatureInvoiceService {
     }
 
     async create(newRechnungDto: NewRechnungDto): Promise<Rechnung> {
-        const invoice = toInvoiceEntity(newRechnungDto)
-        return this.repo.save(invoice)
+        const invoice = plainToInstance(Rechnung, newRechnungDto) //toInvoiceEntity(newRechnungDto)
+        return await this.repo.save(invoice)
     }
 
     async update(id: number, rechnungDto: RechnungDto): Promise<Rechnung> {
         let rechnung = await this.getone(id)
-        const update = toInvoiceEntity(rechnungDto)
+        const update = plainToInstance(Rechnung, rechnungDto) //toInvoiceEntity(rechnungDto)
         rechnung = {...update, id: rechnung.id}
-
+        //console.log("update", update)
         return this.repo.save(rechnung)
     }
 

@@ -97,14 +97,19 @@ export class InvoiceComponent implements OnInit {
   }
 
   submit() {
-    //console.log(this.invoiceForm.getRawValue())
+    //console.log("raw", this.invoiceForm.getRawValue())
     const rawValue = this.invoiceForm.getRawValue()
+    rawValue.ausgaben.forEach((element: any) => {
+      if(element.id == "") {
+        delete element.id
+      }
+    });
     const rechnungDto: RechnungDto = {
       ...rawValue,
       einmalig: Number(rawValue.einmalig)
     }
-    //console.log(rechnungDto)
-    this.invoiceService.saveInvoice(rechnungDto).subscribe(() => {
+    //console.log("dto", rechnungDto)
+    this.invoiceService.saveInvoice(rechnungDto).subscribe((response) => {
       this.invoiceForm.reset()
       this.ausgaben.clear()
     })
