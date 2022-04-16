@@ -31,6 +31,7 @@ export class ApiFeatureArticleService {
         .distinct(true)
         .where('bezeichnung LIKE :query', {query: `${query.startsWith}%`})
         .orderBy('bezeichnung', 'ASC')
+        .limit(10)
         .getRawMany()
         return list.map(a => a.bezeichnung)
         /* const result = await getConnection()
