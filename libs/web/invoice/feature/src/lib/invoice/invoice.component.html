@@ -1,56 +1,11 @@
 <fieldset class="border" style="padding:20px">
     <legend>Neue Rechnung</legend>
-<my-app-invoice-form [invoice]="invoice"></my-app-invoice-form>
-<form [formGroup]="invoiceForm" (ngSubmit)="submit()">
-    <input type="hidden" formControlName="id">
-    <div class="row">
-        <div class="col-10">
-            <button class="btn-secondary" type="reset">Zurücksetzen</button>
-        </div>
-        <div class="col-2">
-            <button class="btn-primary" type="submit" style='width:80%'>Senden</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-auto">
-            <label for="datum" class="form-label">Datum</label>
-            <div class="input-group">
-                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" formControlName="datum" placeholder="Datum auswählen">
-                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-            </div>
-        </div>
-        <div class="col-3">
-            <label class="form-label" for="laden">Laden</label>
-            <select formControlName="laden" class="form-select mr-sm-2" [compareWith]="compareId">
-                <option *ngFor="let shop of shops$ | async" [ngValue]="shop">{{shop.name}}</option>
-            </select>
-        </div>
-        <div class="col-3">
-            <label class="form-label" for="person">Person</label>
-            <select formControlName="person" class="form-select mr-sm-2" [compareWith]="compareId">
-                <option *ngFor="let familyMember of familyMembers$ | async" [ngValue]="familyMember">{{familyMember.vorname}}</option>
-            </select>
-        </div>
-        <div class="col-auto">
-            <div class="form-check" style='margin-top:35px'>
-                <input type="checkbox" formControlName="einmalig" [value]="true" checked class="form-check-input" id="customCheck1">
-                <label class="form-check-label" for="customCheck1">Einmalig</label>
-            </div>
-        </div>
-        <div class="col-auto">
-            <label for="sum" class="form-label">Sum</label>
-            <input type="number" readonly tabindex="-1" formControlName="sum" class="form-control">
-        </div>
-    </div>
+<my-app-invoice-form 
+[invoice]="invoice"
+[family]="familyMembers$ | async"
+[shops]="shops$ | async"
+[categories]="categories$ | async"
+></my-app-invoice-form>
 
-    <my-app-article-form formArrayName="ausgaben">
-        <my-app-article-form-row *ngFor="let article of ausgaben.controls; let i=index" [formControlName]="i"></my-app-article-form-row>
-        <!-- <div formArrayName="ausgaben">
-        </div> -->
-        <button type="button" class="btn btn-success mt-2" (click)="addArticle()">+</button>
-    </my-app-article-form>
-    
-    
-</form>
 <!-- <pre>{{ invoiceForm.getRawValue() | json }}</pre> -->
 </fieldset>

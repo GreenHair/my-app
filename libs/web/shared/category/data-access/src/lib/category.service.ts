@@ -17,7 +17,7 @@ export class CategoryService {
     this.fetchCategories()
   }
 
-  fetchCategories() : void {
+  private fetchCategories() : void {
     this.http.get<CategoryDto[]>(this.url)
     .subscribe(categories => this.categories$.next(categories))
   }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
 import { CategoryService } from 'libs/web/shared/category/data-access/src/lib/category.service'
@@ -23,7 +23,7 @@ import { compareById } from '@my-app/web/shared/utils';
 export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlValueAccessor, OnDestroy {
 
   @ViewChild('bezeichnung') bezeichnug: ElementRef
-  categories$: Observable<CategoryDto[]>
+  @Input() categories: CategoryDto[] | null
 
   onChangeSubs: Subscription[] = [];
   onTouched: Function = () => { };
@@ -71,7 +71,7 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
     text$.pipe(
-      debounceTime(300),
+      debounceTime(200),
       distinctUntilChanged(),
       tap(() => this.searching = true),
       switchMap(term =>
@@ -98,7 +98,7 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
   }
 
   ngOnInit(): void {
-    this.categories$ = this.categoryService.getCategories()
+    //this.categories$ = this.categoryService.getCategories()
   }
 
   ngAfterViewInit(): void {
