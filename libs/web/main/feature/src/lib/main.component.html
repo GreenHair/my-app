@@ -7,7 +7,7 @@
     </button>
 
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse justify-content-between">
-      <ul ngbNav [activeId]="selectedTab" class="navbar-nav">
+      <ul ngbNav [activeId]="selectedTab$ | async" class="navbar-nav">
         <li [ngbNavItem]="link.fragment" *ngFor="let link of menu">
           <a ngbNavLink [routerLink]="link.fragment" (click)="isMenuCollapsed = true">{{ link.title }}</a>
         </li>
