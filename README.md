@@ -35,13 +35,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     1. Invoice
 1. conversion boolean to number on client or server or orm?
 1. dupllication calculating sum
-1. date input ngbDatestruct?
 1. refactor camera component into dumb and smart components
 1. ocr service
 1. serverside ocr
     1. route for image
     1. ocr service
 1. refactor invoice article component to implement control value accessor better. Seeo also https://www.youtube.com/watch?v=zLtK9lG3maw
-1. routing to invoice component with invoice parameter
 1. analyze receipt to create incoice
 1. find easy testing method
