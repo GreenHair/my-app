@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
 import { AuthService } from 'libs/web/login/data-access/src/lib/auth.service';
 import { LocalStorageService } from 'libs/web/shared/local-storage-service/src/lib/local-storage.service';
-
+import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap'
+import { filter } from 'rxjs';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -14,12 +15,24 @@ export class MainComponent implements OnInit {
   isMenuCollapsed: boolean = true
   user: Credentials | null = null
   menu = [
-    {title: "Dashboard", fragment: "dashboard"},
-    {title: "Invoice", fragment: "invoice"},
-    {title: "Camera", fragment: "camera"},
+    { title: "Dashboard", fragment: "dashboard" },
+    { title: "Invoice", fragment: "invoice" },
+    { title: "Camera", fragment: "camera" },
   ]
+  selectedTab: string = ""
 
-  constructor(private localStorage: LocalStorageService, public route: ActivatedRoute, private authService: AuthService) { }
+  constructor(
+    private localStorage: LocalStorageService, 
+    public route: ActivatedRoute, 
+    private authService: AuthService, 
+    private router: Router) {
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe(e => {
+        this.selectedTab = (e as NavigationEnd).url.substring(1)
+      })
+    }
 
   ngOnInit(): void {
     this.user = this.localStorage.get<Credentials>('user')
