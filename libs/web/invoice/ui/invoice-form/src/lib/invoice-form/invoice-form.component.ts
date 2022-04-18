@@ -3,8 +3,8 @@ import { FormArray, FormBuilder } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
-import { CustomAdapter } from './custom-date-adapter';
 import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto } from '@my-app/shared/util/dto';
+import { CustomAdapter } from '@my-app/web/invoice/utils';
 
 
 @Component({

@@ -723,6 +723,32 @@
       },
       "tags": []
     },
+    "web-invoice-utils": {
+      "projectType": "library",
+      "root": "libs/web/invoice/utils",
+      "sourceRoot": "libs/web/invoice/utils/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/invoice/utils"],
+          "options": {
+            "jestConfig": "libs/web/invoice/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/invoice/utils/src/**/*.ts",
+              "libs/web/invoice/utils/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-login-data-access": {
       "projectType": "library",
       "root": "libs/web/login/data-access",
