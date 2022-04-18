@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IncomeService } from 'libs/web/income/data-access/src/lib/income.service';
+import { IncomeService } from '@my-app/web/income/data-access';
 
 @Component({
   selector: 'my-app-income-feature',
