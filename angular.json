@@ -541,6 +541,32 @@
       },
       "tags": []
     },
+    "web-income-data-access": {
+      "projectType": "library",
+      "root": "libs/web/income/data-access",
+      "sourceRoot": "libs/web/income/data-access/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/income/data-access"],
+          "options": {
+            "jestConfig": "libs/web/income/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/income/data-access/src/**/*.ts",
+              "libs/web/income/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-income-feature": {
       "projectType": "library",
       "root": "libs/web/income/feature",
@@ -561,6 +587,32 @@
             "lintFilePatterns": [
               "libs/web/income/feature/src/**/*.ts",
               "libs/web/income/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "web-income-ui": {
+      "projectType": "library",
+      "root": "libs/web/income/ui",
+      "sourceRoot": "libs/web/income/ui/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/income/ui"],
+          "options": {
+            "jestConfig": "libs/web/income/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/income/ui/src/**/*.ts",
+              "libs/web/income/ui/src/**/*.html"
             ]
           }
         }

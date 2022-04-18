@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IncomeService } from 'libs/web/income/data-access/src/lib/income.service';
 
 @Component({
   selector: 'my-app-income-feature',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IncomeFeatureComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: IncomeService) { }
 
   ngOnInit(): void {
   }
