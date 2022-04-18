@@ -1,4 +1,23 @@
-<p>income-list works!</p>
-<pre>
-    {{ incomeList | json }}
-</pre>
+<fieldset class="border p-3">
+    <legend *ngIf="incomeList">{{ date | date:'MMMM' }}</legend>
+    <table class="table table-striped">
+        <thead>
+            <th>Datum</th>
+            <th>Bezeichnung</th>
+            <th>Empfänger</th>
+            <th>Betrag</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let income of incomeList">
+                <td>{{income.datum | date:'dd.MM.yyyy'}}</td>
+                <td>{{income.bezeichnung}}</td>
+                <td>{{ income.person.vorname }}</td>
+                <td>{{ income.betrag | currency:'EUR' }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">Summe</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</fieldset>
