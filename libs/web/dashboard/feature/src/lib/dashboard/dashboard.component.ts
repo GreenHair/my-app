@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
-import { Invoice } from 'libs/web/invoice/data-access/src/lib/invoice';
-import { InvoiceService } from 'libs/web/invoice/data-access/src/lib/invoice.service';
-import { filter, map, Observable } from 'rxjs';
+import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',

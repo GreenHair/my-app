@@ -1,1 +1,1 @@
-export * from './lib/web-shared-category-data-access.module';
+export * from './lib/category.service'

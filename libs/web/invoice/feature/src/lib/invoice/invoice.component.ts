@@ -3,8 +3,7 @@ import { plainToClass } from 'class-transformer';
 import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
 import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
 import { FamilyMemberService } from 'libs/web/shared/family-member/data-access/src/lib/family-member.service'
-import { InvoiceService } from 'libs/web/invoice/data-access/src/lib/invoice.service'
-import { Invoice } from 'libs/web/invoice/data-access/src/lib/invoice';
+import { Invoice } from '@my-app/web/invoice/data-access';
 import { ShopService } from 'libs/web/shared/shop/data-access/src/lib/shop.service'
 import { Observable } from 'rxjs';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';

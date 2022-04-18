@@ -1,12 +1,12 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
-import { CategoryService } from 'libs/web/shared/category/data-access/src/lib/category.service'
 import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { compareById } from '@my-app/web/shared/utils';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
-import { compareById } from '@my-app/web/shared/utils';
+import { CategoryService } from '@my-app/web/shared/category/data-access';
 
 @Component({
   selector: 'my-app-article-form-row',

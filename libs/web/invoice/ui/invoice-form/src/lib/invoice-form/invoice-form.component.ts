@@ -1,15 +1,11 @@
-import { Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormArray, FormBuilder } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
-import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { FamilienmitgliedDto } from 'libs/shared/util/dto/src/lib/familienmitglied.dto';
-import { RechnungDto } from 'libs/shared/util/dto/src/lib/rechnung.dto';
-import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
-import { Invoice } from 'libs/web/invoice/data-access/src/lib/invoice';
-import { InvoiceService } from 'libs/web/invoice/data-access/src/lib/invoice.service';
-import { EventEmitter } from 'stream';
+import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { CustomAdapter } from './custom-date-adapter';
+import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto } from '@my-app/shared/util/dto';
+
 
 @Component({
   selector: 'my-app-invoice-form',
