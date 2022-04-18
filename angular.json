@@ -541,6 +541,32 @@
       },
       "tags": []
     },
+    "web-income-feature": {
+      "projectType": "library",
+      "root": "libs/web/income/feature",
+      "sourceRoot": "libs/web/income/feature/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/income/feature"],
+          "options": {
+            "jestConfig": "libs/web/income/feature/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/income/feature/src/**/*.ts",
+              "libs/web/income/feature/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-invoice-data-access": {
       "projectType": "library",
       "root": "libs/web/invoice/data-access",

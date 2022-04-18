@@ -44,6 +44,7 @@
       "@my-app/web/dashboard/feature": [
         "libs/web/dashboard/feature/src/index.ts"
       ],
+      "@my-app/web/income/feature": ["libs/web/income/feature/src/index.ts"],
       "@my-app/web/invoice/data-access": [
         "libs/web/invoice/data-access/src/index.ts"
       ],

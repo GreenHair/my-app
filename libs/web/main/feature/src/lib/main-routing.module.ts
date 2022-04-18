@@ -24,6 +24,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'income',
+        loadChildren: () =>
+          import('@my-app/web/income/feature').then(
+            (module) => module.WebIncomeFeatureModule
+          ),
+      },
+      {
         path: 'camera',
         loadChildren: () =>
           import('@my-app/web/camera/feature').then(

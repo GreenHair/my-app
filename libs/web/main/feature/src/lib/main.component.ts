@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   menu = [
     { title: "Dashboard", fragment: "dashboard" },
     { title: "Invoice", fragment: "invoice" },
+    { title: "Income", fragment: "income" },
     { title: "Camera", fragment: "camera" },
   ]
   selectedTab$: Observable<string>
