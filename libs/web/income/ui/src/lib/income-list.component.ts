@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { EinkommenDto } from '@my-app/shared/util/dto';
 
 @Component({
   selector: 'my-app-income-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./income-list.component.css']
 })
 export class IncomeListComponent implements OnInit {
+
+  @Input() incomeList : EinkommenDto[] | null
 
   constructor() { }
 
