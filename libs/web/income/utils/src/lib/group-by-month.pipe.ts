@@ -6,12 +6,12 @@ import { EinkommenDto } from '@my-app/shared/util/dto';
   name: 'groupByMonth',
 })
 export class GroupByMonthPipe implements PipeTransform {
-  transform(value: EinkommenDto[]): EinkommenDto[][] {
+  transform(value: EinkommenDto[] | null): EinkommenDto[][] {
     const temp = []
     for(let i = 0; i < 12; i++) {
-      temp[i] = value.filter(e => e.datum.getMonth() == i)
+      temp[i] = value?.filter(e => new Date(e.datum).getMonth() == i) ?? []
     }
-    return temp
+    return temp.filter(e => e.length > 0)
   }
 }
 
