@@ -17,6 +17,13 @@ export class IncomeListComponent implements OnInit {
     return new Date()
   }
 
+  get sum() : number {
+    if(this.incomeList) {
+      return this.incomeList.map(i => i.betrag).reduce((previous, current) => previous + current, 0)
+    }
+    return 0.00
+  }
+
   constructor() { }
 
   ngOnInit(): void {
