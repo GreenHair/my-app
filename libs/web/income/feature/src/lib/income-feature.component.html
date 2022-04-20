@@ -1,2 +1,2 @@
 <p>income-feature works!</p>
-<my-app-income-list *ngIf="incomeList$" [incomeList]="incomeList$ | async"></my-app-income-list>
+<my-app-income-list *ngIf="incomeList$ | async; let list" [incomeList]="list"></my-app-income-list>

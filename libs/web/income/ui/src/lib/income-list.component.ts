@@ -8,7 +8,7 @@ import { EinkommenDto } from '@my-app/shared/util/dto';
 })
 export class IncomeListComponent implements OnInit {
 
-  @Input() incomeList : EinkommenDto[] | null
+  @Input() incomeList : EinkommenDto[]
 
   constructor() { }
 
