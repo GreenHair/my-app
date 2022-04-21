@@ -21,7 +21,7 @@ export class IncomeService {
   }
 
   private fetchIncome() {
-    this.http.get<EinkommenDto[]>(this.url, { params: this.params.set('year', 2022)/* .set('month', 4) */ })
+    this.http.get<EinkommenDto[]>(this.url, { params: this.params.set('year', 2022).set('month', 4) })
     .subscribe(incomeList => this.income$.next(incomeList))
   }
 
