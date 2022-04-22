@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
+import { SumPipe } from '@my-app/web/shared/utils';
+import { Einkommen } from 'libs/api/data-access/entities/src/lib/Einkommen';
 import { map, Observable, Subscription, tap } from 'rxjs';
 
 @Component({
@@ -16,15 +18,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   sumOut: number = 0
   sumIn: number = 0
 
-  get balance() : number {
-    return this.sumIn - this.sumOut
-  }
-
-  constructor(private invoiceService: InvoiceService, private incomeService: IncomeService) { }
+  constructor(private invoiceService: InvoiceService, private incomeService: IncomeService, private sumPipe: SumPipe) { }
 
   ngOnInit(): void {
     this.invoices$ = this.invoiceService.getInvoices().pipe(
-      tap(invoices => this.sumOut = invoices.map(i => i.sum).reduce((prev, curr) => prev + curr, 0)),
+      tap(invoices => this.sumOut = this.sumPipe.transform(invoices)),
       map(invoices => {
         console.log("invoices", invoices)
         return invoices.sort((a, b) => b.date.getTime() - a.date.getTime())
@@ -34,7 +32,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.incomeSubscription = this.incomeService.getIncomeList().subscribe(
       income => {
         console.log("income", income)
-        this.sumIn = income.map(i => i.betrag).reduce((prev, curr) => prev + curr, 0)
+        this.sumIn = this.sumPipe.transform(income)
       })
   }
 

@@ -1,6 +1,6 @@
 <p>Gesamt Einkommen {{ sumIn | currency:'EUR' }}</p>
-<p>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
-<p> Bilanz {{ balance | currency:'EUR' }}</p>
+<p #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
+<p> Bilanz {{ sumIn - sumOut | currency:'EUR' }}</p>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -14,7 +14,7 @@
         <tr *ngFor="let invoice of invoices$ | async">
             <td>{{ invoice.datum | date:'dd.MM.yyyy' }}</td>
             <td>{{ invoice.laden.name }}</td>
-            <td>{{ invoice.sum | currency:'EUR' }}</td>
+            <td>{{ invoice.ausgaben | sum | currency:'EUR' }}</td>
             <td><a class="btn btn-secondary btn-sm" routerLink="/invoice" [state]="{ data: invoice }">=></a></td>
         </tr>
     </tbody>
