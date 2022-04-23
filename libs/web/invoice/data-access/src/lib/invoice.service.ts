@@ -54,4 +54,8 @@ export class InvoiceService {
       tap(() => this.fetchInvoices())
     )
   }
+
+  getYears() : Observable<number[]> {
+    return this.http.get<number[]>(`${this.invoiceUrl}/years`)
+  }
 }

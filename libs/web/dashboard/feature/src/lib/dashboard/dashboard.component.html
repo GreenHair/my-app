@@ -1,6 +1,7 @@
 <p>Gesamt Einkommen {{ sumIn | currency:'EUR' }}</p>
 <p #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
 <p> Bilanz {{ sumIn - sumOut | currency:'EUR' }}</p>
+<my-app-year-month-week *ngIf="years$ | async as years" [years]="years" ></my-app-year-month-week>
 <table class="table table-striped">
     <thead>
         <tr>

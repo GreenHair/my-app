@@ -14,6 +14,7 @@ import { map, Observable, Subscription, tap } from 'rxjs';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   invoices$: Observable<Invoice[]>
+  years$: Observable<number[]>
   incomeSubscription: Subscription
   sumOut: number = 0
   sumIn: number = 0
@@ -34,6 +35,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         console.log("income", income)
         this.sumIn = this.sumPipe.transform(income)
       })
+
+    this.years$ = this.invoiceService.getYears()
   }
 
   ngOnDestroy(): void {
