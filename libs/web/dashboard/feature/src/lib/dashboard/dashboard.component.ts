@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IncomeService } from '@my-app/web/income/data-access';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { SumPipe } from '@my-app/web/shared/utils';
-import { IPeriodQuery, YearMonthWeekComponent } from 'libs/web/shared/ui/src/lib/year-month-week/year-month-week.component';
+import { IPeriodQuery } from 'libs/web/shared/ui/src/lib/year-month-week/year-month-week.component';
 import * as moment from 'moment';
 import { map, Observable, Subject, Subscription, switchMap, tap } from 'rxjs';
 
@@ -13,7 +13,6 @@ import { map, Observable, Subject, Subscription, switchMap, tap } from 'rxjs';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-  @ViewChild('periodSelection') periodSelection: YearMonthWeekComponent
   invoices$: Observable<Invoice[]>
   years$: Observable<number[]>
   periodSelectionChanged$ = new Subject()
