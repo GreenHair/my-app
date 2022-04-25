@@ -43,3 +43,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1. refactor invoice article component to implement control value accessor better. Seeo also https://www.youtube.com/watch?v=zLtK9lG3maw
 1. analyze receipt to create incoice
 1. find easy testing method
+1. debug year-month-week component
