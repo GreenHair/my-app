@@ -7,12 +7,17 @@ import { ApiFeatureIncomeService } from './api-feature-income.service';
 
 @Controller('income')
 export class ApiFeatureIncomeController {
-  constructor(private service: ApiFeatureIncomeService) {}
- 
-  @Get()
+    constructor(private service: ApiFeatureIncomeService) { }
+
+    @Get()
     async getAll(@Query(new ValidationPipe()) query: RechnungQuery): Promise<EinkommenDto[]> {
         const list = await this.service.getAll(query)
         return toEntityDto([], list)
+    }
+
+    @Get('years')
+    async getYears(): Promise<number[]> {
+        return this.service.getYears()
     }
 
     @Get(":id")

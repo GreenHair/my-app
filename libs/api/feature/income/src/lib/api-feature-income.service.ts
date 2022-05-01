@@ -20,6 +20,15 @@ export class ApiFeatureIncomeService {
         return einkommen
     }
 
+    async getYears(): Promise<number[]> {
+        const years = await this.repo.createQueryBuilder('einkommen')
+        .select('YEAR(datum) AS year')
+        .distinct()
+        .orderBy('year', 'DESC')
+        .getRawMany()
+        return years.map(r => r.year)
+    }
+
     async getAll(query?: any): Promise<Einkommen[]> {
         const {year, month, week} = query
         let selectQuery = this.repo.createQueryBuilder('einkommen')
