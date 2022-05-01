@@ -25,7 +25,8 @@ export class IncomeService {
     .subscribe(incomeList => this.income$.next(incomeList))
   }
 
-  public getIncomeList() : Observable<EinkommenDto[]> {
-    return this.income$
+
+  getYears() : Observable<number[]> {
+    return this.http.get<number[]>(`${this.url}/years`)
   }
 }
