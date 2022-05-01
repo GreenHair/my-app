@@ -7,8 +7,8 @@
             <input type="radio" class="btn-check" formControlName="period" value="month" id="period2" autocomplete="off" checked>
             <label class="btn btn-outline-primary" for="period2">Month</label>
 
-            <input type="radio" class="btn-check" formControlName="period" value="week" id="period3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="period3">Week</label>
+            <input *ngIf="showWeek" type="radio" class="btn-check" formControlName="period" value="week" id="period3" autocomplete="off">
+            <label *ngIf="showWeek" class="btn btn-outline-primary" for="period3">Week</label>
         </div>
 
         <div class="row mt-1" formGroupName="query">
@@ -19,7 +19,6 @@
             </div>
             <div class="col" *ngIf="period?.value == 'month'">
                 <select formControlName="month" id="" class="form-select">
-                    <option value=""></option>
                     <option value="1">January</option>
                     <option value="2">February</option>
                     <option value="3">March</option>
@@ -34,7 +33,7 @@
                     <option value="12">Dezember</option>
                 </select>
             </div>
-            <div class="col" *ngIf="period?.value == 'week'">
+            <div class="col" *ngIf="period?.value == 'week' && showWeek">
                 <input class="form-control" type="number" min="1" max="53" formControlName="week">
             </div>
         </div>

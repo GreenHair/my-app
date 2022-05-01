@@ -22,6 +22,7 @@ export class YearMonthWeekComponent implements OnChanges, OnDestroy {
 
   @Input() years: number[]
   @Input() initialValues: IPeriodQuery
+  @Input() showWeek: boolean = true
   @Output() formChanged: any = new EventEmitter<IPeriodQuery>()
 
   private changeSubscription: Subscription
