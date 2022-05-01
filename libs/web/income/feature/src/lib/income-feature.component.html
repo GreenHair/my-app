@@ -1,2 +1,6 @@
-<p>income-feature works!</p>
-<my-app-income-list *ngIf="incomeList$ | async; let list" [incomeList]="list"></my-app-income-list>
+<my-app-year-month-week *ngIf="years$ | async as years" [years]="years" 
+[initialValues]="initialValues" 
+(formChanged)="periodSelectionChanged$.next($event)"
+[showWeek]="false"></my-app-year-month-week>
+
+<my-app-income-list *ngIf="incomeList$ | async as list" [incomeList]="list"></my-app-income-list>

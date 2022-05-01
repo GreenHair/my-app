@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { IncomeFeatureComponent } from './income-feature.component';
 import { WebIncomeUiModule } from '@my-app/web/income/ui';
 import { WebIncomeDataAccessModule } from '@my-app/web/income/data-access';
+import { WebSharedUiModule } from '@my-app/web/shared/ui';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { WebIncomeDataAccessModule } from '@my-app/web/income/data-access';
     RouterModule.forChild([
       {path: '', pathMatch: 'full', component: IncomeFeatureComponent}
     ]),
-    WebIncomeDataAccessModule
+    WebIncomeDataAccessModule,
+    WebSharedUiModule,
   ],
   declarations: [
     IncomeFeatureComponent
