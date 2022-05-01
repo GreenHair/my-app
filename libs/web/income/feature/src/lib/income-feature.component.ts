@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
-import { Observable } from 'rxjs';
+import { InvoiceService } from '@my-app/web/invoice/data-access';
+import { IPeriodQuery } from 'libs/web/shared/ui/src/lib/year-month-week/year-month-week.component';
+import * as moment from 'moment';
+import { map, Observable, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'my-app-income-feature',
@@ -37,6 +40,8 @@ export class IncomeFeatureComponent implements OnInit {
       switchMap(query => this.service.getIncomeList(query)),
       map(income => income.sort((a,b) => a.datum > b.datum ? -1 : 1))
     )
+    
+    this.years$ = this.service.getYears()
   }
 
 }
