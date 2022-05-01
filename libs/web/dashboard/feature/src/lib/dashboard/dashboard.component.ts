@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   invoices$: Observable<Invoice[]>
   years$: Observable<number[]>
+  periodQuery$ : Observable<{year: number, month?: number, week?:number}>
   periodSelectionChanged$ = new Subject()
   incomeSubscription: Subscription
   sumOut: number = 0
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private incomeService: IncomeService, private sumPipe: SumPipe) { }
 
   ngOnInit(): void {
-    this.invoices$ = this.periodSelectionChanged$.pipe(
+    this.periodQuery$ = this.periodSelectionChanged$.pipe(
       map(formValue => {
         const periodQuery = formValue as IPeriodQuery
         let query: { year: number, month?: number, week?: number } = { year: periodQuery.query.year }
@@ -41,7 +42,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
           case 'week': query = { ...query, week: periodQuery.query.week }; break;
         }
         return query
-      }),
+      })
+    )
+    this.invoices$ = this.periodQuery$.pipe(
       switchMap(query => this.invoiceService.getInvoices(query)),
       tap(invoices => this.sumOut = this.sumPipe.transform(invoices)),
       map(invoices => {
@@ -50,7 +53,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       })
     )
 
-    this.incomeSubscription = this.incomeService.getIncomeList().subscribe(
+    this.incomeSubscription = this.periodQuery$.pipe(
+      switchMap(query => this.incomeService.getIncomeList(query)) 
+    )
+    .subscribe(
       income => {
         console.log("income", income)
         this.sumIn = this.sumPipe.transform(income)
