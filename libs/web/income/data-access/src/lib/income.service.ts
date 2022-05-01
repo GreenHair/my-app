@@ -2,8 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 import { environment } from 'apps/my-app/src/environments/environment';
-import { plainToClass, plainToInstance } from 'class-transformer';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +11,12 @@ export class IncomeService {
 
   private url : string = `${environment.apiUrl}/income`
 
-  private params = new HttpParams()
+  constructor(private http: HttpClient) { }
 
-  private income$ : BehaviorSubject<EinkommenDto[]> = new BehaviorSubject<EinkommenDto[]>([])
-
-  constructor(private http: HttpClient) { 
-    this.fetchIncome()
+  public getIncomeList(query: any) : Observable<EinkommenDto[]> {
+    const params = new HttpParams({fromObject: query})
+    return this.http.get<EinkommenDto[]>(this.url, { params: params })
   }
-
-  private fetchIncome() {
-    this.http.get<EinkommenDto[]>(this.url, { params: this.params.set('year', 2022).set('month', 4) })
-    .subscribe(incomeList => this.income$.next(incomeList))
-  }
-
 
   getYears() : Observable<number[]> {
     return this.http.get<number[]>(`${this.url}/years`)
