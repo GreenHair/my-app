@@ -541,6 +541,32 @@
       },
       "tags": []
     },
+    "web-dashboard-ui": {
+      "projectType": "library",
+      "root": "libs/web/dashboard/ui",
+      "sourceRoot": "libs/web/dashboard/ui/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/dashboard/ui"],
+          "options": {
+            "jestConfig": "libs/web/dashboard/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/dashboard/ui/src/**/*.ts",
+              "libs/web/dashboard/ui/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-income-data-access": {
       "projectType": "library",
       "root": "libs/web/income/data-access",
