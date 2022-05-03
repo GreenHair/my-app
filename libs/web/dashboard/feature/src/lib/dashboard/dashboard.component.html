@@ -2,21 +2,4 @@
 <p #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
 <p> Bilanz: <span [ngStyle]="{color: sumIn - sumOut < 0 ? 'red' : 'green'}">{{ sumIn - sumOut | currency:'EUR' }}</span></p>
 <my-app-year-month-week *ngIf="years$ | async as years" [years]="years"  [initialValues]="initialValues" (formChanged)="periodSelectionChanged$.next($event)"></my-app-year-month-week>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Datum</th>
-            <th>Laden</th>
-            <th>Betrag</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let invoice of invoices$ | async">
-            <td>{{ invoice.datum | date:'dd.MM.yyyy' }}</td>
-            <td>{{ invoice.laden.name }}</td>
-            <td>{{ invoice.ausgaben | sum | currency:'EUR' }}</td>
-            <td><a class="btn btn-secondary btn-sm" routerLink="/invoice" [state]="{ data: invoice }">=></a></td>
-        </tr>
-    </tbody>
-</table>
+<my-app-invoice-list *ngIf="invoices$ | async as list" [invoices]="list"></my-app-invoice-list>

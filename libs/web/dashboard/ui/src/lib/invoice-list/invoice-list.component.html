@@ -1,1 +1,18 @@
-<p>invoice-list works!</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Laden</th>
+            <th>Betrag</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let invoice of invoices">
+            <td>{{ invoice.datum | date:'dd.MM.yyyy' }}</td>
+            <td>{{ invoice.laden.name }}</td>
+            <td>{{ invoice.ausgaben | sum | currency:'EUR' }}</td>
+            <td><a class="btn btn-secondary btn-sm" routerLink="/invoice" [state]="{ data: invoice }">=></a></td>
+        </tr>
+    </tbody>
+</table>
