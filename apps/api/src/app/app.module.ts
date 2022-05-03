@@ -11,8 +11,8 @@ import { UserModule } from '@my-app/api/feature/user';
 import { ShopModule } from '@my-app/api/feature/shop';
 import { ApiFeatureFamilyMemberModule } from '@my-app/api/feature/family-member';
 import { ApiFeatureIncomeModule } from '@my-app/api/feature/income';
-import { ApiFeatureArticleModule } from 'libs/api/feature/article/src';
-import { ApiFeatureInvoiceModule } from 'libs/api/feature/invoice/src';
+import { ApiFeatureArticleModule } from '@my-app/api/feature/article';
+import { ApiFeatureInvoiceModule } from '@my-app/api/feature/invoice';
 
 @Module({
   imports: [

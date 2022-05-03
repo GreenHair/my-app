@@ -1,8 +1,7 @@
 import { toArticleDto, toEntityDto } from '@my-app/api/utils/mapper';
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
-import { NewAusgabenDto } from 'libs/shared/util/dto/src/lib/newAusgaben.dto';
+import { AusgabenDto, NewAusgabenDto } from '@my-app/shared/util/dto';
 import { ApiFeatureArticleService } from './api-feature-article.service';
 
 @Controller('article')
