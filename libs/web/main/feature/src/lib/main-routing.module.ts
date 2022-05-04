@@ -38,6 +38,13 @@ const routes: Routes = [
           )
       },
       {
+        path: 'search',
+        loadChildren: () => 
+          import('@my-app/web/search/feature').then(
+            module => module.WebSearchFeatureModule
+          ),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

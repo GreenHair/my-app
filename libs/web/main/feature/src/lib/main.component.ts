@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
     { title: "Invoice", fragment: "invoice" },
     { title: "Income", fragment: "income" },
     { title: "Camera", fragment: "camera" },
+    { title: "Search", fragment: "search" },
   ]
   selectedTab$: Observable<string>
 

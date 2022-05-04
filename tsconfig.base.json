@@ -68,6 +68,7 @@
       "@my-app/web/login/feature": ["libs/web/login/feature/src/index.ts"],
       "@my-app/web/login/guard": ["libs/web/login/guard/src/index.ts"],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"],
+      "@my-app/web/search/feature": ["libs/web/search/feature/src/index.ts"],
       "@my-app/web/shared/category/data-access": [
         "libs/web/shared/category/data-access/src/index.ts"
       ],
