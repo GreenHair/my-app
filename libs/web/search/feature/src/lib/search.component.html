@@ -1,1 +1,9 @@
-<my-app-search-form></my-app-search-form>
+<ng-container *ngIf="data$ | async as data">
+    <my-app-search-form 
+    [categories]="data.categories" 
+    [shops]="data.shops"
+    (submitSearch)="search($event)"
+    ></my-app-search-form>
+
+</ng-container>
+
