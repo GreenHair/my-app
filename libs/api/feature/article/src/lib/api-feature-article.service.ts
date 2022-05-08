@@ -1,9 +1,10 @@
+import { AusgabenQuery } from '@my-app/shared/util/dto';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
 import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
 import { NewAusgabenDto } from 'libs/shared/util/dto/src/lib/newAusgaben.dto';
-import { createQueryBuilder, getConnection, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ApiFeatureArticleService {
@@ -22,6 +23,20 @@ export class ApiFeatureArticleService {
 
     async getAll(): Promise<Ausgaben[]> {
         const list = await this.repo.find()
+        return list
+    }
+
+    async findArticle(query: AusgabenQuery): Promise<Ausgaben[]> {
+        const statement = await this.repo.createQueryBuilder("article")
+        .leftJoinAndSelect("article.prodGr", "produktgruppe")
+        .leftJoinAndSelect("article.rechnungsnr", "rechnung")
+        .leftJoinAndSelect("rechnung.laden", "laden")
+        .leftJoinAndSelect("rechnung.person", "person")
+        .where("1")
+        .limit(2)
+        //.getSql()
+        const list =  statement.getMany()
+        console.log(list)
         return list
     }
 

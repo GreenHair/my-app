@@ -1,7 +1,7 @@
 import { toArticleDto, toEntityDto } from '@my-app/api/utils/mapper';
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { AusgabenDto, NewAusgabenDto } from '@my-app/shared/util/dto';
+import { AusgabenDto, AusgabenQuery, AusgabenQueryResultDto, NewAusgabenDto } from '@my-app/shared/util/dto';
 import { ApiFeatureArticleService } from './api-feature-article.service';
 
 @Controller('article')
@@ -12,6 +12,12 @@ export class ApiFeatureArticleController {
     async getAll(): Promise<AusgabenDto[]> {
         const list = await this.service.getAll()
         return plainToInstance(AusgabenDto, list) //toEntityDto([], list)
+    }
+
+    @Get('search')
+    async getSearch(@Query() query: AusgabenQuery) : Promise<AusgabenQueryResultDto[]> {
+        const result = await this.service.findArticle(query)
+        return plainToInstance(AusgabenQueryResultDto, result)
     }
 
     @Get('description')
