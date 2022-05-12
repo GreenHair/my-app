@@ -33,7 +33,28 @@ export class ApiFeatureArticleService {
         .leftJoinAndSelect("rechnung.laden", "laden")
         .leftJoinAndSelect("rechnung.person", "person")
         .where("1")
-        .limit(2)
+        if(query.description) {
+            statement.andWhere("article.bezeichnung = :description", { description : query.description })
+        }
+        if(query.amount) {
+            switch(query.amountSpec) {
+                case 'lower': 
+                    statement.andWhere('article.betrag < :amount', {amount : query.amount});
+                    break;
+                case 'equals':
+                    statement.andWhere('article.betrag = :amount', {amount: query.amount});
+                    break;
+                case 'higher':
+                    statement.andWhere('article.betrag > :amount', {amount: query.amount});
+            }
+        }
+        if(query.category) {
+            statement.andWhere("article.prodGr = :cat", { cat : query.category.id })
+        }
+        if(query.recurrency) {
+            statement.andWhere("rechnung.einmal = :onetime", { oneTime : query.recurrency})
+        }
+        statement.limit(2)
         //.getSql()
         const list =  statement.getMany()
         console.log(list)
