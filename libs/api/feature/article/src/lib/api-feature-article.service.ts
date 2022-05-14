@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
 import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
 import { NewAusgabenDto } from 'libs/shared/util/dto/src/lib/newAusgaben.dto';
-import { Repository } from 'typeorm';
+import { QueryResult, Repository } from 'typeorm';
 
 @Injectable()
 export class ApiFeatureArticleService {
@@ -48,13 +48,32 @@ export class ApiFeatureArticleService {
                     statement.andWhere('article.betrag > :amount', {amount: query.amount});
             }
         }
+        if(query.date1) {
+            switch(query.dateSpec) {
+                case 'before': 
+                    statement.andWhere('rechnung.datum < :date1', {date1: query.date1});
+                    break;
+                case 'on':
+                    statement.andWhere('rechnung.datum = :date1', {date1: query.date1});
+                    break;
+                case 'after':
+                    statement.andWhere('rechnung.datum > :date1', {date1: query.date1});
+                    break;
+                case 'between':
+                    statement.andWhere('rechnung.datum BETWEEN :date1 ABD date2', {date1: query.date1, date2: query.date2});
+                    break;
+            }
+        }
         if(query.category) {
             statement.andWhere("article.prodGr = :cat", { cat : query.category.id })
+        }
+        if(query.shop) {
+            statement.andWhere("rechnung.laden = :laden", { laden : query.shop.id })
         }
         if(query.recurrency) {
             statement.andWhere("rechnung.einmal = :onetime", { oneTime : query.recurrency})
         }
-        statement.limit(2)
+        // statement.limit(2)
         //.getSql()
         const list =  statement.getMany()
         console.log(list)
