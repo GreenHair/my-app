@@ -65,17 +65,24 @@ export class ApiFeatureArticleService {
             }
         }
         if(query.category) {
-            statement.andWhere("article.prodGr = :cat", { cat : query.category.id })
+            statement.andWhere("article.prodGr = :cat", { cat : query.category })
         }
         if(query.shop) {
-            statement.andWhere("rechnung.laden = :laden", { laden : query.shop.id })
+            statement.andWhere("rechnung.laden = :laden", { laden : query.shop })
         }
         if(query.recurrency) {
-            statement.andWhere("rechnung.einmal = :onetime", { oneTime : query.recurrency})
+            if(query.recurrency == 'oneTime') {
+                statement.andWhere("rechnung.einmalig = :oneTime", { oneTime : true})
+            }
+            if(query.recurrency == 'recurrent') {
+                statement.andWhere("rechnung.einmalig = :oneTime", { oneTime : false})
+
+            }
+
         }
         // statement.limit(2)
         //.getSql()
-        const list =  statement.getMany()
+        const list = await statement.getMany()
         console.log(list)
         return list
     }

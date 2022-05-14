@@ -5,11 +5,11 @@ export interface AusgabenQuery {
     description: string
     amount: number
     amountSpec: string
-    date1: DateStruct
-    date2: DateStruct
+    date1: string
+    date2: string
     dateSpec: string
-    category: CategoryDto
-    shop: ShopDto
+    category: number
+    shop: number
     recurrency: string
   }
   

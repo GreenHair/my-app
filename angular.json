@@ -902,6 +902,32 @@
       },
       "tags": []
     },
+    "web-search-data-access": {
+      "projectType": "library",
+      "root": "libs/web/search/data-access",
+      "sourceRoot": "libs/web/search/data-access/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/search/data-access"],
+          "options": {
+            "jestConfig": "libs/web/search/data-access/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/search/data-access/src/**/*.ts",
+              "libs/web/search/data-access/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-search-feature": {
       "projectType": "library",
       "root": "libs/web/search/feature",

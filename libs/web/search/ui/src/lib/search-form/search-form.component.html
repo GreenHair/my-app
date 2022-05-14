@@ -52,13 +52,13 @@
             <label for="kategorie">Kategorie</label>
             <select class="form-control" formControlName="category">
                 <option value="">Auswählen</option>
-                <option *ngFor="let cat of categories" [ngValue]="cat">{{ cat.bezeichnung }}</option>
+                <option *ngFor="let cat of categories" [ngValue]="cat.id">{{ cat.bezeichnung }}</option>
                     
             </select>
             <label for="laden">Laden</label>
             <select class="form-control" formControlName="shop">
                 <option value=0>Auswählen</option>
-                <option *ngFor="let shop of shops" [ngValue]="shop">{{ shop.name }}</option>
+                <option *ngFor="let shop of shops" [ngValue]="shop.id">{{ shop.name }}</option>
             </select>
             <label for="rEin">Einmalig</label>
             <div class="form-check">
