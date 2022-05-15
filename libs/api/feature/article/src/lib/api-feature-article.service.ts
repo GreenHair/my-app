@@ -80,10 +80,7 @@ export class ApiFeatureArticleService {
             }
 
         }
-        // statement.limit(2)
-        //.getSql()
         const list = await statement.getMany()
-        console.log(list)
         return list
     }
 

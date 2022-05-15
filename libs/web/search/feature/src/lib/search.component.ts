@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { CategoryDto, ShopDto } from '@my-app/shared/util/dto';
+import { AusgabenQuery, CategoryDto, ShopDto } from '@my-app/shared/util/dto';
 import { ArticleService } from '@my-app/web/search/data-access';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
 import { ShopService } from '@my-app/web/shared/shop/data-access';
@@ -39,7 +39,6 @@ export class SearchComponent implements OnInit {
   }
 
   search(values: any) {
-    console.log(JSON.stringify(values))
     this.articleSercive.searchArticle(values).subscribe(res => {
       console.log(res)
     })
