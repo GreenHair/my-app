@@ -1,1 +1,30 @@
-<p>search-result works!</p>
+<div class="p-1">
+    <table id='tableResult' class='table table-striped'>
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Bezeichnung</th>
+                <th>Betrag</th>
+                <th>Laden</th>
+                <th>Kategorie</th>
+                <th>Person</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of result">
+                <td>{{ row.rechnungsnr.datum | date:'dd.MM.yyyy'}}</td>
+                <td>{{ row.bezeichnung }}</td>
+                <td>{{ row.betrag | currency:'EUR' }}</td>
+                <td>{{ row.rechnungsnr.laden.name }}</td>
+                <td>{{ row.prodGr.bezeichnung }}</td>
+                <td>{{ row.rechnungsnr.person.vorname }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan='2'>Summe</th>
+                <th colspan='4'>{{ result | sum | currency:'EUR' }}</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

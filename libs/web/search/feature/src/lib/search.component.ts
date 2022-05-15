@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AusgabenQuery, CategoryDto, ShopDto } from '@my-app/shared/util/dto';
+import { AusgabenQuery, AusgabenQueryResultDto, CategoryDto, ShopDto } from '@my-app/shared/util/dto';
 import { ArticleService } from '@my-app/web/search/data-access';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
 import { ShopService } from '@my-app/web/shared/shop/data-access';
-import { filter, forkJoin, Observable, take } from 'rxjs';
+import { filter, forkJoin, map, Observable, Subject, take, tap } from 'rxjs';
 
 interface shopsCats {
   shops: ShopDto[],
@@ -22,6 +22,7 @@ export class SearchComponent implements OnInit {
 
   categories$: Observable<CategoryDto[]>
   shops$: Observable<ShopDto[]>
+  result$ = new Subject<AusgabenQueryResultDto[]>()
 
   data$: Observable<{shops: ShopDto[], categories: CategoryDto[]}>
 
@@ -39,9 +40,7 @@ export class SearchComponent implements OnInit {
   }
 
   search(values: any) {
-    this.articleSercive.searchArticle(values).subscribe(res => {
-      console.log(res)
-    })
+    this.articleSercive.searchArticle(values).subscribe(result => this.result$.next(result))
   }
 
 }

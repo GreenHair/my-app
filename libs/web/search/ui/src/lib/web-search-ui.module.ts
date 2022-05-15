@@ -4,12 +4,14 @@ import { SearchFormComponent } from './search-form/search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { SumPipeModule } from '@my-app/web/shared/utils';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     NgbModule,
+    SumPipeModule,
   ],
   declarations: [
     SearchFormComponent,

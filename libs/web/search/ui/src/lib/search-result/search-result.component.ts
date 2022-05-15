@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { AusgabenQueryResultDto } from '@my-app/shared/util/dto';
 
 @Component({
   selector: 'my-app-search-result',
@@ -8,6 +9,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class SearchResultComponent implements OnInit {
 
+  @Input() result: AusgabenQueryResultDto[]
+  
   constructor() { }
 
   ngOnInit(): void {

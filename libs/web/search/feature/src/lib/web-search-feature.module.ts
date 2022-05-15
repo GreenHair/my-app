@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SearchComponent } from './search.component';
 import { WebSearchUiModule } from '@my-app/web/search/ui';
+import { SumPipeModule } from '@my-app/web/shared/utils';
 
 @NgModule({
   imports: [

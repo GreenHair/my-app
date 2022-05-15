@@ -6,4 +6,6 @@
     ></my-app-search-form>
 
 </ng-container>
+<hr>
+<my-app-search-result *ngIf="result$ | async as searchResult" [result]="searchResult"></my-app-search-result>
 

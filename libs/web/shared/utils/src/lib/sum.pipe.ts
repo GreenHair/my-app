@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AusgabenDto, EinkommenDto } from '@my-app/shared/util/dto';
+import { AusgabenDto, EinkommenDto, AusgabenQueryResultDto } from '@my-app/shared/util/dto';
 import { Invoice } from '@my-app/web/invoice/data-access';
 
 @Pipe({
   name: 'sum',
 })
 export class SumPipe implements PipeTransform {
-  transform(value: EinkommenDto[] | AusgabenDto[] | Invoice[]): number {
+  transform(value: EinkommenDto[] | AusgabenDto[] | Invoice[] | AusgabenQueryResultDto[]): number {
     if(value[0] instanceof Invoice) {
       return (value as Invoice[])
       .map(val => this.transform(val.ausgaben))
