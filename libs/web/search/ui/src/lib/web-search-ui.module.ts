@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   imports: [
@@ -11,10 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
   ],
   declarations: [
-    SearchFormComponent
+    SearchFormComponent,
+    SearchResultComponent
   ],
   exports: [
-    SearchFormComponent
+    SearchFormComponent,
+    SearchResultComponent
   ],
 })
 export class WebSearchUiModule {}
