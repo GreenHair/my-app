@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SumPipe, SumPipeModule } from '@my-app/web/shared/utils';
 import { WebSharedUiModule } from '@my-app/web/shared/ui';
 import { WebDashboardUiModule } from '@my-app/web/dashboard/ui';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -18,6 +19,7 @@ import { WebDashboardUiModule } from '@my-app/web/dashboard/ui';
     SumPipeModule,
     WebSharedUiModule,
     WebDashboardUiModule,
+    ReactiveFormsModule,
   ],
   providers: [SumPipe]
 })

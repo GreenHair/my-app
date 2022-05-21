@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { RechnungQuery } from '@my-app/shared/util/dto';
-import * as moment from 'moment'
-import { Observable, Subscription } from 'rxjs';
+import { Component, Input, OnDestroy } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 export interface IPeriodQuery {
   period: string,
@@ -16,14 +14,19 @@ export interface IPeriodQuery {
 @Component({
   selector: 'my-app-year-month-week',
   templateUrl: './year-month-week.component.html',
-  styleUrls: ['./year-month-week.component.css']
+  styleUrls: ['./year-month-week.component.css'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: YearMonthWeekComponent,
+      multi: true
+    }
+  ]
 })
-export class YearMonthWeekComponent implements OnChanges, OnDestroy {
+export class YearMonthWeekComponent implements OnDestroy, ControlValueAccessor {
 
-  @Input() years: number[]
-  @Input() initialValues: IPeriodQuery
+  @Input() years: number[] = []
   @Input() showWeek: boolean = true
-  @Output() formChanged: any = new EventEmitter<IPeriodQuery>()
 
   private changeSubscription: Subscription
 
@@ -36,23 +39,25 @@ export class YearMonthWeekComponent implements OnChanges, OnDestroy {
     })
   })
 
+  onChange = (value: IPeriodQuery) => {}
+  onTouched = () => {}
+
   get period() {
     return this.form.get('period')
   }
 
   constructor(private fb: FormBuilder) { 
-    this.changeSubscription = this.form.valueChanges.subscribe((event) => {
-      if(this.formChanged) {
-        this.formChanged.emit(this.form.value)
+    this.changeSubscription = this.form.valueChanges.subscribe(change => this.onChange(change))
       }
-    })
-  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
-    if(changes['initialValues']) {
-      this.form.patchValue(changes['initialValues'].currentValue, {emitEvent: true})
+  writeValue(val: IPeriodQuery): void {
+    this.form.patchValue(val) 
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn
     }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn
   }
 
   ngOnDestroy(): void {

@@ -5,6 +5,7 @@ import { IncomeFeatureComponent } from './income-feature.component';
 import { WebIncomeUiModule } from '@my-app/web/income/ui';
 import { WebIncomeDataAccessModule } from '@my-app/web/income/data-access';
 import { WebSharedUiModule } from '@my-app/web/shared/ui';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { WebSharedUiModule } from '@my-app/web/shared/ui';
     ]),
     WebIncomeDataAccessModule,
     WebSharedUiModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     IncomeFeatureComponent
