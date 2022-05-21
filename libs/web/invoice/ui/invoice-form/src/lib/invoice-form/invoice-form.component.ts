@@ -61,6 +61,14 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
     this.ausgaben.push(this.fb.control(''))
   }
 
+  copyPrevious() {
+    if(this.ausgaben.controls.length < 1) return
+    const idx = this.ausgaben.controls.length - 1
+    const value = this.ausgaben.controls[idx].value
+    const clone = this.fb.control(value)
+    this.ausgaben.push(clone)
+  }
+
   submit() {
     //console.log("raw", this.invoiceForm.getRawValue())
     const rawValue = this.invoiceForm.getRawValue()
