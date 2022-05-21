@@ -5,6 +5,7 @@ import { ArticleService } from '@my-app/web/search/data-access';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
 import { ShopService } from '@my-app/web/shared/shop/data-access';
 import { filter, forkJoin, map, Observable, Subject, take, tap } from 'rxjs';
+import { SearchresultRow } from '@my-app/web/search/utils'
 
 interface shopsCats {
   shops: ShopDto[],
@@ -22,7 +23,7 @@ export class SearchComponent implements OnInit {
 
   categories$: Observable<CategoryDto[]>
   shops$: Observable<ShopDto[]>
-  result$ = new Subject<AusgabenQueryResultDto[]>()
+  result$ = new Subject<SearchresultRow[]>()
 
   data$: Observable<{shops: ShopDto[], categories: CategoryDto[]}>
 
@@ -40,7 +41,20 @@ export class SearchComponent implements OnInit {
   }
 
   search(values: any) {
-    this.articleSercive.searchArticle(values).subscribe(result => this.result$.next(result))
+    this.articleSercive.searchArticle(values).pipe(
+      map(result => {
+        const search = result.map(row => { return {
+          datum: row.rechnungsnr.datum,
+          bezeichnung: row.bezeichnung,
+          betrag: row.betrag,
+          laden: row.rechnungsnr.laden.name,
+          kategorie: row.prodGr.bezeichnung,
+          person: row.rechnungsnr.person.vorname}
+        })
+        return search
+      })
+    )
+    .subscribe(result => this.result$.next(result))
   }
 
 }

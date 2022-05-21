@@ -2,28 +2,28 @@
     <table id='tableResult' class='table table-striped'>
         <thead>
             <tr>
-                <th>Datum</th>
-                <th>Bezeichnung</th>
-                <th>Betrag</th>
-                <th>Laden</th>
-                <th>Kategorie</th>
-                <th>Person</th>
+                <th myAppSortable="datum" (sort)="onSort($event)">Datum</th>
+                <th myAppSortable="bezeichnung" (sort)="onSort($event)">Bezeichnung</th>
+                <th myAppSortable="betrag" (sort)="onSort($event)">Betrag</th>
+                <th myAppSortable="laden" (sort)="onSort($event)">Laden</th>
+                <th myAppSortable="kategorie" (sort)="onSort($event)">Kategorie</th>
+                <th myAppSortable="person" (sort)="onSort($event)">Person</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let row of result">
-                <td>{{ row.rechnungsnr.datum | date:'dd.MM.yyyy'}}</td>
+                <td>{{ row.datum | date:'dd.MM.yyyy'}}</td>
                 <td>{{ row.bezeichnung }}</td>
                 <td>{{ row.betrag | currency:'EUR' }}</td>
-                <td>{{ row.rechnungsnr.laden.name }}</td>
-                <td>{{ row.prodGr.bezeichnung }}</td>
-                <td>{{ row.rechnungsnr.person.vorname }}</td>
+                <td>{{ row.laden }}</td>
+                <td>{{ row.kategorie }}</td>
+                <td>{{ row.person }}</td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
                 <th colspan='2'>Summe</th>
-                <th colspan='4'>{{ result | sum | currency:'EUR' }}</th>
+                <!-- <th colspan='4'>{{ result | sum | currency:'EUR' }}</th> -->
             </tr>
         </tfoot>
     </table>

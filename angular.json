@@ -980,6 +980,32 @@
       },
       "tags": []
     },
+    "web-search-utils": {
+      "projectType": "library",
+      "root": "libs/web/search/utils",
+      "sourceRoot": "libs/web/search/utils/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/search/utils"],
+          "options": {
+            "jestConfig": "libs/web/search/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/search/utils/src/**/*.ts",
+              "libs/web/search/utils/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-shared-category-data-access": {
       "projectType": "library",
       "root": "libs/web/shared/category/data-access",
