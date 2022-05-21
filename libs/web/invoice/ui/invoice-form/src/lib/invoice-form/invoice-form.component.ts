@@ -70,7 +70,6 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
   }
 
   submit() {
-    //console.log("raw", this.invoiceForm.getRawValue())
     const rawValue = this.invoiceForm.getRawValue()
     rawValue.ausgaben.forEach((element: any) => {
       if(element.id == "") {
@@ -81,7 +80,6 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
       ...rawValue,
       einmalig: Number(rawValue.einmalig)
     }
-    //console.log("dto", rechnungDto)
     this.invoiceService.saveInvoice(rechnungDto).subscribe((response) => {
       this.invoiceForm.reset()
       this.ausgaben.clear()
@@ -90,6 +88,5 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
 
   compareId(obj1: any, obj2: any) : boolean {
     return compareById(obj1, obj2)
-    //return shop1?.id === shop2?.id
   }
 }
