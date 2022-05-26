@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 
 @Component({
@@ -9,6 +9,7 @@ import { EinkommenDto } from '@my-app/shared/util/dto';
 export class IncomeListComponent implements OnInit {
 
   @Input() incomeList : EinkommenDto[]
+  @Output() editClick = new EventEmitter()
 
   constructor() { }
 

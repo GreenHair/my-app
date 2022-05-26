@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 
 @Component({
@@ -9,7 +9,8 @@ import { EinkommenDto } from '@my-app/shared/util/dto';
 export class IncomeListItemComponent implements OnInit {
 
   @Input() incomeList : EinkommenDto[]
-
+  @Output() editClick = new EventEmitter()
+ 
   get date() : Date {
     if(this.incomeList){
       return this.incomeList[0].datum
@@ -28,5 +29,6 @@ export class IncomeListItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

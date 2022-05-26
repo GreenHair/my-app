@@ -29,7 +29,7 @@ export class InvoiceComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.familyMembers$ = this.familyMemberService.getShops()
+    this.familyMembers$ = this.familyMemberService.getFamily()
     this.shops$ = this.shopService.getShops()
     this.categories$ = this.categoryService.getCategories()
 

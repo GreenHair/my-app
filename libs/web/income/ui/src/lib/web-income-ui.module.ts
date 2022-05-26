@@ -4,20 +4,27 @@ import { IncomeListComponent } from './income-list/income-list.component';
 import { IncomeListItemComponent } from './income-list-item/income-list-item.component';
 import { GroupByMonthPipeModule } from '@my-app/web/income/utils';
 import { SumPipeModule } from '@my-app/web/shared/utils';
+import { IncomeModalComponent } from './income-modal/income-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     GroupByMonthPipeModule,
     SumPipeModule,
+    NgbModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     IncomeListComponent,
-    IncomeListItemComponent
+    IncomeListItemComponent,
+    IncomeModalComponent
   ],
   exports: [
     IncomeListComponent,
-    IncomeListItemComponent
+    IncomeListItemComponent,
+    IncomeModalComponent
   ],
 })
 export class WebIncomeUiModule {}

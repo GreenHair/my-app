@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
-import { InvoiceService } from '@my-app/web/invoice/data-access';
-import { IPeriodQuery } from 'libs/web/shared/ui/src/lib/year-month-week/year-month-week.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IncomeModalComponent } from '@my-app/web/income/ui';
+import { IPeriodQuery } from '@my-app/web/shared/ui';
 import * as moment from 'moment';
-import { map, Observable, startWith, Subject, switchMap } from 'rxjs';
+import { combineLatest, map, Observable, startWith, Subject, switchMap, tap } from 'rxjs';
+import { FamilyMemberService } from '@my-app/web/shared/family-member/data-access';
 
 @Component({
   selector: 'my-app-income-feature',
@@ -14,6 +16,7 @@ import { map, Observable, startWith, Subject, switchMap } from 'rxjs';
 })
 export class IncomeFeatureComponent implements OnInit {
 
+  private modalClosed$ = new Subject<boolean>()
   incomeList$ : Observable<EinkommenDto[]>
   years$ : Observable<number[]>
   //periodSelectionChanged$ = new Subject()
@@ -28,12 +31,12 @@ export class IncomeFeatureComponent implements OnInit {
 
   periodSelector = new FormControl(this.initialValues)
 
-  constructor(private service: IncomeService) { }
+  constructor(private service: IncomeService, private modalService: NgbModal, private familyService: FamilyMemberService) { }
 
   ngOnInit(): void {
-    this.incomeList$ = this.periodSelector.valueChanges.pipe(
-      startWith(this.initialValues),
-      map(formValue => {
+    this.incomeList$ = combineLatest([this.periodSelector.valueChanges.pipe(
+      startWith(this.initialValues)), this.modalClosed$.pipe(startWith(true))]).pipe(
+      map(([formValue, modalClosed]) => {
         const periodQuery = formValue as IPeriodQuery
         let query: { year: number, month?: number, week?: number } = { year: periodQuery.query.year }
         switch (periodQuery.period) {
@@ -46,6 +49,20 @@ export class IncomeFeatureComponent implements OnInit {
     )
     
     this.years$ = this.service.getYears()
+  }
+
+  openModal(income: EinkommenDto | undefined = undefined) {
+    const modalRef = this.modalService.open(IncomeModalComponent, { size: 'lg' })
+    modalRef.componentInstance.family = this.familyService.getFamily()
+    if(income !== undefined){
+      modalRef.componentInstance.data = income
+    }
+
+    modalRef.closed.pipe(
+      tap(val => console.log("income", val)),
+      switchMap(val => this.service.save(val)),
+      tap(val => this.modalClosed$.next(true))
+    ).subscribe(response => console.log("reposnse from save", response))
   }
 
 }

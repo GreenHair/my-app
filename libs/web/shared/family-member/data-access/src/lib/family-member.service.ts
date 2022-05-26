@@ -18,7 +18,7 @@ export class FamilyMemberService {
     .subscribe(familyMembers => this.familyMembers$.next(familyMembers))
   }
 
-  public getShops() : Observable<FamilienmitgliedDto[]> {
+  public getFamily() : Observable<FamilienmitgliedDto[]> {
     return this.familyMembers$
   }
 }

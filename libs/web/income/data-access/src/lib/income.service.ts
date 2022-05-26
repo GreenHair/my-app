@@ -21,4 +21,8 @@ export class IncomeService {
   getYears() : Observable<number[]> {
     return this.http.get<number[]>(`${this.url}/years`)
   }
+
+  save(data: EinkommenDto): Observable<EinkommenDto> {
+    return this.http.post<EinkommenDto>(this.url, data)
+  }
 }

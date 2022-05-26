@@ -6,6 +6,7 @@
             <th>Bezeichnung</th>
             <th>Empfänger</th>
             <th>Betrag</th>
+            <th></th>
         </thead>
         <tbody>
             <tr *ngFor="let income of incomeList">
@@ -13,10 +14,13 @@
                 <td>{{income.bezeichnung}}</td>
                 <td>{{ income.person.vorname }}</td>
                 <td>{{ income.betrag | currency:'EUR' }}</td>
+                <td><button class="btn p-0" (click)="editClick.emit(income)">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVRIie2TwQnAIAxF35Klh3YBdxDqPh3HQdq7gj00ooi3xkvxQ0BzeD8JfJh6ZYEbWEfAHZCkIrCPgAfgrN4qm9STG+llk0sTngAvJkH+VgMeBOobM6cFz3c22vAIbNJbKGc5JnzCfwCHEpgcorWCfwpRawDKk7cGdanBewaq8KmuHlYrZbGe+TNUAAAAAElFTkSuQmCC"/>
+                </button></td>
             </tr>
             <tr>
                 <td colspan="3">Summe</td>
-                <td>{{ incomeList | sum | currency:'EUR' }}</td>
+                <td colspan="2">{{ incomeList | sum | currency:'EUR' }}</td>
             </tr>
         </tbody>
     </table>
