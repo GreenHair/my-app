@@ -5,7 +5,7 @@ import { environment } from 'apps/my-app/src/environments/environment';
 import { Credentials } from 'libs/shared/util/dto/src/lib/credentials.dto';
 import { LoginUserDto } from 'libs/shared/util/dto/src/lib/loginUser.dto';
 import { LocalStorageService } from 'libs/web/shared/local-storage-service/src/lib/local-storage.service';
-import { catchError, delay, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, BehaviorSubject, filter } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class AuthService {
   private loginUri = 'auth/login'
   private _isLoggedIn = false;
   error: any
+  private _userLogin$ = new BehaviorSubject<boolean>(false)
   
   get isLoggedIn() : boolean {
     return this.localStorage.get('isLoggedIn') ?? false
@@ -31,6 +32,7 @@ export class AuthService {
       map(response => {
         this.localStorage.set('isLoggedIn', JSON.stringify(true))
         this.localStorage.set('user', JSON.stringify(response))
+        this._userLogin$.next(true)
         return true
       }),
       catchError(error => {
@@ -46,5 +48,12 @@ export class AuthService {
     this.localStorage.set('user', '')
     this.localStorage.set('isLoggedIn', JSON.stringify(false))
     this.router.navigateByUrl('login')  
+  }
+
+  userLogin(): Observable<boolean> {
+    return this._userLogin$
+    .pipe(
+     filter(val => val) 
+    )
   }
 }
