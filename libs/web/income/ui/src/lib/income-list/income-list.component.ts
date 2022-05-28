@@ -10,6 +10,7 @@ export class IncomeListComponent implements OnInit {
 
   @Input() incomeList : EinkommenDto[]
   @Output() editClick = new EventEmitter()
+  @Output() deleteClick = new EventEmitter()
 
   constructor() { }
 

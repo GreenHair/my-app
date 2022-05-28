@@ -7,6 +7,7 @@ import { SumPipeModule } from '@my-app/web/shared/utils';
 import { IncomeModalComponent } from './income-modal/income-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 @NgModule({
   imports: [
@@ -19,12 +20,14 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     IncomeListComponent,
     IncomeListItemComponent,
-    IncomeModalComponent
+    IncomeModalComponent,
+    ConfirmDeleteComponent
   ],
   exports: [
     IncomeListComponent,
     IncomeListItemComponent,
-    IncomeModalComponent
+    IncomeModalComponent,
+    ConfirmDeleteComponent
   ],
 })
 export class WebIncomeUiModule {}

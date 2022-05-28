@@ -10,6 +10,7 @@ export class IncomeListItemComponent implements OnInit {
 
   @Input() incomeList : EinkommenDto[]
   @Output() editClick = new EventEmitter()
+  @Output() deleteClick = new EventEmitter()
  
   get date() : Date {
     if(this.incomeList){

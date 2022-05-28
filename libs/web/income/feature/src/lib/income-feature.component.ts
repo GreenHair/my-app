@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { IncomeModalComponent } from '@my-app/web/income/ui';
+import { ConfirmDeleteComponent, IncomeModalComponent } from '@my-app/web/income/ui';
 import { IPeriodQuery } from '@my-app/web/shared/ui';
 import * as moment from 'moment';
 import { combineLatest, map, Observable, startWith, Subject, switchMap, tap } from 'rxjs';
@@ -63,6 +63,15 @@ export class IncomeFeatureComponent implements OnInit {
       switchMap(val => this.service.save(val)),
       tap(val => this.modalClosed$.next(true))
     ).subscribe(response => console.log("reposnse from save", response))
+  }
+
+  confirmDelete(incomeNr: any) {
+    const modalRef = this.modalService.open(ConfirmDeleteComponent)
+    modalRef.componentInstance.nr = incomeNr
+    modalRef.closed.pipe(
+      switchMap(nr => this.service.delete(incomeNr)),
+      tap(res => this.modalClosed$.next(true)),
+    ).subscribe(response => console.log("reponse delete", response))
   }
 
 }

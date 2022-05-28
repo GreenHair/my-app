@@ -14,9 +14,17 @@
                 <td>{{income.bezeichnung}}</td>
                 <td>{{ income.person.vorname }}</td>
                 <td>{{ income.betrag | currency:'EUR' }}</td>
-                <td><button class="btn p-0" (click)="editClick.emit(income)">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVRIie2TwQnAIAxF35Klh3YBdxDqPh3HQdq7gj00ooi3xkvxQ0BzeD8JfJh6ZYEbWEfAHZCkIrCPgAfgrN4qm9STG+llk0sTngAvJkH+VgMeBOobM6cFz3c22vAIbNJbKGc5JnzCfwCHEpgcorWCfwpRawDKk7cGdanBewaq8KmuHlYrZbGe+TNUAAAAAElFTkSuQmCC"/>
-                </button></td>
+                <td style="width: 10%;">
+                    <div class="btn-group">
+                        <button class="btn pt-0 pb-0" (click)="editClick.emit(income)">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVRIie2TwQnAIAxF35Klh3YBdxDqPh3HQdq7gj00ooi3xkvxQ0BzeD8JfJh6ZYEbWEfAHZCkIrCPgAfgrN4qm9STG+llk0sTngAvJkH+VgMeBOobM6cFz3c22vAIbNJbKGc5JnzCfwCHEpgcorWCfwpRawDKk7cGdanBewaq8KmuHlYrZbGe+TNUAAAAAElFTkSuQmCC" />
+                        </button>
+                        <button class="btn pt-0 pb-0" (click)="deleteClick.emit(income.nr)">
+                            <img class="delete-btn p-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAABa0lEQVRYhc3VMU7DMBTG8e9LztDBGXqHOEeoBF1YEUuvBy1rJVQJVeIEFgsLEksX34HlsaRRoU3i95JUvDGK8v9JdmzgP0xZljPvfXWtnve+KstyBgAZAJCck9x775dXiC9J7knOASAHgBhjLIoikNw45z5ijJ8TxW9JbkRkFUJ4awA14qtGPE2B+BPfHp/npy9NhWiLnwGmQHTFLwLGRPTFWwFjIFLinYAhiNR4L8CC0MSTABqENp4MSEFY4ipAF8IaBwBqXj5OVVU3AJ5FZAXg2xo3A4DmUlkDgIg8hBB2lu9kVsBYYwLUa76ul+Ce5Np7f2f5lmoTnsSbNR96YqoAbbt9CCIZ0PerWRFJgNT/3ILoBWgPGS2iE2A94TSIVsCQ41WDuAgYGtcgzgBjxVMRvwBjx1MQDWCqeB8ir+MVyW19q72MHT9FOOfeST46515jjDEDABE5iMjCeqVqJoSwE5GFiBymbiXNDxAm1ablpBwgAAAAAElFTkSuQmCC"/>
+                        </button>    
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td colspan="3">Summe</td>
@@ -25,4 +33,3 @@
         </tbody>
     </table>
 </fieldset>
-

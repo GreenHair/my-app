@@ -23,6 +23,11 @@ export class IncomeService {
   }
 
   save(data: EinkommenDto): Observable<EinkommenDto> {
+    // TODO: seperate post from put
     return this.http.post<EinkommenDto>(this.url, data)
+  }
+
+  delete(nr: number): Observable<any> {
+    return this.http.delete(`${this.url}/${nr}`)
   }
 }

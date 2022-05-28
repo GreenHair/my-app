@@ -1,4 +1,9 @@
 
  <div *ngFor="let month of incomeList | groupByMonth:'desc'">
-     <my-app-income-list-item class="mb-3" [incomeList]="month" (editClick)="editClick.emit($event)"></my-app-income-list-item>
+     <my-app-income-list-item 
+        class="mb-3" 
+        [incomeList]="month" 
+        (editClick)="editClick.emit($event)"
+        (deleteClick)="deleteClick.emit($event)">
+    </my-app-income-list-item>
  </div>
