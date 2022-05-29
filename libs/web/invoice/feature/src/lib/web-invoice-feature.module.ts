@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { WebInvoiceUiArticleFormModule } from 'libs/web/invoice/ui/article-form/src';
 import { WebInvoiceUiInvoiceFormModule } from 'libs/web/invoice/ui/invoice-form/src';
 import { ShopsComponent } from './shops/shops.component';
+import { WebInvoiceUiBackButtonModule } from '@my-app/web/invoice/ui/back-button';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { ShopsComponent } from './shops/shops.component';
     ]),
     ReactiveFormsModule,
     WebInvoiceUiArticleFormModule,
-    WebInvoiceUiInvoiceFormModule
+    WebInvoiceUiInvoiceFormModule,
+    WebInvoiceUiBackButtonModule
   ],
   declarations: [
     InvoiceComponent,

@@ -749,6 +749,32 @@
       },
       "tags": []
     },
+    "web-invoice-ui-back-button": {
+      "projectType": "library",
+      "root": "libs/web/invoice/ui/back-button",
+      "sourceRoot": "libs/web/invoice/ui/back-button/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/invoice/ui/back-button"],
+          "options": {
+            "jestConfig": "libs/web/invoice/ui/back-button/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/invoice/ui/back-button/src/**/*.ts",
+              "libs/web/invoice/ui/back-button/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-invoice-ui-invoice-form": {
       "projectType": "library",
       "root": "libs/web/invoice/ui/invoice-form",
