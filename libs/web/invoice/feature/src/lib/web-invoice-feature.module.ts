@@ -6,20 +6,26 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { ReactiveFormsModule } from '@angular/forms';
 import { WebInvoiceUiArticleFormModule } from 'libs/web/invoice/ui/article-form/src';
 import { WebInvoiceUiInvoiceFormModule } from 'libs/web/invoice/ui/invoice-form/src';
+import { ShopsComponent } from './shops/shops.component';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
     RouterModule.forChild([
-     {path: '', pathMatch: 'full', component: InvoiceComponent}
+     {path: '', pathMatch: 'full', component: InvoiceComponent},
+     {
+       path: 'shops',
+       component: ShopsComponent
+     }
     ]),
     ReactiveFormsModule,
     WebInvoiceUiArticleFormModule,
     WebInvoiceUiInvoiceFormModule
   ],
   declarations: [
-    InvoiceComponent
+    InvoiceComponent,
+    ShopsComponent
   ],
 })
 export class WebInvoiceFeatureModule {}
