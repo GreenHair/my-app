@@ -8,6 +8,7 @@ import { WebInvoiceUiArticleFormModule } from 'libs/web/invoice/ui/article-form/
 import { WebInvoiceUiInvoiceFormModule } from 'libs/web/invoice/ui/invoice-form/src';
 import { ShopsComponent } from './shops/shops.component';
 import { WebInvoiceUiBackButtonModule } from '@my-app/web/invoice/ui/back-button';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,10 @@ import { WebInvoiceUiBackButtonModule } from '@my-app/web/invoice/ui/back-button
      {
        path: 'shops',
        component: ShopsComponent
+     },
+     {
+       path: 'categories',
+       component: CategoriesComponent
      }
     ]),
     ReactiveFormsModule,
@@ -27,7 +32,8 @@ import { WebInvoiceUiBackButtonModule } from '@my-app/web/invoice/ui/back-button
   ],
   declarations: [
     InvoiceComponent,
-    ShopsComponent
+    ShopsComponent,
+    CategoriesComponent
   ],
 })
 export class WebInvoiceFeatureModule {}
