@@ -16,11 +16,8 @@
                 <td>{{ income.betrag | currency:'EUR' }}</td>
                 <td style="width: 10%;">
                     <div class="btn-group">
-                        <button class="btn pt-0 pb-0" (click)="editClick.emit(income)">
-                            <img
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVRIie2TwQnAIAxF35Klh3YBdxDqPh3HQdq7gj00ooi3xkvxQ0BzeD8JfJh6ZYEbWEfAHZCkIrCPgAfgrN4qm9STG+llk0sTngAvJkH+VgMeBOobM6cFz3c22vAIbNJbKGc5JnzCfwCHEpgcorWCfwpRawDKk7cGdanBewaq8KmuHlYrZbGe+TNUAAAAAElFTkSuQmCC" />
-                        </button>
-                        <my-app-delete-button  (click)="deleteClick.emit(income.nr)"></my-app-delete-button>
+                        <my-app-edit-button (click)="editClick.emit(income)"></my-app-edit-button>
+                        <my-app-delete-button (click)="deleteClick.emit(income.nr)"></my-app-delete-button>
                     </div>
                 </td>
             </tr>
