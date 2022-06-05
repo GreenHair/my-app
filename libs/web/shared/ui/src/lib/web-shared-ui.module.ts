@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { YearMonthWeekComponent } from './year-month-week/year-month-week.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteButtonComponent } from './delete-button/delete-button.component';
+import { EditButtonComponent } from './edit-button/edit-button.component';
 
 @NgModule({
   imports: [
@@ -11,11 +12,13 @@ import { DeleteButtonComponent } from './delete-button/delete-button.component';
   ],
   declarations: [
     YearMonthWeekComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    EditButtonComponent
   ],
   exports: [
     YearMonthWeekComponent,
-    DeleteButtonComponent
+    DeleteButtonComponent,
+    EditButtonComponent
   ],
 })
 export class WebSharedUiModule {}
