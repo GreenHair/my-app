@@ -8,6 +8,7 @@ import { IncomeModalComponent } from './income-modal/income-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { WebSharedUiModule } from '@my-app/web/shared/ui';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     SumPipeModule,
     NgbModule,
     ReactiveFormsModule,
+    WebSharedUiModule,
   ],
   declarations: [
     IncomeListComponent,
