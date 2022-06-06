@@ -1,6 +1,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Bezeichnung</th>
             <th>Essen</th>
             <th style="width: 15%;"></th>
@@ -8,11 +9,12 @@
     </thead>
     <tbody>
         <tr *ngFor="let category of categories">
+            <td>{{ category.id }}</td>
             <td>{{ category.bezeichnung }}</td>
-            <td> {{ category.essen ? '&#9989;' : '&#10060;' }}</td>
+            <td>{{ category.essen ? '&#9989;' : '&#10060;' }}</td>
             <td>
                 <div class="button-group">
-                    <my-app-edit-button></my-app-edit-button>
+                    <my-app-edit-button (click)="editClick.emit(category)"></my-app-edit-button>
                     <my-app-delete-button></my-app-delete-button>
                 </div>
             </td>

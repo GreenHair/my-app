@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,18 @@ export class CategoryService {
     return this.http.get<CategoryDto[]>(this.url, { params : params.set("article", article)})
     .pipe(
       map(category => category[0])
+    )
+  }
+
+  save(category: CategoryDto): Observable<CategoryDto> {
+    let observable;
+    if(category.id > 0) {
+      observable = this.http.put<CategoryDto>(`${this.url}/${category.id}`, category)
+    } else {
+      observable = this.http.post<CategoryDto>(this.url, category)
+    }
+    return observable.pipe(
+      tap(_ => this.fetchCategories())
     )
   }
 }

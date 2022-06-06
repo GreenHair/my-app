@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryDto } from '@my-app/shared/util/dto';
 
 @Component({
@@ -9,6 +9,7 @@ import { CategoryDto } from '@my-app/shared/util/dto';
 })
 export class CategoryTableComponent implements OnInit {
   @Input() categories: CategoryDto[]
+  @Output() editClick = new EventEmitter<CategoryDto>()
   constructor() { }
 
   ngOnInit(): void {

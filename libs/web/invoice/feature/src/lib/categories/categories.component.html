@@ -1,7 +1,12 @@
 <my-app-back-button routerLink="/invoice"></my-app-back-button>
 <button type="button" class="btn btn-success float-end" (click)="addCategory()">+</button>
 
-<my-app-category-table *ngIf="categories$ | async as categories" [categories]="categories"></my-app-category-table>
+<my-app-category-table 
+    *ngIf="categories$ | async as categories"
+    [categories]="categories"
+    (editClick)="addCategory($event)">
+
+</my-app-category-table>
 <ng-template #loading>
     <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
