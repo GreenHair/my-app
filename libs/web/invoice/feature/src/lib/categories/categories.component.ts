@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryDto } from '@my-app/shared/util/dto';
+import { CategoryService } from '@my-app/web/shared/category/data-access';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'my-app-categories',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor() { }
+  categories$: Observable<CategoryDto[]>
+  constructor(private service: CategoryService) { }
 
   ngOnInit(): void {
+    this.categories$ = this.service.getCategories()
   }
 
 }

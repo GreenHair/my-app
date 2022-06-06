@@ -9,6 +9,7 @@ import { WebInvoiceUiInvoiceFormModule } from 'libs/web/invoice/ui/invoice-form/
 import { ShopsComponent } from './shops/shops.component';
 import { WebInvoiceUiBackButtonModule } from '@my-app/web/invoice/ui/back-button';
 import { CategoriesComponent } from './categories/categories.component';
+import { WebInvoiceUiCategoryTableModule } from '@my-app/web/invoice/ui/category-table';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { CategoriesComponent } from './categories/categories.component';
     ReactiveFormsModule,
     WebInvoiceUiArticleFormModule,
     WebInvoiceUiInvoiceFormModule,
-    WebInvoiceUiBackButtonModule
+    WebInvoiceUiBackButtonModule,
+    WebInvoiceUiCategoryTableModule,
   ],
   declarations: [
     InvoiceComponent,

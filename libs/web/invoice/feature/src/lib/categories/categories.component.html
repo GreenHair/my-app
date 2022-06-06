@@ -1,2 +1,7 @@
 <my-app-back-button routerLink="/invoice"></my-app-back-button>
-<p>categories works!</p>
+<my-app-category-table *ngIf="categories$ | async as categories" [categories]="categories"></my-app-category-table>
+<ng-template #loading>
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</ng-template>

@@ -775,6 +775,32 @@
       },
       "tags": []
     },
+    "web-invoice-ui-category-table": {
+      "projectType": "library",
+      "root": "libs/web/invoice/ui/category-table",
+      "sourceRoot": "libs/web/invoice/ui/category-table/src",
+      "prefix": "my-app",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web/invoice/ui/category-table"],
+          "options": {
+            "jestConfig": "libs/web/invoice/ui/category-table/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web/invoice/ui/category-table/src/**/*.ts",
+              "libs/web/invoice/ui/category-table/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-invoice-ui-invoice-form": {
       "projectType": "library",
       "root": "libs/web/invoice/ui/invoice-form",
