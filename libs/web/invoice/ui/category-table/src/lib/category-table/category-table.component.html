@@ -3,14 +3,14 @@
         <tr>
             <th>Bezeichnung</th>
             <th>Essen</th>
-            <th></th>
+            <th style="width: 15%;"></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let category of categories">
             <td>{{ category.bezeichnung }}</td>
-            <td><input type="checkbox" [checked]="category.essen" disabled></td>
-            <td style="width: 20%;">
+            <td> {{ category.essen ? '&#9989;' : '&#10060;' }}</td>
+            <td>
                 <div class="button-group">
                     <my-app-edit-button></my-app-edit-button>
                     <my-app-delete-button></my-app-delete-button>
