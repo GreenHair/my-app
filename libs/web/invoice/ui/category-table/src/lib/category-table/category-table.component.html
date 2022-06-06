@@ -15,7 +15,7 @@
             <td>
                 <div class="button-group">
                     <my-app-edit-button (click)="editClick.emit(category)"></my-app-edit-button>
-                    <my-app-delete-button></my-app-delete-button>
+                    <my-app-delete-button (click)="deleteClick.emit(category)"></my-app-delete-button>
                 </div>
             </td>
         </tr>

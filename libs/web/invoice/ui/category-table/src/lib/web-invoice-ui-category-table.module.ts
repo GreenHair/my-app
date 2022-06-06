@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WebSharedUiModule } from '@my-app/web/shared/ui';
 import { CategoryModalComponent } from './category-modal/category-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 @NgModule({
   imports: [
@@ -16,10 +17,12 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     CategoryTableComponent,
     CategoryModalComponent,
+    ConfirmDeleteComponent,
   ],
   exports: [
     CategoryTableComponent,
     CategoryModalComponent,
+    ConfirmDeleteComponent,
   ],
 })
 export class WebInvoiceUiCategoryTableModule {}

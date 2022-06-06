@@ -4,7 +4,8 @@
 <my-app-category-table 
     *ngIf="categories$ | async as categories"
     [categories]="categories"
-    (editClick)="addCategory($event)">
+    (editClick)="addCategory($event)"
+    (deleteClick)="confirmDelete($event)">
 
 </my-app-category-table>
 <ng-template #loading>

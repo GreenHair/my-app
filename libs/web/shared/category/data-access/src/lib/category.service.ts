@@ -45,4 +45,10 @@ export class CategoryService {
       tap(_ => this.fetchCategories())
     )
   }
+
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`).pipe(
+      tap(() => this.fetchCategories())
+    )
+  }
 }
