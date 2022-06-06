@@ -17,4 +17,8 @@ export class CategoriesComponent implements OnInit {
     this.categories$ = this.service.getCategories()
   }
 
+  addCategory() {
+    
+  }
+
 }
