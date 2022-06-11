@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { BehaviorSubject, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +48,8 @@ export class CategoryService {
 
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`).pipe(
-      tap(() => this.fetchCategories())
+      tap(() => this.fetchCategories()),
+      catchError(error => {throw(error)})
     )
   }
 }

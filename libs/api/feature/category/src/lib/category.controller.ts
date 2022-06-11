@@ -1,5 +1,5 @@
 import { toEntityDto } from '@my-app/api/utils/mapper';
-import { Body, Controller, Delete, Get, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { plainToInstance } from 'class-transformer';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
@@ -47,7 +47,14 @@ export class CategoryController {
 
   @Delete(":id")
   async delete(@Param("id") id: number) {
-    const deleted = await this.service.remove(id)
-    return deleted
+    try{
+      const deleted = await this.service.remove(id)
+      return deleted
+    } catch (error: any) {
+      throw new HttpException(
+        error.message,
+        HttpStatus.INTERNAL_SERVER_ERROR
+      )
+    }
   }
 }

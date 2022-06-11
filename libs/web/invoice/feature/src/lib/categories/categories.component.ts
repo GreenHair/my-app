@@ -36,7 +36,9 @@ export class CategoriesComponent implements OnInit {
     modalRef.componentInstance.deleteClick.pipe(
       switchMap(id => this.service.delete(Number(id)))
     ).subscribe(() => modalRef.close(), 
-    (err: HttpErrorResponse) => modalRef.componentInstance.error = err.message)
+    (err: HttpErrorResponse) => {
+      modalRef.componentInstance.errorMessage = err.error.message
+    })
   }
 
 }
