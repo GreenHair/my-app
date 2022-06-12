@@ -1,0 +1,23 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Online</th>
+            <th style="width: 15%;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let shop of shops">
+            <td>{{ shop.id }}</td>
+            <td>{{ shop.name }}</td>
+            <td>{{ shop.online ? '&#9989;' : '&#10060;' }}</td>
+            <td>
+                <div class="button-group">
+                    <my-app-edit-button (click)="editClick.emit(shop)"></my-app-edit-button>
+                    <my-app-delete-button (click)="deleteClick.emit(shop)"></my-app-delete-button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

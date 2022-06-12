@@ -10,6 +10,7 @@ import { ShopsComponent } from './shops/shops.component';
 import { WebInvoiceUiBackButtonModule } from '@my-app/web/invoice/ui/back-button';
 import { CategoriesComponent } from './categories/categories.component';
 import { WebInvoiceUiCategoryTableModule } from '@my-app/web/invoice/ui/category-table';
+import { WebInvoiceUiShopTableModule } from '@my-app/web/invoice/ui/shop-table';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import { WebInvoiceUiCategoryTableModule } from '@my-app/web/invoice/ui/category
     WebInvoiceUiInvoiceFormModule,
     WebInvoiceUiBackButtonModule,
     WebInvoiceUiCategoryTableModule,
+    WebInvoiceUiShopTableModule,
   ],
   declarations: [
     InvoiceComponent,

@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <p>Delete shop {{ shop.name }}?</p>
+    <p class="text-danger">{{ errorMessage }}</p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="deleteClick.emit(shop.id)">Delete</button>
+</div>

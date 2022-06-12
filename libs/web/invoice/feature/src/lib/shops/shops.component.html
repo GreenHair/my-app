@@ -1,2 +1,15 @@
 <my-app-back-button routerLink="/invoice"></my-app-back-button>
-<p>shops works!</p>
+<button type="button" class="btn btn-success float-end" (click)="openModal()">+</button>
+
+<my-app-shop-table *ngIf="shops$ | async as shops; else loading"
+ [shops]="shops"
+ (editClick)="openModal($event)"
+ (deleteClick)="confirmDelete($event)">
+
+</my-app-shop-table>
+
+<ng-template #loading>
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</ng-template>

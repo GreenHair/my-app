@@ -67,6 +67,9 @@
       "@my-app/web/invoice/ui/invoice-form": [
         "libs/web/invoice/ui/invoice-form/src/index.ts"
       ],
+      "@my-app/web/invoice/ui/shop-table": [
+        "libs/web/invoice/ui/shop-table/src/index.ts"
+      ],
       "@my-app/web/invoice/utils": ["libs/web/invoice/utils/src/index.ts"],
       "@my-app/web/login/data-access": [
         "libs/web/login/data-access/src/index.ts"

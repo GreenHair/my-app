@@ -5,6 +5,6 @@ export class ShopDto {
     id: number
     @IsNotEmpty()
     name: string
-    @IsIn([0,1])
+    //@IsIn([0,1])
     online: boolean
 }
