@@ -1,5 +1,10 @@
-<my-app-back-button routerLink="/invoice"></my-app-back-button>
-<button type="button" class="btn btn-success float-end" (click)="openModal()">+</button>
+<div class="d-flex justify-content-between">
+    <my-app-back-button routerLink="/invoice"></my-app-back-button>
+
+    <input type="text" class="form-control w-50" [formControl]="search" placeholder="search">
+    
+    <button type="button" class="btn btn-success float-end" (click)="openModal()">+</button>
+</div>
 
 <my-app-shop-table *ngIf="shops$ | async as shops; else loading"
  [shops]="shops"
