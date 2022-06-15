@@ -1,5 +1,11 @@
-<my-app-back-button routerLink="/invoice"></my-app-back-button>
-<button type="button" class="btn btn-success float-end" (click)="addCategory()">+</button>
+<div class="d-flex justify-content-between">
+
+    <my-app-back-button routerLink="/invoice"></my-app-back-button>
+    
+    <input type="text" class="form-control w-50" [formControl]="search" placeholder="Search">
+    
+    <button type="button" class="btn btn-success float-end" (click)="addCategory()">+</button>
+</div>
 
 <my-app-category-table 
     *ngIf="categories$ | async as categories"

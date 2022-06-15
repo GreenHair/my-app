@@ -1,10 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { CategoryDto } from '@my-app/shared/util/dto';
 import { CategoryModalComponent, ConfirmDeleteComponent } from '@my-app/web/invoice/ui/category-table';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { catchError, map, Observable, switchMap, tap } from 'rxjs';
+import { catchError, combineLatest, map, Observable, startWith, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'my-app-categories',
@@ -14,10 +15,18 @@ import { catchError, map, Observable, switchMap, tap } from 'rxjs';
 export class CategoriesComponent implements OnInit {
 
   categories$: Observable<CategoryDto[]>
+  search: FormControl = new FormControl('')
   constructor(private service: CategoryService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.categories$ = this.service.getCategories()
+    const search$ = this.search.valueChanges.pipe(startWith(''))
+    const categories$ = this.service.getCategories()
+    this.categories$ = combineLatest([search$, categories$]).pipe(
+      map(value => {
+        console.log(value)
+        return value[1].filter(cat => cat.bezeichnung.toLowerCase().includes(value[0].toLowerCase()))
+      }) 
+    )
   }
 
   addCategory(category: CategoryDto | undefined = undefined) {
