@@ -9,6 +9,7 @@ import { CategoryDto } from '@my-app/shared/util/dto';
 })
 export class CategoryTableComponent implements OnInit {
   @Input() categories: CategoryDto[]
+  @Input() searchTerm: any
   @Output() editClick = new EventEmitter<CategoryDto>()
   @Output() deleteClick = new EventEmitter<CategoryDto>()
   constructor() { }

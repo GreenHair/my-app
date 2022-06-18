@@ -10,7 +10,7 @@
     <tbody>
         <tr *ngFor="let category of categories">
             <td>{{ category.id }}</td>
-            <td>{{ category.bezeichnung }}</td>
+            <td><ngb-highlight [result]="category.bezeichnung" [term]="searchTerm"></ngb-highlight></td>
             <td>{{ category.essen ? '&#9989;' : '&#10060;' }}</td>
             <td>
                 <div class="button-group">

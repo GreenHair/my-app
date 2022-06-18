@@ -10,6 +10,7 @@ import { ShopDto } from '@my-app/shared/util/dto'
 export class ShopTableComponent implements OnInit {
 
   @Input() shops: ShopDto[]
+  @Input() searchTerm: any
   @Output() editClick = new EventEmitter<ShopDto>()
   @Output() deleteClick = new EventEmitter<ShopDto>()
 

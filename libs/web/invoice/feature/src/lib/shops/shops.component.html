@@ -8,6 +8,7 @@
 
 <my-app-shop-table *ngIf="shops$ | async as shops; else loading"
  [shops]="shops"
+ [searchTerm]="search.value"
  (editClick)="openModal($event)"
  (deleteClick)="confirmDelete($event)">
 

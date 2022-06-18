@@ -10,6 +10,7 @@
 <my-app-category-table 
     *ngIf="categories$ | async as categories"
     [categories]="categories"
+    [searchTerm]="search.value"
     (editClick)="addCategory($event)"
     (deleteClick)="confirmDelete($event)">
 

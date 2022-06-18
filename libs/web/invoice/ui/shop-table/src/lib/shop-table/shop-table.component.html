@@ -10,7 +10,7 @@
     <tbody>
         <tr *ngFor="let shop of shops">
             <td>{{ shop.id }}</td>
-            <td>{{ shop.name }}</td>
+            <td><ngb-highlight [result]="shop.name" [term]="searchTerm"></ngb-highlight></td>
             <td>{{ shop.online ? '&#9989;' : '&#10060;' }}</td>
             <td>
                 <div class="button-group">
