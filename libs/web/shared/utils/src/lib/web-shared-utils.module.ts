@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Comparer } from './comparer';
+import { Comparer } from './comparer/comparer';
 
 
 

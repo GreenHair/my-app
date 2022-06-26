@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SumPipeModule } from '@my-app/web/shared/utils';
-import { SortableDirectiveModule } from '@my-app/web/search/utils';
+import { SortableDirectiveModule } from '@my-app/web/shared/utils';
 
 @NgModule({
   imports: [
