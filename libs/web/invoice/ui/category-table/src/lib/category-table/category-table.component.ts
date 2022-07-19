@@ -8,7 +8,7 @@ import { CategoryDto } from '@my-app/shared/util/dto';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryTableComponent implements OnInit {
-  @Input() categories: CategoryDto[]
+  @Input() categories!: CategoryDto[]
   @Input() searchTerm: any
   @Output() editClick = new EventEmitter<CategoryDto>()
   @Output() deleteClick = new EventEmitter<CategoryDto>()
