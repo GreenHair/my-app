@@ -1,10 +1,9 @@
 import { AusgabenQuery } from '@my-app/shared/util/dto';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
-import { AusgabenDto } from 'libs/shared/util/dto/src/lib/ausgaben.dto';
-import { NewAusgabenDto } from 'libs/shared/util/dto/src/lib/newAusgaben.dto';
-import { QueryResult, Repository } from 'typeorm';
+import { Ausgaben } from '@my-app/api/data-access/entities';
+import { AusgabenDto, NewAusgabenDto } from '@my-app/shared/util/dto';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ApiFeatureArticleService {

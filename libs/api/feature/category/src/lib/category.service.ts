@@ -1,9 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Ausgaben } from 'libs/api/data-access/entities/src/lib/Ausgaben';
-import { Produktgruppe } from 'libs/api/data-access/entities/src/lib/Produktgruppe';
-import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { NewCategoryDto } from 'libs/shared/util/dto/src/lib/newCategory.dto';
+import { Produktgruppe, Ausgaben } from '@my-app/api/data-access/entities';
+import { NewCategoryDto, CategoryDto } from '@my-app/shared/util/dto';
 import { Repository } from 'typeorm';
 
 @Injectable()
