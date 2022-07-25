@@ -59,7 +59,7 @@ export class ApiFeatureArticleService {
                     statement.andWhere('rechnung.datum > :date1', {date1: query.date1});
                     break;
                 case 'between':
-                    statement.andWhere('rechnung.datum BETWEEN :date1 ABD date2', {date1: query.date1, date2: query.date2});
+                    statement.andWhere('rechnung.datum BETWEEN :date1 AND :date2', {date1: query.date1, date2: query.date2});
                     break;
             }
         }
