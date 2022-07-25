@@ -1,19 +1,14 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
-import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto } from '@my-app/shared/util/dto';
-import { CustomAdapter } from '@my-app/web/invoice/utils';
 
 
 @Component({
   selector: 'my-app-invoice-form',
   templateUrl: './invoice-form.component.html',
   styleUrls: ['./invoice-form.component.css'],
-  providers: [
-    {provide: NgbDateAdapter, useClass: CustomAdapter},
-  ]
 })
 export class InvoiceFormComponent implements OnChanges, OnInit {
 

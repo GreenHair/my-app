@@ -11,10 +11,7 @@
     <div class="row">
         <div class="col-auto">
             <label for="datum" class="form-label">Datum</label>
-            <div class="input-group">
-                <input ngbDatepicker #d="ngbDatepicker" id="datepicker" class="form-control" formControlName="datum" placeholder="Datum auswählen">
-                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-            </div>
+            <my-app-datepicker formControlName="datum"></my-app-datepicker>
         </div>
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>
