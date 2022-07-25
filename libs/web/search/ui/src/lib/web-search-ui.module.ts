@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SumPipeModule } from '@my-app/web/shared/utils';
 import { SortableDirectiveModule } from '@my-app/web/shared/utils';
+import { WebSharedUiModule } from '@my-app/web/shared/ui';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { SortableDirectiveModule } from '@my-app/web/shared/utils';
     ReactiveFormsModule,
     NgbModule,
     SumPipeModule,
-    SortableDirectiveModule
+    SortableDirectiveModule,
+    WebSharedUiModule,
   ],
   declarations: [
     SearchFormComponent,

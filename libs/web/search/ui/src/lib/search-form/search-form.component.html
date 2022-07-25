@@ -35,18 +35,12 @@
                 <input type="radio" id="customRadio6" formControlName="dateSpec" value='after' class="form-check-input">
                 <label class="form-check-label" for="customRadio6">Nach</label>
             </div>
-            <div class="input-group">
-                <input class="form-control" ngbDatepicker #d1="ngbDatepicker" type="text" formControlName="date1">
-                <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
-            </div>
+            <my-app-datepicker formControlName="date1"></my-app-datepicker>
             <div class="form-check">
-                <input type="radio" id="customRadio7" formControlName="dateSpec" value='betweem' class="form-check-input">
+                <input type="radio" id="customRadio7" formControlName="dateSpec" value='between' class="form-check-input">
                 <label class="form-check-label" for="customRadio7">Zwischen</label>
             </div>
-            <div class="input-group">
-                <input class="form-control date" ngbDatepicker #d2="ngbDatepicker" type="text" formControlName="date2">    
-                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
-            </div>
+            <my-app-datepicker formControlName="date2"></my-app-datepicker>
         </div>
         <div class="col-md-3">
             <label for="kategorie">Kategorie</label>
