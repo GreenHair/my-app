@@ -7,6 +7,7 @@ import { environment } from 'apps/my-app/src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
+import { TypeaheadComponent } from '@my-app/web/shared/ui'
 
 @Component({
   selector: 'my-app-article-form-row',
@@ -22,16 +23,16 @@ import { CategoryService } from '@my-app/web/shared/category/data-access';
 })
 export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlValueAccessor, OnDestroy {
 
-  @ViewChild('bezeichnung') bezeichnug: ElementRef
+  @ViewChild('bezeichnung') bezeichnug: TypeaheadComponent
   @Input() categories: CategoryDto[] | null
 
   onChangeSubs: Subscription[] = [];
   onTouched: Function = () => { };
 
-  articleUrl = `${environment.apiUrl}/article/description`
-  searching: boolean = false
-  searchFailed = false
-  params = new HttpParams()
+  // articleUrl = `${environment.apiUrl}/article/description`
+  // searching: boolean = false
+  // searchFailed = false
+  // params = new HttpParams()
 
   articleForm = this.fb.group({
     id: [''],
@@ -69,22 +70,22 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
     }
   }
 
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      tap(() => this.searching = true),
-      switchMap(term =>
-        this.http.get<string[]>(this.articleUrl, { params: this.params.set('startsWith', term) })
-          .pipe(
-            tap(() => this.searchFailed = false),
-            catchError(() => {
-              this.searchFailed = true;
-              return of([]);
-            }))
-      ),
-      tap(() => this.searching = false)
-    )
+  // search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+  //   text$.pipe(
+  //     debounceTime(200),
+  //     distinctUntilChanged(),
+  //     tap(() => this.searching = true),
+  //     switchMap(term =>
+  //       this.http.get<string[]>(this.articleUrl, { params: this.params.set('startsWith', term) })
+  //         .pipe(
+  //           tap(() => this.searchFailed = false),
+  //           catchError(() => {
+  //             this.searchFailed = true;
+  //             return of([]);
+  //           }))
+  //     ),
+  //     tap(() => this.searching = false)
+  //   )
 
   /* formatter = (x: CategoryDto) => x.bezeichnung; */
 
@@ -102,7 +103,7 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
   }
 
   ngAfterViewInit(): void {
-    this.bezeichnug.nativeElement.focus()
+    this.bezeichnug.articleInput.nativeElement.focus()
   }
 
   ngOnDestroy() {

@@ -6,6 +6,7 @@ import { DeleteButtonComponent } from './delete-button/delete-button.component';
 import { EditButtonComponent } from './edit-button/edit-button.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TypeaheadComponent } from './typeahead/typeahead.component';
 
 @NgModule({
   imports: [
@@ -17,13 +18,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     YearMonthWeekComponent,
     DeleteButtonComponent,
     EditButtonComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    TypeaheadComponent
   ],
   exports: [
     YearMonthWeekComponent,
     DeleteButtonComponent,
     EditButtonComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    TypeaheadComponent
   ],
 })
 export class WebSharedUiModule {}

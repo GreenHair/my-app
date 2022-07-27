@@ -2,11 +2,13 @@
     <input type="hidden" formControlName="id">
     <!-- <input type="hidden" formControlName="rechnungsnr"> -->
     <div class='col-6 position-relative'>
-        <input type='text' class='form-control' formControlName="bezeichnung"
+        <!-- <input type='text' class='form-control' formControlName="bezeichnung"
         #bezeichnung [ngbTypeahead]="search" (selectItem)="onSelectItem($event)">
         <div *ngIf="searching" class="spinner-border text-primary position-absolute" role="status">
             <span class="visually-hidden">Loading...</span>
-        </div>
+        </div> -->
+        <my-app-typeahead (onSelectItem)="onSelectItem($event)" #bezeichnung 
+        formControlName="bezeichnung"></my-app-typeahead>
     </div>
     <div class='col-3'><input type='number' step="0.01" class='form-control' formControlName="betrag"></div>
     <div class='col-3'>
