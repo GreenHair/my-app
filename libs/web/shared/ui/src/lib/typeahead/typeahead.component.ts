@@ -50,15 +50,18 @@ export class TypeaheadComponent implements OnInit, OnDestroy, ControlValueAccess
   constructor(private http: HttpClient) { }
   
   ngOnInit(): void {
-    this.onChangeSub = this.article.valueChanges.subscribe(val => this.onChange(val))
+    // this.onChangeSub = this.article.valueChanges.subscribe(val => this.onChange(val))
   }
 
   writeValue(obj: any): void {
-    this.article.setValue(obj)
+    if(obj) {
+      this.article.setValue(obj, { emitEvent: false })
+    }
   }
   
   registerOnChange(fn: any): void {
-    this.onChange = fn
+    // this.onChange = fn
+    this.onChangeSub = this.article.valueChanges.subscribe(fn)
   }
 
   registerOnTouched(fn: any): void {

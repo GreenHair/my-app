@@ -39,17 +39,24 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
         .reduce((previous, current) => current ? previous + current : previous, 0)
       this.invoiceForm.get('sum')?.patchValue(sum.toFixed(2))
     })
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("on changes", changes)
-    if(changes['invoice'] && this.invoice.ausgaben) {
-
+    //console.log("ng on init" ,this.invoice)
+    if(this.invoice && this.invoice.ausgaben) {
       for(let i = 0; i < this.invoice.ausgaben.length; i++) {
         this.addArticle()
       }
       this.invoiceForm.patchValue(this.invoice)
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //console.log("on changes", changes)
+    // if(changes['invoice'] && this.invoice.ausgaben) {
+
+    //   for(let i = 0; i < this.invoice.ausgaben.length; i++) {
+    //     this.addArticle()
+    //   }
+    //   this.invoiceForm.patchValue(this.invoice)
+    // }
   }
 
   addArticle() {
