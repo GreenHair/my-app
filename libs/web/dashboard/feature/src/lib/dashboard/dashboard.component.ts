@@ -5,7 +5,7 @@ import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { SumPipe } from '@my-app/web/shared/utils';
 import { IPeriodQuery } from 'libs/web/shared/ui/src/lib/year-month-week/year-month-week.component';
 import * as moment from 'moment';
-import { map, Observable, startWith, Subject, Subscription, switchMap, tap } from 'rxjs';
+import { combineLatest, map, Observable, startWith, Subject, Subscription, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   periodSelector = new FormControl(this.initialValues)
+  search = new FormControl()
 
   constructor(private invoiceService: InvoiceService,
     private incomeService: IncomeService, private sumPipe: SumPipe) { }
@@ -48,12 +49,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
         return query
       })
     )
-    this.invoices$ = this.periodQuery$.pipe(
+    const invoiceSource$ = this.periodQuery$.pipe(
       switchMap(query => this.invoiceService.getInvoices(query)),
       tap(invoices => this.sumOut = this.sumPipe.transform(invoices)),
       map(invoices => {
         console.log("invoices", invoices)
         return invoices.sort((a, b) => b.date.getTime() - a.date.getTime())
+      })
+    )
+
+    const invoiceFilter$ = this.search.valueChanges.pipe(startWith(''));
+
+    this.invoices$ = combineLatest([invoiceSource$, invoiceFilter$]).pipe(
+      map(value => {
+        return value[0].filter(i => i.laden.name.startsWith(value[1]) || i.datum.endsWith(value[1]))
       })
     )
 

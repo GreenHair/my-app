@@ -2,4 +2,9 @@
 <p #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
 <p> Bilanz: <span [ngStyle]="{color: sumIn - sumOut < 0 ? 'red' : 'green'}">{{ sumIn - sumOut | currency:'EUR' }}</span></p>
 <my-app-year-month-week *ngIf="years$ | async as years" [years]="years" [formControl]="periodSelector"></my-app-year-month-week>
+
+<div class="d-flex justify-content-center m-2">
+    <input type="text" class="form-control w-50" [formControl]="search" placeholder="Search">
+</div>
+
 <my-app-invoice-list *ngIf="invoices$ | async as list" [invoices]="list"></my-app-invoice-list>
