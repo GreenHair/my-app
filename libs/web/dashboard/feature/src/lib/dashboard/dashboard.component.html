@@ -1,6 +1,9 @@
-<p>Gesamt Einkommen {{ sumIn | currency:'EUR' }}</p>
-<p #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
-<p> Bilanz: <span [ngStyle]="{color: sumIn - sumOut < 0 ? 'red' : 'green'}">{{ sumIn - sumOut | currency:'EUR' }}</span></p>
+<div class="d-flex justify-content-around">
+    <p>Gesamt Einkommen {{ sumIn | currency:'EUR' }}</p>
+    <p #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
+    <p> Bilanz: <span [ngStyle]="{color: sumIn - sumOut < 0 ? 'red' : 'green'}">{{ sumIn - sumOut | currency:'EUR' }}</span></p>
+</div>
+
 <my-app-year-month-week *ngIf="years$ | async as years" [years]="years" [formControl]="periodSelector"></my-app-year-month-week>
 
 <div class="d-flex justify-content-center m-2">
