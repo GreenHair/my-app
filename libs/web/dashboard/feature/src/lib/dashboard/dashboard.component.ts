@@ -62,7 +62,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     this.invoices$ = combineLatest([invoiceSource$, invoiceFilter$]).pipe(
       map(value => {
-        return value[0].filter(i => i.laden.name.startsWith(value[1]) || i.datum.endsWith(value[1]))
+        return value[0].filter(i => i.laden.name.toLocaleLowerCase().startsWith(value[1].toLocaleLowerCase()) || 
+                i.datum.endsWith(value[1]))
       })
     )
 
