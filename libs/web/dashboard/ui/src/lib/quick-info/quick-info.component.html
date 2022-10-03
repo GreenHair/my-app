@@ -1,0 +1,36 @@
+<fieldset class="border p-3">
+    <legend>Quick Info</legend>
+    <div class="row">
+        <div class="col">
+            <select class="form-select" [formControl]="shopSelect">
+                <option value="">Laden</option>
+                <option *ngFor="let shop of shops" [value]="shop.id">{{shop.name}}</option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-select" [formControl]="catSelect">
+                <option value="">Kategorie</option>
+                <option *ngFor="let cat of categories" [value]="cat.id">{{cat.bezeichnung}}</option>
+            </select>
+        </div>
+        <div class="col">
+            <div class="btn-group w-100">
+                <input type="radio" class="btn-check" [formControl]="fixedOrVariable" name="fixVar" value="variable">
+                <label class="btn btn-outline-primary">Einmalig</label>
+                <input type="text" class="btn-check" [formControl]="fixedOrVariable" name="fixVar" value="fixed">
+                <label class="btn btn-outline-primary">Fest</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" *ngIf="shopInvoices$ | async as shopInvoices">
+            {{shopInvoices | sum | currency:'EUR'}}
+        </div>
+        <div class="col" *ngIf="catInvoices$ | async as catInvoices">
+            {{ catInvoices | sum | currency:'EUR'}}
+        </div>
+        <div class="col" *ngIf="fixedOrVariableInvoices$ | async as fixedOrVariableInvoices">
+            {{fixedOrVariableInvoices | sum | currency:'EUR'}}
+        </div>
+    </div>
+</fieldset>
