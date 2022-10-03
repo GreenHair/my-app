@@ -27,6 +27,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## TODO
+1. Let all DTO classes use interface and put only interfaces in shared folder. 
+That way classes can still use validator package but it won't be sent to client
 1. conversion entity-dto and back with generics or wrapper
 1. date-string conversion
 1. restore subscriptionafter 401
