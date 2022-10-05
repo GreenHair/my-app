@@ -13,16 +13,16 @@
                 <option *ngFor="let cat of categories" [value]="cat.id">{{cat.bezeichnung}}</option>
             </select>
         </div>
-        <div class="col">
+        <div class="col" [formGroup]="fixedOrVariable">
             <div class="btn-group w-100">
-                <input type="radio" class="btn-check" [formControl]="fixedOrVariable" name="fixVar" value="variable">
-                <label class="btn btn-outline-primary">Einmalig</label>
-                <input type="text" class="btn-check" [formControl]="fixedOrVariable" name="fixVar" value="fixed">
-                <label class="btn btn-outline-primary">Fest</label>
+                <input type="radio" class="btn-check" value="variable" formControlName="fixVar" id="fixVar1">
+                <label class="btn btn-outline-primary" for="fixVar1">Einmalig</label>
+                <input type="radio" class="btn-check" value="fixed" formControlName="fixVar" id="fixVar2">
+                <label class="btn btn-outline-primary" for="fixVar2">Fest</label>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row pt-1 ps-2">
         <div class="col" *ngIf="shopInvoices$ | async as shopInvoices">
             {{shopInvoices | sum | currency:'EUR'}}
         </div>
