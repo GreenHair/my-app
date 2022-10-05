@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { AusgabenDto, CategoryDto, ShopDto } from '@my-app/shared/util/dto';
 import { Invoice } from '@my-app/web/invoice/data-access';
 import { SumPipe } from '@my-app/web/shared/utils';
-import { map, Observable, startWith, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, startWith, Subject, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'my-app-quick-info',
@@ -11,7 +11,7 @@ import { map, Observable, startWith, switchMap, tap } from 'rxjs';
   styleUrls: ['./quick-info.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuickInfoComponent implements OnInit {
+export class QuickInfoComponent implements OnInit, OnChanges {
 
   @Input() categories!: CategoryDto[]
   @Input() shops!: ShopDto[]
@@ -26,26 +26,43 @@ export class QuickInfoComponent implements OnInit {
   catInvoices$!: Observable<AusgabenDto[]>
   shopInvoices$!: Observable<Invoice[]>
   fixedOrVariableInvoices$!: Observable<Invoice[]>
+  private onChanges = new BehaviorSubject<boolean>(true)
 
   constructor(private sumPipe: SumPipe, private fb: FormBuilder) { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("quick info value changes", changes)
+    if(changes["invoices"]){
+      console.log("invoices changed")
+      this.onChanges.next(true);  
+    }
+  }
+
   ngOnInit(): void {
-    this.catInvoices$ = this.catSelect.valueChanges.pipe(
-      map(catId => 
+    this.catInvoices$ = combineLatest({
+      onInvoicechange: this.onChanges,
+      catId: this.catSelect.valueChanges.pipe(startWith([]))
+    }) .pipe(
+      map(value => 
         this.invoices.reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[])
-        .filter(ausgabe => ausgabe.prodGr.id == catId)),
-        startWith([])
+        .filter(ausgabe => ausgabe.prodGr.id == value.catId)),
+        
     )
 
-    this.shopInvoices$ = this.shopSelect.valueChanges.pipe(
-      map(shopId => this.invoices.filter(i => i.laden.id == shopId)),
+    this.shopInvoices$ =combineLatest({
+      invoiceChange: this.onChanges,
+      shopId: this.shopSelect.valueChanges.pipe(startWith([]))
+    }).pipe(
+      map(value => this.invoices.filter(i => i.laden.id == value.shopId)),
       startWith([])
     )
 
-    this.fixedOrVariableInvoices$ = this.fixedOrVariable.valueChanges.pipe(
-      tap(shopid => console.log("shop id", shopid)),
+    this.fixedOrVariableInvoices$ = combineLatest({
+      invoiceChange: this.onChanges,
+      fixedOrVariable: this.fixedOrVariable.valueChanges.pipe(startWith([]))
+    }).pipe(
       map(val => {
-        switch (val.fixVar) {
+        switch (val.fixedOrVariable.fixVar) {
           case "variable":
             return this.invoices.filter(i => i.einmalig)
           case "fixed":
