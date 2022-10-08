@@ -28,14 +28,40 @@
         </div>
     </div>
     <div class="row pt-1 ps-2">
-        <div class="col" *ngIf="shopInvoices$ | async as shopInvoices">
+        <div class="col text-center" *ngIf="shopInvoices$ | async as shopInvoices">
             {{shopInvoices | sum | currency:'EUR'}}
         </div>
-        <div class="col" *ngIf="catInvoices$ | async as catInvoices">
+        <div class="col text-center" *ngIf="catInvoices$ | async as catInvoices">
             {{ catInvoices | sum | currency:'EUR'}}
         </div>
-        <div class="col" *ngIf="fixedOrVariableInvoices$ | async as fixedOrVariableInvoices">
+        <div class="col text-center" *ngIf="fixedOrVariableInvoices$ | async as fixedOrVariableInvoices">
             {{fixedOrVariableInvoices | sum | currency:'EUR'}}
+        </div>
+    </div>
+    <div class="row pt-1 ps-2">
+        <div class="col">
+            <div class="btn-group w-100" [formGroup]="foodOrNot">
+                <input type="radio" class="btn-check" value="food" formControlName="foodOrNot" id="food">
+                <label class="btn btn-outline-primary" for="food">Essen</label>
+                <input type="radio" class="btn-check" value="nonfood" formControlName="foodOrNot" id="nonfood">
+                <label class="btn btn-outline-primary" for="nonfood">Nicht Essen</label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="btn-group w-100">
+                <input type="radio" class="btn-check" value="online" [formControl]="onOffLine" id="online">
+                <label class="btn btn-outline-primary" for="online">Online</label>
+                <input type="radio" class="btn-check" value="offline" [formControl]="onOffLine" id="offline">
+                <label class="btn btn-outline-primary" for="offline">Offline</label>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-1 ps-2">
+        <div class="col text-center" *ngIf="foodNonFood$ | async as foodNonFood">
+            {{ foodNonFood | sum | currency:'EUR' }}
+        </div>
+        <div class="col text-center" *ngIf="onOffLine$ |async as onOffLine">
+            {{ onOffLine | sum | currency:'EUR' }}
         </div>
     </div>
 </fieldset>

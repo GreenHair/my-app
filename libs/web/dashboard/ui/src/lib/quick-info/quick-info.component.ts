@@ -5,11 +5,6 @@ import { Invoice } from '@my-app/web/invoice/data-access';
 import { SumPipe } from '@my-app/web/shared/utils';
 import { BehaviorSubject, combineLatest, map, Observable, startWith, Subject, switchMap, tap } from 'rxjs';
 
-interface DebitCredit {
-  debit: Invoice[],
-  credit: EinkommenDto[]
-}
-
 @Component({
   selector: 'my-app-quick-info',
   templateUrl: './quick-info.component.html',
@@ -28,11 +23,16 @@ export class QuickInfoComponent implements OnInit, OnChanges {
   fixedOrVariable = this.fb.group({
     fixVar: ['']
   })
+  foodOrNot = this.fb.group({
+    foodOrNot: ['']
+  })
+  onOffLine = new FormControl("")
 
   catInvoices$!: Observable<AusgabenDto[]>
   shopInvoices$!: Observable<Invoice[]>
   fixedOrVariableInvoices$!: Observable<Invoice[]>
-  debitCredit$!: Observable<DebitCredit>
+  foodNonFood$!: Observable<AusgabenDto[]>
+  onOffLine$!: Observable<Invoice[]>
   private onChanges = new BehaviorSubject<boolean>(true)
 
   sumIn: number = 0;
@@ -58,7 +58,7 @@ export class QuickInfoComponent implements OnInit, OnChanges {
       catId: this.catSelect.valueChanges.pipe(startWith([]))
     }) .pipe(
       map(value => 
-        this.invoices.reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[])
+        this.extractArticles()
         .filter(ausgabe => ausgabe.prodGr.id == value.catId)),
         
     )
@@ -87,6 +87,44 @@ export class QuickInfoComponent implements OnInit, OnChanges {
       }),
       startWith([])
     )
+
+    this.foodNonFood$ = combineLatest({
+      invoiceChange: this.onChanges,
+      foodNonFood: this.foodOrNot.valueChanges.pipe(startWith(""))
+    }).pipe(
+      map(val => {
+        const current = this.invoices.filter(i => i.einmalig).reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[])
+        switch (val.foodNonFood.foodOrNot) {
+          case "food":
+            return current.filter(a => a.prodGr.essen)
+          case "nonfood":
+            return current.filter(a => !a.prodGr.essen)
+          default:
+            return []
+        }
+      })
+    )
+
+    this.onOffLine$ = combineLatest({
+      invoiceChange: this.onChanges,
+      onOffLine: this.onOffLine.valueChanges.pipe(startWith(""))
+    }).pipe(
+      map(val => {
+        switch (val.onOffLine) {
+          case "online":
+            return this.invoices.filter(i => i.laden.online && i.einmalig)
+          case "offline":
+            return this.invoices.filter(i => !i.laden.online && i.einmalig)
+        
+          default:
+            return [];
+        }
+      })
+    )
   }
 
+
+  private extractArticles() {
+    return this.invoices.reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[]);
+  }
 }
