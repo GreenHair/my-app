@@ -1,13 +1,8 @@
 <my-app-year-month-week *ngIf="years$ | async as years" [years]="years" [formControl]="periodSelector"></my-app-year-month-week>
 
-<div class="d-flex justify-content-around pt-2">
-    <p class="h6">Gesamt Einkommen {{ sumIn | currency:'EUR' }}</p>
-    <p class="h6" #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
-    <p class="h6"> Bilanz: <span [ngStyle]="{color: sumIn - sumOut < 0 ? 'red' : 'green'}">{{ sumIn - sumOut | currency:'EUR' }}</span></p>
-</div>
-
 <my-app-quick-info *ngIf="shopsAndCategories$ |async as value" 
-[categories]="value.categories" [shops]="value.shops" [invoices]="value.invoices"></my-app-quick-info>
+[categories]="value.categories" [shops]="value.shops" [invoices]="value.invoices"
+[income]="value.income"></my-app-quick-info>
 
 <div class="d-flex justify-content-center m-2">
     <input type="text" class="form-control w-50" [formControl]="search" placeholder="Search">

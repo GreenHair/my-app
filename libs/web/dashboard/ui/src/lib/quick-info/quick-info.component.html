@@ -1,5 +1,10 @@
-<fieldset class="border p-3">
+<fieldset class="border p-3 mt-2">
     <legend>Quick Info</legend>
+    <div class="d-flex justify-content-around mb-2">
+        <p class="h6">Gesamt Einkommen {{ sumIn | currency:'EUR' }}</p>
+        <p class="h6" #out>Gesamt ausgaben {{ sumOut | currency:'EUR' }}</p>
+        <p class="h6"> Bilanz: <span [ngStyle]="{color: sumIn - sumOut < 0 ? 'red' : 'green'}">{{ sumIn - sumOut | currency:'EUR' }}</span></p>
+    </div>
     <div class="row">
         <div class="col">
             <select class="form-select" [formControl]="shopSelect">

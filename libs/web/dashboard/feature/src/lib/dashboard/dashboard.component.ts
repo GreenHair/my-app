@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { CategoryDto, ShopDto } from '@my-app/shared/util/dto';
+import { CategoryDto, EinkommenDto, ShopDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
@@ -13,7 +13,8 @@ import { combineLatest, map, Observable, startWith, Subject, Subscription, switc
 interface IQuickInfo {
   shops: ShopDto[]
   categories: CategoryDto[],
-  invoices: Invoice[]
+  invoices: Invoice[],
+  income: EinkommenDto[]
 }
 
 @Component({
@@ -24,13 +25,12 @@ interface IQuickInfo {
 export class DashboardComponent implements OnInit, OnDestroy {
   
   invoices$: Observable<Invoice[]>
+  income$: Observable<EinkommenDto[]>
   shopsAndCategories$: Observable<IQuickInfo>
   years$: Observable<number[]>
   periodQuery$ : Observable<{year: number, month?: number, week?:number}>
   periodSelectionChanged$ = new Subject()
-  incomeSubscription: Subscription
-  sumOut: number = 0
-  sumIn: number = 0
+  
   initialValues: IPeriodQuery = {
     period: 'month',
     query: {
@@ -65,9 +65,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     )
     const invoiceSource$ = this.periodQuery$.pipe(
       switchMap(query => this.invoiceService.getInvoices(query)),
-      tap(invoices => this.sumOut = this.sumPipe.transform(invoices)),
       map(invoices => {
-        console.log("invoices", invoices)
+        //console.log("invoices", invoices)
         return invoices.sort((a, b) => b.date.getTime() - a.date.getTime())
       })
     )
@@ -81,31 +80,29 @@ export class DashboardComponent implements OnInit, OnDestroy {
       })
     )
 
-    this.incomeSubscription = this.periodQuery$.pipe(
+    this.income$ = this.periodQuery$.pipe(
       switchMap(query => this.incomeService.getIncomeList(query)) 
     )
-    .subscribe(
-      income => {
-        console.log("income", income)
-        this.sumIn = this.sumPipe.transform(income)
-      })
+    
 
     this.years$ = this.invoiceService.getYears()
 
     this.shopsAndCategories$ = combineLatest({
       shops$: this.shopService.getShops(),
       categories$: this.categoryService.getCategories(),
-      invoices$: invoiceSource$
+      invoices$: invoiceSource$,
+      income: this.income$
     }).pipe(
       map(value => {return {
         shops: value.shops$,
         categories: value.categories$,
-        invoices: value.invoices$
+        invoices: value.invoices$,
+        income: value.income
       }})
     )
   }
 
   ngOnDestroy(): void {
-    this.incomeSubscription.unsubscribe()
+    
   }
 }
