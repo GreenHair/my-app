@@ -18,7 +18,7 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
   @Input() categories: CategoryDto[] | null
 
   invoiceForm = this.fb.group({
-    id: [''],
+    id: [],
     datum: [''],
     laden: [''],
     person: [''],
