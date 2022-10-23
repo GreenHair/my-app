@@ -6,9 +6,9 @@
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@nrwl/node:build",
+          "executor": "@nrwl/node:webpack",
           "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/api",
@@ -40,7 +40,7 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/node:execute",
+          "executor": "@nrwl/node:node",
           "options": {
             "buildTarget": "api:build"
           },
@@ -51,14 +51,14 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/api/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/apps/api"],
           "options": {
             "jestConfig": "apps/api/jest.config.js",
@@ -72,16 +72,16 @@
       "root": "libs/api/data-access/entities",
       "sourceRoot": "libs/api/data-access/entities/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/data-access/entities/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/data-access/entities"],
           "options": {
             "jestConfig": "libs/api/data-access/entities/jest.config.js",
@@ -95,16 +95,16 @@
       "root": "libs/api/feature/article",
       "sourceRoot": "libs/api/feature/article/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/article/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/article"],
           "options": {
             "jestConfig": "libs/api/feature/article/jest.config.js",
@@ -118,16 +118,16 @@
       "root": "libs/api/feature/auth",
       "sourceRoot": "libs/api/feature/auth/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/auth/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/auth"],
           "options": {
             "jestConfig": "libs/api/feature/auth/jest.config.js",
@@ -141,16 +141,16 @@
       "root": "libs/api/feature/category",
       "sourceRoot": "libs/api/feature/category/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/category/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/category"],
           "options": {
             "jestConfig": "libs/api/feature/category/jest.config.js",
@@ -164,16 +164,16 @@
       "root": "libs/api/feature/family-member",
       "sourceRoot": "libs/api/feature/family-member/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/family-member/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/family-member"],
           "options": {
             "jestConfig": "libs/api/feature/family-member/jest.config.js",
@@ -187,16 +187,16 @@
       "root": "libs/api/feature/income",
       "sourceRoot": "libs/api/feature/income/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/income/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/income"],
           "options": {
             "jestConfig": "libs/api/feature/income/jest.config.js",
@@ -210,16 +210,16 @@
       "root": "libs/api/feature/invoice",
       "sourceRoot": "libs/api/feature/invoice/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/invoice/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/invoice"],
           "options": {
             "jestConfig": "libs/api/feature/invoice/jest.config.js",
@@ -233,16 +233,16 @@
       "root": "libs/api/feature/shop",
       "sourceRoot": "libs/api/feature/shop/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/shop/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/shop"],
           "options": {
             "jestConfig": "libs/api/feature/shop/jest.config.js",
@@ -256,16 +256,16 @@
       "root": "libs/api/feature/user",
       "sourceRoot": "libs/api/feature/user/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/feature/user/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/feature/user"],
           "options": {
             "jestConfig": "libs/api/feature/user/jest.config.js",
@@ -279,16 +279,16 @@
       "root": "libs/api/utils/db-access",
       "sourceRoot": "libs/api/utils/db-access/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/utils/db-access/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/utils/db-access"],
           "options": {
             "jestConfig": "libs/api/utils/db-access/jest.config.js",
@@ -302,16 +302,16 @@
       "root": "libs/api/utils/decorators",
       "sourceRoot": "libs/api/utils/decorators/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/utils/decorators/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/utils/decorators"],
           "options": {
             "jestConfig": "libs/api/utils/decorators/jest.config.js",
@@ -325,16 +325,16 @@
       "root": "libs/api/utils/mapper",
       "sourceRoot": "libs/api/utils/mapper/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/api/utils/mapper/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/api/utils/mapper"],
           "options": {
             "jestConfig": "libs/api/utils/mapper/jest.config.js",
@@ -346,7 +346,7 @@
     },
     "my-app": {
       "projectType": "application",
-      "schematics": {
+      "generators": {
         "@schematics/angular:application": {
           "strict": true
         }
@@ -354,9 +354,9 @@
       "root": "apps/my-app",
       "sourceRoot": "apps/my-app/src",
       "prefix": "app",
-      "architect": {
+      "targets": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "executor": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/apps/my-app",
             "index": "apps/my-app/src/index.html",
@@ -404,7 +404,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "executor": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "my-app:build:production"
@@ -419,13 +419,13 @@
           }
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "my-app:build"
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "executor": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "apps/my-app/src/test.ts",
             "polyfills": "apps/my-app/src/polyfills.ts",
@@ -442,9 +442,9 @@
       "root": "apps/my-app-e2e",
       "sourceRoot": "apps/my-app-e2e/src",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "executor": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/my-app-e2e/cypress.json",
             "devServerTarget": "my-app:serve:development"
@@ -456,7 +456,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["apps/my-app-e2e/**/*.{js,ts}"]
@@ -470,16 +470,16 @@
       "root": "libs/shared/util/dto",
       "sourceRoot": "libs/shared/util/dto/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/shared/util/dto/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/shared/util/dto"],
           "options": {
             "jestConfig": "libs/shared/util/dto/jest.config.js",
@@ -494,9 +494,9 @@
       "root": "libs/web/camera/feature",
       "sourceRoot": "libs/web/camera/feature/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/camera/feature"],
           "options": {
             "jestConfig": "libs/web/camera/feature/jest.config.js",
@@ -504,7 +504,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/camera/feature/src/**/*.ts",
@@ -520,9 +520,9 @@
       "root": "libs/web/dashboard/feature",
       "sourceRoot": "libs/web/dashboard/feature/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/dashboard/feature"],
           "options": {
             "jestConfig": "libs/web/dashboard/feature/jest.config.js",
@@ -530,7 +530,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/dashboard/feature/src/**/*.ts",
@@ -546,9 +546,9 @@
       "root": "libs/web/dashboard/ui",
       "sourceRoot": "libs/web/dashboard/ui/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/dashboard/ui"],
           "options": {
             "jestConfig": "libs/web/dashboard/ui/jest.config.js",
@@ -556,7 +556,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/dashboard/ui/src/**/*.ts",
@@ -572,9 +572,9 @@
       "root": "libs/web/income/data-access",
       "sourceRoot": "libs/web/income/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/income/data-access"],
           "options": {
             "jestConfig": "libs/web/income/data-access/jest.config.js",
@@ -582,7 +582,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/income/data-access/src/**/*.ts",
@@ -598,9 +598,9 @@
       "root": "libs/web/income/feature",
       "sourceRoot": "libs/web/income/feature/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/income/feature"],
           "options": {
             "jestConfig": "libs/web/income/feature/jest.config.js",
@@ -608,7 +608,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/income/feature/src/**/*.ts",
@@ -624,9 +624,9 @@
       "root": "libs/web/income/ui",
       "sourceRoot": "libs/web/income/ui/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/income/ui"],
           "options": {
             "jestConfig": "libs/web/income/ui/jest.config.js",
@@ -634,7 +634,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/income/ui/src/**/*.ts",
@@ -650,9 +650,9 @@
       "root": "libs/web/income/utils",
       "sourceRoot": "libs/web/income/utils/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/income/utils"],
           "options": {
             "jestConfig": "libs/web/income/utils/jest.config.js",
@@ -660,7 +660,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/income/utils/src/**/*.ts",
@@ -676,9 +676,9 @@
       "root": "libs/web/invoice/data-access",
       "sourceRoot": "libs/web/invoice/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/data-access"],
           "options": {
             "jestConfig": "libs/web/invoice/data-access/jest.config.js",
@@ -686,7 +686,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/data-access/src/**/*.ts",
@@ -702,9 +702,9 @@
       "root": "libs/web/invoice/feature",
       "sourceRoot": "libs/web/invoice/feature/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/feature"],
           "options": {
             "jestConfig": "libs/web/invoice/feature/jest.config.js",
@@ -712,7 +712,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/feature/src/**/*.ts",
@@ -728,9 +728,9 @@
       "root": "libs/web/invoice/ui/article-form",
       "sourceRoot": "libs/web/invoice/ui/article-form/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/ui/article-form"],
           "options": {
             "jestConfig": "libs/web/invoice/ui/article-form/jest.config.js",
@@ -738,7 +738,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/ui/article-form/src/**/*.ts",
@@ -754,9 +754,9 @@
       "root": "libs/web/invoice/ui/back-button",
       "sourceRoot": "libs/web/invoice/ui/back-button/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/ui/back-button"],
           "options": {
             "jestConfig": "libs/web/invoice/ui/back-button/jest.config.js",
@@ -764,7 +764,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/ui/back-button/src/**/*.ts",
@@ -780,9 +780,9 @@
       "root": "libs/web/invoice/ui/category-table",
       "sourceRoot": "libs/web/invoice/ui/category-table/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/ui/category-table"],
           "options": {
             "jestConfig": "libs/web/invoice/ui/category-table/jest.config.js",
@@ -790,7 +790,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/ui/category-table/src/**/*.ts",
@@ -806,9 +806,9 @@
       "root": "libs/web/invoice/ui/invoice-form",
       "sourceRoot": "libs/web/invoice/ui/invoice-form/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/ui/invoice-form"],
           "options": {
             "jestConfig": "libs/web/invoice/ui/invoice-form/jest.config.js",
@@ -816,7 +816,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/ui/invoice-form/src/**/*.ts",
@@ -832,9 +832,9 @@
       "root": "libs/web/invoice/ui/shop-table",
       "sourceRoot": "libs/web/invoice/ui/shop-table/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/ui/shop-table"],
           "options": {
             "jestConfig": "libs/web/invoice/ui/shop-table/jest.config.js",
@@ -842,7 +842,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/ui/shop-table/src/**/*.ts",
@@ -858,9 +858,9 @@
       "root": "libs/web/invoice/utils",
       "sourceRoot": "libs/web/invoice/utils/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/invoice/utils"],
           "options": {
             "jestConfig": "libs/web/invoice/utils/jest.config.js",
@@ -868,7 +868,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/invoice/utils/src/**/*.ts",
@@ -884,9 +884,9 @@
       "root": "libs/web/login/data-access",
       "sourceRoot": "libs/web/login/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/login/data-access"],
           "options": {
             "jestConfig": "libs/web/login/data-access/jest.config.js",
@@ -894,7 +894,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/login/data-access/src/**/*.ts",
@@ -910,9 +910,9 @@
       "root": "libs/web/login/feature",
       "sourceRoot": "libs/web/login/feature/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/login/feature"],
           "options": {
             "jestConfig": "libs/web/login/feature/jest.config.js",
@@ -920,7 +920,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/login/feature/src/**/*.ts",
@@ -936,9 +936,9 @@
       "root": "libs/web/login/guard",
       "sourceRoot": "libs/web/login/guard/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/login/guard"],
           "options": {
             "jestConfig": "libs/web/login/guard/jest.config.js",
@@ -946,7 +946,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/login/guard/src/**/*.ts",
@@ -961,16 +961,16 @@
       "root": "libs/web/main/feature",
       "sourceRoot": "libs/web/main/feature/src",
       "projectType": "library",
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
             "lintFilePatterns": ["libs/web/main/feature/**/*.ts"]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/main/feature"],
           "options": {
             "jestConfig": "libs/web/main/feature/jest.config.js",
@@ -985,9 +985,9 @@
       "root": "libs/web/search/data-access",
       "sourceRoot": "libs/web/search/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/search/data-access"],
           "options": {
             "jestConfig": "libs/web/search/data-access/jest.config.js",
@@ -995,7 +995,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/search/data-access/src/**/*.ts",
@@ -1011,9 +1011,9 @@
       "root": "libs/web/search/feature",
       "sourceRoot": "libs/web/search/feature/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/search/feature"],
           "options": {
             "jestConfig": "libs/web/search/feature/jest.config.js",
@@ -1021,7 +1021,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/search/feature/src/**/*.ts",
@@ -1037,9 +1037,9 @@
       "root": "libs/web/search/ui",
       "sourceRoot": "libs/web/search/ui/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/search/ui"],
           "options": {
             "jestConfig": "libs/web/search/ui/jest.config.js",
@@ -1047,7 +1047,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/search/ui/src/**/*.ts",
@@ -1063,9 +1063,9 @@
       "root": "libs/web/search/utils",
       "sourceRoot": "libs/web/search/utils/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/search/utils"],
           "options": {
             "jestConfig": "libs/web/search/utils/jest.config.js",
@@ -1073,7 +1073,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/search/utils/src/**/*.ts",
@@ -1089,9 +1089,9 @@
       "root": "libs/web/shared/category/data-access",
       "sourceRoot": "libs/web/shared/category/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/category/data-access"],
           "options": {
             "jestConfig": "libs/web/shared/category/data-access/jest.config.js",
@@ -1099,7 +1099,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/category/data-access/src/**/*.ts",
@@ -1115,9 +1115,9 @@
       "root": "libs/web/shared/family-member/data-access",
       "sourceRoot": "libs/web/shared/family-member/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/family-member/data-access"],
           "options": {
             "jestConfig": "libs/web/shared/family-member/data-access/jest.config.js",
@@ -1125,7 +1125,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/family-member/data-access/src/**/*.ts",
@@ -1141,9 +1141,9 @@
       "root": "libs/web/shared/interceptor",
       "sourceRoot": "libs/web/shared/interceptor/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/interceptor"],
           "options": {
             "jestConfig": "libs/web/shared/interceptor/jest.config.js",
@@ -1151,7 +1151,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/interceptor/src/**/*.ts",
@@ -1167,9 +1167,9 @@
       "root": "libs/web/shared/invoice/data-access",
       "sourceRoot": "libs/web/shared/invoice/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/invoice/data-access"],
           "options": {
             "jestConfig": "libs/web/shared/invoice/data-access/jest.config.js",
@@ -1177,7 +1177,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/invoice/data-access/src/**/*.ts",
@@ -1193,9 +1193,9 @@
       "root": "libs/web/shared/local-storage-service",
       "sourceRoot": "libs/web/shared/local-storage-service/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/local-storage-service"],
           "options": {
             "jestConfig": "libs/web/shared/local-storage-service/jest.config.js",
@@ -1203,7 +1203,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/local-storage-service/src/**/*.ts",
@@ -1219,9 +1219,9 @@
       "root": "libs/web/shared/shop/data-access",
       "sourceRoot": "libs/web/shared/shop/data-access/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/shop/data-access"],
           "options": {
             "jestConfig": "libs/web/shared/shop/data-access/jest.config.js",
@@ -1229,7 +1229,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/shop/data-access/src/**/*.ts",
@@ -1245,9 +1245,9 @@
       "root": "libs/web/shared/ui",
       "sourceRoot": "libs/web/shared/ui/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/ui"],
           "options": {
             "jestConfig": "libs/web/shared/ui/jest.config.js",
@@ -1255,7 +1255,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/ui/src/**/*.ts",
@@ -1271,9 +1271,9 @@
       "root": "libs/web/shared/utils",
       "sourceRoot": "libs/web/shared/utils/src",
       "prefix": "my-app",
-      "architect": {
+      "targets": {
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/web/shared/utils"],
           "options": {
             "jestConfig": "libs/web/shared/utils/jest.config.js",
@@ -1281,7 +1281,7 @@
           }
         },
         "lint": {
-          "builder": "@nrwl/linter:eslint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
               "libs/web/shared/utils/src/**/*.ts",
