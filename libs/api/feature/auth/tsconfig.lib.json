@@ -9,6 +9,9 @@
     "noPropertyAccessFromIndexSignature": false,
     "strictPropertyInitialization": false
   },
-  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
-  "include": ["**/*.ts", "../../../shared/util/dto/src/lib/registrattionStatus.dto.ts"]
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "jest.config.ts"],
+  "include": [
+    "**/*.ts",
+    "../../../shared/util/dto/src/lib/registrattionStatus.dto.ts"
+  ]
 }

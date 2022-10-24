@@ -26,5 +26,6 @@
       "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {}
-  }
+  },
+  "tasksRunnerOptions": {}
 }
