@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'api-data-access-entities',
 
   globals: {
@@ -12,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../../coverage/libs/api/data-access/entities',
-  preset: '../../../../jest.preset.ts',
+  preset: '../../../../jest.preset.js',
 };

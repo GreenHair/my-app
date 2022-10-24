@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { createWorker } from "tesseract.js";
 import * as Tesseract from 'tesseract.js';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -30,7 +30,7 @@ export class CameraComponent implements OnInit, AfterViewInit, OnDestroy {
   error = false
   errorText = ""
   
-  constructor(private fb : FormBuilder) { }
+  constructor(private fb : UntypedFormBuilder) { }
   
   ngOnInit(): void {
     this.initialize()

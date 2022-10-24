@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { CategoryDto } from '@my-app/shared/util/dto';
 import { CategoryModalComponent, ConfirmDeleteComponent } from '@my-app/web/invoice/ui/category-table';
 import { CategoryService } from '@my-app/web/shared/category/data-access';
@@ -15,7 +15,7 @@ import { catchError, combineLatest, map, Observable, startWith, switchMap, tap }
 export class CategoriesComponent implements OnInit {
 
   categories$: Observable<CategoryDto[]>
-  search: FormControl = new FormControl('')
+  search: UntypedFormControl = new UntypedFormControl('')
   constructor(private service: CategoryService, private modalService: NgbModal) { }
 
   ngOnInit(): void {

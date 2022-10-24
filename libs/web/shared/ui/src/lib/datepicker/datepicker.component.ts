@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CustomAdapter } from '@my-app/web/invoice/utils';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,7 @@ import { Subscription } from 'rxjs';
 })
 export class DatepickerComponent implements OnInit, ControlValueAccessor, OnDestroy {
 
-  date = new FormControl('');
+  date = new UntypedFormControl('');
 
   private onchangeSub!: Subscription
 

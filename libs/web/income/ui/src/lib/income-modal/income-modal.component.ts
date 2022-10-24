@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { EinkommenDto, FamilienmitgliedDto } from '@my-app/shared/util/dto';
 import { CustomAdapter } from '@my-app/web/invoice/utils';
 import { compareById } from '@my-app/web/shared/utils';
@@ -20,14 +20,14 @@ export class IncomeModalComponent implements OnInit, OnChanges {
   @Input() data: EinkommenDto
 
   form = this.fb.group({
-    nr: new FormControl(''),
-    datum: new FormControl('', Validators.required),
-    bezeichnung: new FormControl('', Validators.required),
-    person: new FormControl('', Validators.required),
-    betrag: new FormControl('', Validators.required)
+    nr: new UntypedFormControl(''),
+    datum: new UntypedFormControl('', Validators.required),
+    bezeichnung: new UntypedFormControl('', Validators.required),
+    person: new UntypedFormControl('', Validators.required),
+    betrag: new UntypedFormControl('', Validators.required)
   })
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
+  constructor(public activeModal: NgbActiveModal, private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     console.log("family length", this.family)

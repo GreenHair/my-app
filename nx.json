@@ -12,8 +12,7 @@
     "tsconfig.base.json": "*"
   },
   "cli": {
-    "analytics": "5c9cb51c-c12b-4c95-ae63-d9cd77c18496",
-    "defaultCollection": "@nrwl/angular"
+    "analytics": "5c9cb51c-c12b-4c95-ae63-d9cd77c18496"
   },
   "defaultProject": "my-app",
   "generators": {
@@ -27,5 +26,13 @@
     },
     "@nrwl/angular:component": {}
   },
-  "tasksRunnerOptions": {}
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

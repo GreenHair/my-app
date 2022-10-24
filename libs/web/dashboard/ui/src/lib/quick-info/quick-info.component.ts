@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { AusgabenDto, CategoryDto, EinkommenDto, ShopDto } from '@my-app/shared/util/dto';
 import { Invoice } from '@my-app/web/invoice/data-access';
 import { SumPipe } from '@my-app/web/shared/utils';
@@ -18,15 +18,15 @@ export class QuickInfoComponent implements OnInit, OnChanges {
   @Input() invoices!: Invoice[]
   @Input() income!: EinkommenDto[]
 
-  catSelect = new FormControl("")
-  shopSelect = new FormControl("")
+  catSelect = new UntypedFormControl("")
+  shopSelect = new UntypedFormControl("")
   fixedOrVariable = this.fb.group({
     fixVar: ['']
   })
   foodOrNot = this.fb.group({
     foodOrNot: ['']
   })
-  onOffLine = new FormControl("")
+  onOffLine = new UntypedFormControl("")
 
   catInvoices$!: Observable<AusgabenDto[]>
   shopInvoices$!: Observable<Invoice[]>
@@ -38,7 +38,7 @@ export class QuickInfoComponent implements OnInit, OnChanges {
   sumIn: number = 0;
   sumOut: number = 0;
 
-  constructor(private sumPipe: SumPipe, private fb: FormBuilder) { }
+  constructor(private sumPipe: SumPipe, private fb: UntypedFormBuilder) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("quick info value changes", changes)

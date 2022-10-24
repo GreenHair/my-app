@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { EinkommenDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +29,7 @@ export class IncomeFeatureComponent implements OnInit {
     }
   }
 
-  periodSelector = new FormControl(this.initialValues)
+  periodSelector = new UntypedFormControl(this.initialValues)
 
   constructor(private service: IncomeService, private modalService: NgbModal, private familyService: FamilyMemberService) { }
 

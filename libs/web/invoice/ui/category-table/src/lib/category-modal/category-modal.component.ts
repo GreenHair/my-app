@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { CategoryDto } from '@my-app/shared/util/dto';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,12 +13,12 @@ export class CategoryModalComponent implements OnInit {
   @Input() category: CategoryDto
 
   form = this.fb.group({
-    id: new FormControl(''),
-    bezeichnung: new FormControl('', Validators.required),
-    essen: new FormControl('')
+    id: new UntypedFormControl(''),
+    bezeichnung: new UntypedFormControl('', Validators.required),
+    essen: new UntypedFormControl('')
   })
 
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
+  constructor(public activeModal: NgbActiveModal, private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     if(this.category !== undefined) {

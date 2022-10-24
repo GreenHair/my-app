@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
-import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -46,7 +46,7 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
     return this.articleForm.get('prodGr')
   }
 
-  constructor(private categoryService: CategoryService, private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private categoryService: CategoryService, private fb: UntypedFormBuilder, private http: HttpClient) { }
 
   writeValue(value: any) {
     if (value) {

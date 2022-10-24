@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto } from '@my-app/shared/util/dto';
@@ -28,10 +28,10 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
   })
 
   get ausgaben() {
-    return this.invoiceForm.get('ausgaben') as FormArray
+    return this.invoiceForm.get('ausgaben') as UntypedFormArray
   }
 
-  constructor(private fb: FormBuilder, private invoiceService: InvoiceService) { }
+  constructor(private fb: UntypedFormBuilder, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
     this.ausgaben.valueChanges.subscribe(() => {

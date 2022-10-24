@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
@@ -19,7 +19,7 @@ export class TypeaheadComponent implements OnInit, OnDestroy, ControlValueAccess
   @Output() onSelectItem = new EventEmitter<NgbTypeaheadSelectItemEvent>()
   @ViewChild('articleInput') articleInput!: ElementRef
 
-  article = new FormControl('')
+  article = new UntypedFormControl('')
   articleUrl = `${environment.apiUrl}/article/description`
   searching: boolean = false
   searchFailed = false

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { CategoryDto, EinkommenDto, ShopDto } from '@my-app/shared/util/dto';
 import { IncomeService } from '@my-app/web/income/data-access';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  periodSelector = new FormControl(this.initialValues)
-  search = new FormControl()
+  periodSelector = new UntypedFormControl(this.initialValues)
+  search = new UntypedFormControl()
 
   constructor(
     private invoiceService: InvoiceService,

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'web-main-feature',
 
   globals: {
@@ -11,5 +11,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../../coverage/libs/web/main/feature',
-  preset: '../../../../jest.preset.ts',
+  preset: '../../../../jest.preset.js',
 };

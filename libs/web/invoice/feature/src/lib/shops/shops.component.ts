@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { ShopDto } from '@my-app/shared/util/dto';
 import { ConfirmDeleteComponent, ShopModalComponent } from '@my-app/web/invoice/ui/shop-table';
 import { ShopService } from '@my-app/web/shared/shop/data-access';
@@ -15,7 +15,7 @@ import { combineLatest, map, Observable, startWith, switchMap } from 'rxjs';
 export class ShopsComponent implements OnInit {
 
   shops$: Observable<ShopDto[]>
-  search: FormControl = new FormControl('')
+  search: UntypedFormControl = new UntypedFormControl('')
   constructor(private service: ShopService, private modalService: NgbModal) { }
 
   ngOnInit(): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { ShopDto } from '@my-app/shared/util/dto';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -14,12 +14,12 @@ export class ShopModalComponent implements OnInit {
   @Input() shop: ShopDto
 
   form = this.fb.group({
-    id: new FormControl(''),
-    name: new FormControl('', Validators.required),
-    online: new FormControl(false)
+    id: new UntypedFormControl(''),
+    name: new UntypedFormControl('', Validators.required),
+    online: new UntypedFormControl(false)
   })
   
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder) { }
+  constructor(public activeModal: NgbActiveModal, private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     if(this.shop !== undefined) {

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { CategoryDto, ShopDto } from '@my-app/shared/util/dto';
 
 @Component({
@@ -13,7 +13,7 @@ export class SearchFormComponent implements OnInit {
   @Input() shops!: ShopDto[]
   @Output() submitSearch: any = new EventEmitter<any>()
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   searchForm = this.fb.group({
     description: [''],

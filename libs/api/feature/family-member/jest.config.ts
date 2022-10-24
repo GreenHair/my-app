@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'api-feature-family-member',
 
   globals: {
@@ -12,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../../coverage/libs/api/feature/family-member',
-  preset: '../../../../jest.preset.ts',
+  preset: '../../../../jest.preset.js',
 };

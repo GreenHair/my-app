@@ -3,18 +3,23 @@
   "version": 2,
   "projects": {
     "api": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:webpack",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"],
+            "assets": [
+              "apps/api/src/assets"
+            ],
             "tsPlugins": [
               {
                 "name": "@nestjs/swagger/plugin",
@@ -52,14 +57,20 @@
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/api/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api"],
+          "outputs": [
+            "coverage/apps/api"
+          ],
           "options": {
             "jestConfig": "apps/api/jest.config.ts",
             "passWithNoTests": true
@@ -69,20 +80,27 @@
       "tags": []
     },
     "api-data-access-entities": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/data-access/entities",
       "sourceRoot": "libs/api/data-access/entities/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/data-access/entities/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/data-access/entities/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/data-access/entities"],
+          "outputs": [
+            "coverage/libs/api/data-access/entities"
+          ],
           "options": {
             "jestConfig": "libs/api/data-access/entities/jest.config.ts",
             "passWithNoTests": true
@@ -92,20 +110,27 @@
       "tags": []
     },
     "api-feature-article": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/article",
       "sourceRoot": "libs/api/feature/article/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/article/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/article/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/article"],
+          "outputs": [
+            "coverage/libs/api/feature/article"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/article/jest.config.ts",
             "passWithNoTests": true
@@ -115,20 +140,27 @@
       "tags": []
     },
     "api-feature-auth": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/auth",
       "sourceRoot": "libs/api/feature/auth/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/auth/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/auth/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/auth"],
+          "outputs": [
+            "coverage/libs/api/feature/auth"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/auth/jest.config.ts",
             "passWithNoTests": true
@@ -138,20 +170,27 @@
       "tags": []
     },
     "api-feature-category": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/category",
       "sourceRoot": "libs/api/feature/category/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/category/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/category/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/category"],
+          "outputs": [
+            "coverage/libs/api/feature/category"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/category/jest.config.ts",
             "passWithNoTests": true
@@ -161,20 +200,27 @@
       "tags": []
     },
     "api-feature-family-member": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/family-member",
       "sourceRoot": "libs/api/feature/family-member/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/family-member/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/family-member/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/family-member"],
+          "outputs": [
+            "coverage/libs/api/feature/family-member"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/family-member/jest.config.ts",
             "passWithNoTests": true
@@ -184,20 +230,27 @@
       "tags": []
     },
     "api-feature-income": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/income",
       "sourceRoot": "libs/api/feature/income/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/income/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/income/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/income"],
+          "outputs": [
+            "coverage/libs/api/feature/income"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/income/jest.config.ts",
             "passWithNoTests": true
@@ -207,20 +260,27 @@
       "tags": []
     },
     "api-feature-invoice": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/invoice",
       "sourceRoot": "libs/api/feature/invoice/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/invoice/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/invoice/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/invoice"],
+          "outputs": [
+            "coverage/libs/api/feature/invoice"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/invoice/jest.config.ts",
             "passWithNoTests": true
@@ -230,20 +290,27 @@
       "tags": []
     },
     "api-feature-shop": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/shop",
       "sourceRoot": "libs/api/feature/shop/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/shop/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/shop/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/shop"],
+          "outputs": [
+            "coverage/libs/api/feature/shop"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/shop/jest.config.ts",
             "passWithNoTests": true
@@ -253,20 +320,27 @@
       "tags": []
     },
     "api-feature-user": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/feature/user",
       "sourceRoot": "libs/api/feature/user/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/feature/user/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/feature/user/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/feature/user"],
+          "outputs": [
+            "coverage/libs/api/feature/user"
+          ],
           "options": {
             "jestConfig": "libs/api/feature/user/jest.config.ts",
             "passWithNoTests": true
@@ -276,20 +350,27 @@
       "tags": []
     },
     "api-utils-db-access": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/utils/db-access",
       "sourceRoot": "libs/api/utils/db-access/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/utils/db-access/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/utils/db-access/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/utils/db-access"],
+          "outputs": [
+            "coverage/libs/api/utils/db-access"
+          ],
           "options": {
             "jestConfig": "libs/api/utils/db-access/jest.config.ts",
             "passWithNoTests": true
@@ -299,20 +380,27 @@
       "tags": []
     },
     "api-utils-decorators": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/utils/decorators",
       "sourceRoot": "libs/api/utils/decorators/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/utils/decorators/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/utils/decorators/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/utils/decorators"],
+          "outputs": [
+            "coverage/libs/api/utils/decorators"
+          ],
           "options": {
             "jestConfig": "libs/api/utils/decorators/jest.config.ts",
             "passWithNoTests": true
@@ -322,20 +410,27 @@
       "tags": []
     },
     "api-utils-mapper": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/api/utils/mapper",
       "sourceRoot": "libs/api/utils/mapper/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/api/utils/mapper/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/api/utils/mapper/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/api/utils/mapper"],
+          "outputs": [
+            "coverage/libs/api/utils/mapper"
+          ],
           "options": {
             "jestConfig": "libs/api/utils/mapper/jest.config.ts",
             "passWithNoTests": true
@@ -345,6 +440,7 @@
       "tags": []
     },
     "my-app": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "generators": {
         "@schematics/angular:application": {
@@ -363,7 +459,10 @@
             "main": "apps/my-app/src/main.ts",
             "polyfills": "apps/my-app/src/polyfills.ts",
             "tsConfig": "apps/my-app/tsconfig.app.json",
-            "assets": ["apps/my-app/src/favicon.ico", "apps/my-app/src/assets"],
+            "assets": [
+              "apps/my-app/src/favicon.ico",
+              "apps/my-app/src/assets"
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "apps/my-app/src/styles.css"
@@ -431,14 +530,20 @@
             "polyfills": "apps/my-app/src/polyfills.ts",
             "tsConfig": "apps/my-app/tsconfig.spec.json",
             "karmaConfig": "apps/my-app/karma.conf.js",
-            "assets": ["apps/my-app/src/favicon.ico", "apps/my-app/src/assets"],
-            "styles": ["apps/my-app/src/styles.css"],
+            "assets": [
+              "apps/my-app/src/favicon.ico",
+              "apps/my-app/src/assets"
+            ],
+            "styles": [
+              "apps/my-app/src/styles.css"
+            ],
             "scripts": []
           }
         }
       }
     },
     "my-app-e2e": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "root": "apps/my-app-e2e",
       "sourceRoot": "apps/my-app-e2e/src",
       "projectType": "application",
@@ -457,30 +562,43 @@
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/my-app-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/my-app-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["my-app"]
+      "implicitDependencies": [
+        "my-app"
+      ]
     },
     "shared-util-dto": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/shared/util/dto",
       "sourceRoot": "libs/shared/util/dto/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/shared/util/dto/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/shared/util/dto/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/util/dto"],
+          "outputs": [
+            "coverage/libs/shared/util/dto"
+          ],
           "options": {
             "jestConfig": "libs/shared/util/dto/jest.config.ts",
             "passWithNoTests": true
@@ -490,6 +608,7 @@
       "tags": []
     },
     "web-camera-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/camera/feature",
       "sourceRoot": "libs/web/camera/feature/src",
@@ -497,7 +616,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/camera/feature"],
+          "outputs": [
+            "coverage/libs/web/camera/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/camera/feature/jest.config.ts",
             "passWithNoTests": true
@@ -516,6 +637,7 @@
       "tags": []
     },
     "web-dashboard-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/dashboard/feature",
       "sourceRoot": "libs/web/dashboard/feature/src",
@@ -523,7 +645,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/dashboard/feature"],
+          "outputs": [
+            "coverage/libs/web/dashboard/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/dashboard/feature/jest.config.ts",
             "passWithNoTests": true
@@ -542,6 +666,7 @@
       "tags": []
     },
     "web-dashboard-ui": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/dashboard/ui",
       "sourceRoot": "libs/web/dashboard/ui/src",
@@ -549,7 +674,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/dashboard/ui"],
+          "outputs": [
+            "coverage/libs/web/dashboard/ui"
+          ],
           "options": {
             "jestConfig": "libs/web/dashboard/ui/jest.config.ts",
             "passWithNoTests": true
@@ -568,6 +695,7 @@
       "tags": []
     },
     "web-income-data-access": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/income/data-access",
       "sourceRoot": "libs/web/income/data-access/src",
@@ -575,7 +703,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/income/data-access"],
+          "outputs": [
+            "coverage/libs/web/income/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/income/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -594,6 +724,7 @@
       "tags": []
     },
     "web-income-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/income/feature",
       "sourceRoot": "libs/web/income/feature/src",
@@ -601,7 +732,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/income/feature"],
+          "outputs": [
+            "coverage/libs/web/income/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/income/feature/jest.config.ts",
             "passWithNoTests": true
@@ -620,6 +753,7 @@
       "tags": []
     },
     "web-income-ui": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/income/ui",
       "sourceRoot": "libs/web/income/ui/src",
@@ -627,7 +761,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/income/ui"],
+          "outputs": [
+            "coverage/libs/web/income/ui"
+          ],
           "options": {
             "jestConfig": "libs/web/income/ui/jest.config.ts",
             "passWithNoTests": true
@@ -646,6 +782,7 @@
       "tags": []
     },
     "web-income-utils": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/income/utils",
       "sourceRoot": "libs/web/income/utils/src",
@@ -653,7 +790,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/income/utils"],
+          "outputs": [
+            "coverage/libs/web/income/utils"
+          ],
           "options": {
             "jestConfig": "libs/web/income/utils/jest.config.ts",
             "passWithNoTests": true
@@ -672,6 +811,7 @@
       "tags": []
     },
     "web-invoice-data-access": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/data-access",
       "sourceRoot": "libs/web/invoice/data-access/src",
@@ -679,7 +819,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/data-access"],
+          "outputs": [
+            "coverage/libs/web/invoice/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -698,6 +840,7 @@
       "tags": []
     },
     "web-invoice-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/feature",
       "sourceRoot": "libs/web/invoice/feature/src",
@@ -705,7 +848,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/feature"],
+          "outputs": [
+            "coverage/libs/web/invoice/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/feature/jest.config.ts",
             "passWithNoTests": true
@@ -724,6 +869,7 @@
       "tags": []
     },
     "web-invoice-ui-article-form": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/ui/article-form",
       "sourceRoot": "libs/web/invoice/ui/article-form/src",
@@ -731,7 +877,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/ui/article-form"],
+          "outputs": [
+            "coverage/libs/web/invoice/ui/article-form"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/ui/article-form/jest.config.ts",
             "passWithNoTests": true
@@ -750,6 +898,7 @@
       "tags": []
     },
     "web-invoice-ui-back-button": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/ui/back-button",
       "sourceRoot": "libs/web/invoice/ui/back-button/src",
@@ -757,7 +906,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/ui/back-button"],
+          "outputs": [
+            "coverage/libs/web/invoice/ui/back-button"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/ui/back-button/jest.config.ts",
             "passWithNoTests": true
@@ -776,6 +927,7 @@
       "tags": []
     },
     "web-invoice-ui-category-table": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/ui/category-table",
       "sourceRoot": "libs/web/invoice/ui/category-table/src",
@@ -783,7 +935,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/ui/category-table"],
+          "outputs": [
+            "coverage/libs/web/invoice/ui/category-table"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/ui/category-table/jest.config.ts",
             "passWithNoTests": true
@@ -802,6 +956,7 @@
       "tags": []
     },
     "web-invoice-ui-invoice-form": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/ui/invoice-form",
       "sourceRoot": "libs/web/invoice/ui/invoice-form/src",
@@ -809,7 +964,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/ui/invoice-form"],
+          "outputs": [
+            "coverage/libs/web/invoice/ui/invoice-form"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/ui/invoice-form/jest.config.ts",
             "passWithNoTests": true
@@ -828,6 +985,7 @@
       "tags": []
     },
     "web-invoice-ui-shop-table": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/ui/shop-table",
       "sourceRoot": "libs/web/invoice/ui/shop-table/src",
@@ -835,7 +993,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/ui/shop-table"],
+          "outputs": [
+            "coverage/libs/web/invoice/ui/shop-table"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/ui/shop-table/jest.config.ts",
             "passWithNoTests": true
@@ -854,6 +1014,7 @@
       "tags": []
     },
     "web-invoice-utils": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/invoice/utils",
       "sourceRoot": "libs/web/invoice/utils/src",
@@ -861,7 +1022,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/invoice/utils"],
+          "outputs": [
+            "coverage/libs/web/invoice/utils"
+          ],
           "options": {
             "jestConfig": "libs/web/invoice/utils/jest.config.ts",
             "passWithNoTests": true
@@ -880,6 +1043,7 @@
       "tags": []
     },
     "web-login-data-access": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/login/data-access",
       "sourceRoot": "libs/web/login/data-access/src",
@@ -887,7 +1051,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/login/data-access"],
+          "outputs": [
+            "coverage/libs/web/login/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/login/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -906,6 +1072,7 @@
       "tags": []
     },
     "web-login-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/login/feature",
       "sourceRoot": "libs/web/login/feature/src",
@@ -913,7 +1080,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/login/feature"],
+          "outputs": [
+            "coverage/libs/web/login/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/login/feature/jest.config.ts",
             "passWithNoTests": true
@@ -932,6 +1101,7 @@
       "tags": []
     },
     "web-login-guard": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/login/guard",
       "sourceRoot": "libs/web/login/guard/src",
@@ -939,7 +1109,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/login/guard"],
+          "outputs": [
+            "coverage/libs/web/login/guard"
+          ],
           "options": {
             "jestConfig": "libs/web/login/guard/jest.config.ts",
             "passWithNoTests": true
@@ -958,20 +1130,27 @@
       "tags": []
     },
     "web-main-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "root": "libs/web/main/feature",
       "sourceRoot": "libs/web/main/feature/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["libs/web/main/feature/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/web/main/feature/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/main/feature"],
+          "outputs": [
+            "coverage/libs/web/main/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/main/feature/jest.config.ts",
             "passWithNoTests": true
@@ -981,6 +1160,7 @@
       "tags": []
     },
     "web-search-data-access": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/search/data-access",
       "sourceRoot": "libs/web/search/data-access/src",
@@ -988,7 +1168,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/search/data-access"],
+          "outputs": [
+            "coverage/libs/web/search/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/search/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -1007,6 +1189,7 @@
       "tags": []
     },
     "web-search-feature": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/search/feature",
       "sourceRoot": "libs/web/search/feature/src",
@@ -1014,7 +1197,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/search/feature"],
+          "outputs": [
+            "coverage/libs/web/search/feature"
+          ],
           "options": {
             "jestConfig": "libs/web/search/feature/jest.config.ts",
             "passWithNoTests": true
@@ -1033,6 +1218,7 @@
       "tags": []
     },
     "web-search-ui": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/search/ui",
       "sourceRoot": "libs/web/search/ui/src",
@@ -1040,7 +1226,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/search/ui"],
+          "outputs": [
+            "coverage/libs/web/search/ui"
+          ],
           "options": {
             "jestConfig": "libs/web/search/ui/jest.config.ts",
             "passWithNoTests": true
@@ -1059,6 +1247,7 @@
       "tags": []
     },
     "web-search-utils": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/search/utils",
       "sourceRoot": "libs/web/search/utils/src",
@@ -1066,7 +1255,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/search/utils"],
+          "outputs": [
+            "coverage/libs/web/search/utils"
+          ],
           "options": {
             "jestConfig": "libs/web/search/utils/jest.config.ts",
             "passWithNoTests": true
@@ -1085,6 +1276,7 @@
       "tags": []
     },
     "web-shared-category-data-access": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/category/data-access",
       "sourceRoot": "libs/web/shared/category/data-access/src",
@@ -1092,7 +1284,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/category/data-access"],
+          "outputs": [
+            "coverage/libs/web/shared/category/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/category/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -1111,6 +1305,7 @@
       "tags": []
     },
     "web-shared-family-member-data-access": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/family-member/data-access",
       "sourceRoot": "libs/web/shared/family-member/data-access/src",
@@ -1118,7 +1313,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/family-member/data-access"],
+          "outputs": [
+            "coverage/libs/web/shared/family-member/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/family-member/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -1137,6 +1334,7 @@
       "tags": []
     },
     "web-shared-interceptor": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/interceptor",
       "sourceRoot": "libs/web/shared/interceptor/src",
@@ -1144,7 +1342,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/interceptor"],
+          "outputs": [
+            "coverage/libs/web/shared/interceptor"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/interceptor/jest.config.ts",
             "passWithNoTests": true
@@ -1163,6 +1363,7 @@
       "tags": []
     },
     "web-shared-invoice-data-access": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/invoice/data-access",
       "sourceRoot": "libs/web/shared/invoice/data-access/src",
@@ -1170,7 +1371,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/invoice/data-access"],
+          "outputs": [
+            "coverage/libs/web/shared/invoice/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/invoice/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -1189,6 +1392,7 @@
       "tags": []
     },
     "web-shared-local-storage-service": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/local-storage-service",
       "sourceRoot": "libs/web/shared/local-storage-service/src",
@@ -1196,7 +1400,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/local-storage-service"],
+          "outputs": [
+            "coverage/libs/web/shared/local-storage-service"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/local-storage-service/jest.config.ts",
             "passWithNoTests": true
@@ -1215,6 +1421,7 @@
       "tags": []
     },
     "web-shared-shop-data-access": {
+      "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/shop/data-access",
       "sourceRoot": "libs/web/shared/shop/data-access/src",
@@ -1222,7 +1429,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/shop/data-access"],
+          "outputs": [
+            "coverage/libs/web/shared/shop/data-access"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/shop/data-access/jest.config.ts",
             "passWithNoTests": true
@@ -1241,6 +1450,7 @@
       "tags": []
     },
     "web-shared-ui": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/ui",
       "sourceRoot": "libs/web/shared/ui/src",
@@ -1248,7 +1458,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/ui"],
+          "outputs": [
+            "coverage/libs/web/shared/ui"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/ui/jest.config.ts",
             "passWithNoTests": true
@@ -1267,6 +1479,7 @@
       "tags": []
     },
     "web-shared-utils": {
+      "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/web/shared/utils",
       "sourceRoot": "libs/web/shared/utils/src",
@@ -1274,7 +1487,9 @@
       "targets": {
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/web/shared/utils"],
+          "outputs": [
+            "coverage/libs/web/shared/utils"
+          ],
           "options": {
             "jestConfig": "libs/web/shared/utils/jest.config.ts",
             "passWithNoTests": true

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'api-utils-db-access',
 
   globals: {
@@ -12,5 +12,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../../coverage/libs/api/utils/db-access',
-  preset: '../../../../jest.preset.ts',
+  preset: '../../../../jest.preset.js',
 };
