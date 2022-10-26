@@ -9,7 +9,9 @@ export class CategoryService {
     constructor(@InjectRepository(Produktgruppe) private readonly repo: Repository<Produktgruppe>) {}
 
     async getOne(id: number): Promise<Produktgruppe> {
-        const kategorie = await this.repo.findOne(id)
+        const kategorie = await this.repo.findOneBy({
+            id: id
+        })
 
         if(!kategorie) {
             throw new HttpException("Kategorie nicht gefunden",
@@ -28,11 +30,11 @@ export class CategoryService {
         .orderBy("count", "DESC")
         .getOne()
         
-        return category
+        return category || undefined
     }
 
-    async findByName(name: string): Promise<Produktgruppe | undefined> {
-        return this.repo.findOne({bezeichnung: name})
+    async findByName(name: string): Promise<Produktgruppe | null> {
+        return this.repo.findOneBy({bezeichnung: name})
     }
 
     async getAll(): Promise<Produktgruppe[]> {

@@ -10,7 +10,7 @@ export class ShopService {
     constructor(@InjectRepository(Laden) private readonly ladenRepo: Repository<Laden>) {}
     
     async getOne(id: number): Promise<Laden> {
-        const laden = await this.ladenRepo.findOne(id)
+        const laden = await this.ladenRepo.findOneBy({id: id})
 
         if(!laden) {
             throw new HttpException(
@@ -22,8 +22,8 @@ export class ShopService {
         return laden
     }
 
-    async findByName(name: string): Promise<Laden | undefined> {
-        return this.ladenRepo.findOne({name: name})
+    async findByName(name: string): Promise<Laden | null> {
+        return this.ladenRepo.findOneBy({name: name})
     }
 
     async getAll(): Promise<Laden[]> {
@@ -46,7 +46,7 @@ export class ShopService {
     }
 
     async update(id: number, ladenDto: ShopDto): Promise<Laden> {
-        let laden = await this.ladenRepo.findOne(id)
+        let laden = await this.ladenRepo.findOneBy({id: id})
         if(!laden) throw new HttpException('NotFound', 404)
         laden.name = ladenDto.name
         laden.online = ladenDto.online

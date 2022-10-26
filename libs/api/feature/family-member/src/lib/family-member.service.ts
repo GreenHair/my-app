@@ -10,7 +10,7 @@ export class FamilyMemberService {
     constructor(@InjectRepository(Familienmitglied) private readonly repo: Repository<Familienmitglied>) {}
 
     async getone(id: number): Promise<Familienmitglied> {
-        const familie = await this.repo.findOne(id)
+        const familie = await this.repo.findOneBy({id: id})
 
         if(!familie) {
             throw new HttpException("Person nicht gefunden",
@@ -26,7 +26,7 @@ export class FamilyMemberService {
     }
 
     async create(newFamilienmitgliedDto: NewFamilienmitgliedDto): Promise<Familienmitglied> {
-        const exists = await this.repo.findOne({vorname: newFamilienmitgliedDto.vorname, nachname: newFamilienmitgliedDto.nachname})
+        const exists = await this.repo.findOneBy({vorname: newFamilienmitgliedDto.vorname, nachname: newFamilienmitgliedDto.nachname})
         if(exists) {
             throw new HttpException(
                 "Familienmitglied ist schon vorhanden",

@@ -12,7 +12,7 @@ export class ApiFeatureInvoiceService {
     constructor(@InjectRepository(Rechnung) private readonly repo: Repository<Rechnung>) {}
 
     async getone(id: number): Promise<Rechnung> {
-        const invoice = await this.repo.findOne(id)
+        const invoice = await this.repo.findOneBy({id: id})
 
         if(!invoice) {
             throw new HttpException("Rechnung nicht gefunden",

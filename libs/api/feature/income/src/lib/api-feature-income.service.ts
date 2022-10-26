@@ -10,7 +10,9 @@ export class ApiFeatureIncomeService {
     constructor(@InjectRepository(Einkommen) private readonly repo: Repository<Einkommen>) {}
 
     async getone(id: number): Promise<Einkommen> {
-        const einkommen = await this.repo.findOne(id)
+        const einkommen = await this.repo.findOneBy({
+            nr: id
+        })
 
         if(!einkommen) {
             throw new HttpException("Einkommen nicht gefunden",

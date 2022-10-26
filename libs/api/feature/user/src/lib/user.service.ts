@@ -15,8 +15,8 @@ export class UserService {
         @InjectRepository(Users)    
         private readonly userRepo: Repository<Users>, ) {}
     
-        async findOne(options?: object): Promise<UserDto> {
-            const user =  await this.userRepo.findOne(options) || new Users();    
+        async findOne(options?: {where: { name: string }}): Promise<UserDto> {
+            const user =  await this.userRepo.findOneBy({name: options?.where.name}) || new Users();    
             return toUserDto(user);  
         }
     

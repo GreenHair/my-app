@@ -10,7 +10,14 @@ export class ApiFeatureArticleService {
     constructor(@InjectRepository(Ausgaben) private readonly repo: Repository<Ausgaben>) {}
 
     async getone(id: number): Promise<Ausgaben> {
-        const ausgabe = await this.repo.findOne(id, {relations: ["prodGr"] })
+        const ausgabe = await this.repo.findOne({
+            where:{
+                id: id
+            },
+            relations: {
+                prodGr: true
+            }
+        })     //(id, {relations: ["prodGr"] })
 
         if(!ausgabe) {
             throw new HttpException("Ausgabe nicht gefunden",
