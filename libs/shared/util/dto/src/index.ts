@@ -1,4 +1,4 @@
-export * from './lib/dto.module';
+// export * from './lib/dto.module';
 export * from './lib/RechnungQuery'
 export * from './lib/ausgaben.dto'
 export * from './lib/category.dto'
