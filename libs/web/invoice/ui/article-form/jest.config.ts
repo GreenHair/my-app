@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'web-invoice-ui-article-form',
 
