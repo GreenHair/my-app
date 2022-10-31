@@ -39,6 +39,9 @@
         "libs/web/shared/invoice/data-access/src/index.ts"
       ],
       "@my-app/shared/util/dto": ["libs/shared/util/dto/src/index.ts"],
+      "@my-app/shared/util/interfaces": [
+        "libs/shared/util/interfaces/src/index.ts"
+      ],
       "@my-app/utils/db-access": ["libs/api/utils/db-access/src/index.ts"],
       "@my-app/web/camera/feature": ["libs/web/camera/feature/src/index.ts"],
       "@my-app/web/dashboard/feature": [
