@@ -35,13 +35,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('@my-app/web/camera/feature').then(
             (module) => module.WebCameraFeatureModule
-          )
+          ),
       },
       {
         path: 'search',
-        loadChildren: () => 
+        loadChildren: () =>
           import('@my-app/web/search/feature').then(
-            module => module.WebSearchFeatureModule
+            (module) => module.WebSearchFeatureModule
           ),
       },
       {
@@ -49,9 +49,15 @@ const routes: Routes = [
         redirectTo: 'dashboard',
         pathMatch: 'full',
       },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('@my-app/web/not-found/feature').then(
+            (m) => m.WebNotFoundFeatureModule
+          ),
+      },
     ],
   },
-  
 ];
 
 @NgModule({

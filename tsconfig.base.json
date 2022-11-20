@@ -80,6 +80,9 @@
       "@my-app/web/login/feature": ["libs/web/login/feature/src/index.ts"],
       "@my-app/web/login/guard": ["libs/web/login/guard/src/index.ts"],
       "@my-app/web/main/feature": ["libs/web/main/feature/src/index.ts"],
+      "@my-app/web/not-found/feature": [
+        "libs/web/not-found/feature/src/index.ts"
+      ],
       "@my-app/web/search/data-access": [
         "libs/web/search/data-access/src/index.ts"
       ],
