@@ -20,7 +20,7 @@ export class IncomeModalComponent implements OnInit, OnChanges {
   @Input() data: EinkommenDto
 
   form = this.fb.group({
-    nr: new UntypedFormControl(''),
+    nr: new UntypedFormControl(),
     datum: new UntypedFormControl('', Validators.required),
     bezeichnung: new UntypedFormControl('', Validators.required),
     person: new UntypedFormControl('', Validators.required),
