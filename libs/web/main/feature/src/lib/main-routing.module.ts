@@ -44,19 +44,19 @@ const routes: Routes = [
             (module) => module.WebSearchFeatureModule
           ),
       },
-      // {
-      //   path: '',
-      //   redirectTo: 'dashboard',
-      //   pathMatch: 'full',
-      // },
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
+      {
+        path: '**',
+        loadChildren: () =>
+          import('@my-app/web/not-found/feature').then(
+            (m) => m.WebNotFoundFeatureModule
+          ),
+      },
     ],
-  },
-  {
-    path: '**',
-    loadChildren: () =>
-      import('@my-app/web/not-found/feature').then(
-        (m) => m.WebNotFoundFeatureModule
-      ),
   },
 ];
 
