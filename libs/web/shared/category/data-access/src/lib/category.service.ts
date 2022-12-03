@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '@my-app/web/login/data-access';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
-import { BehaviorSubject, catchError, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, retry, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,14 @@ export class CategoryService {
   private url = `${environment.apiUrl}/${this.categoryUrl}`
   private categories$ = new BehaviorSubject<CategoryDto[]>([])
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private authService: AuthService) { 
     this.fetchCategories()
   }
 
   private fetchCategories() : void {
-    this.http.get<CategoryDto[]>(this.url)
+    this.http.get<CategoryDto[]>(this.url).pipe(
+      retry({delay: () => this.authService.userLogin()})
+    )
     .subscribe(categories => this.categories$.next(categories))
   }
 

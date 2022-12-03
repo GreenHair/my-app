@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '@my-app/web/login/data-access';
+
 import { environment } from 'apps/my-app/src/environments/environment';
 import { ShopDto } from 'libs/shared/util/dto/src/lib/shop.dto';
-import { BehaviorSubject, catchError, Observable, tap } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, retry, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +14,14 @@ export class ShopService {
   private shopUrl = `${environment.apiUrl}/shop`
   private shops$ = new BehaviorSubject<ShopDto[]>([])
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private authService: AuthService) {
     this.fetchShops();
   }
 
   private fetchShops() {
-    this.http.get<ShopDto[]>(this.shopUrl)
+    this.http.get<ShopDto[]>(this.shopUrl).pipe(
+      retry({delay: () => this.authService.userLogin()})
+    )
       .subscribe(shops => this.shops$.next(shops));
   }
 
