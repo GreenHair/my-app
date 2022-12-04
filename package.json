@@ -25,7 +25,8 @@
     "graph": "nx graph",
     "workspace-schematic": "nx workspace-schematic",
     "help": "nx help",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main"
+    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
+    "deploy:web": "sudo mv dist/apps/my-app/* /Library/WebServer/Documents/"
   },
   "private": true,
   "dependencies": {
