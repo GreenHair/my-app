@@ -63,6 +63,18 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
     this.ausgaben.push(this.fb.control(''))
   }
 
+  deleteArticle(article: any) {
+    // console.log(article)
+    // console.log(article.value)
+    // console.log(article.value.id)
+    // const ctrl = this.ausgaben.controls.find(a => a == article)
+    // console.log(ctrl)
+    const idx = this.ausgaben.controls.indexOf(article)
+    // console.log("index:",idx)
+    if (article.value == "" || article.value.id == "")
+      this.ausgaben.controls.splice(idx, 1)
+  }
+
   copyPrevious() {
     if(this.ausgaben.controls.length < 1) return
     const idx = this.ausgaben.controls.length - 1

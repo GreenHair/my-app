@@ -38,7 +38,7 @@
     </div>
 
     <my-app-article-form formArrayName="ausgaben">
-        <my-app-article-form-row *ngFor="let article of ausgaben.controls; let i=index" [formControlName]="i" [categories]="categories"></my-app-article-form-row>
+        <my-app-article-form-row *ngFor="let article of ausgaben.controls; let i=index" [formControlName]="i" [categories]="categories" (deleteRow)="deleteArticle(article)"></my-app-article-form-row>
         <!-- <div formArrayName="ausgaben">
         </div> -->
         <button type="button" class="btn btn-success mt-2" (click)="addArticle()">+</button>

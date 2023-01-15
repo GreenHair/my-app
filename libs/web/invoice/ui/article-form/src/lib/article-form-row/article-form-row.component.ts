@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
 import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -25,6 +25,7 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
 
   @ViewChild('bezeichnung') bezeichnug: TypeaheadComponent
   @Input() categories: CategoryDto[] | null
+  @Output() deleteRow = new EventEmitter<any>()
 
   onChangeSubs: Subscription[] = [];
   onTouched: Function = () => { };

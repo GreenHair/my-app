@@ -1,7 +1,7 @@
 <div class='row mt-1' [formGroup]="articleForm">
     <input type="hidden" formControlName="id">
     <!-- <input type="hidden" formControlName="rechnungsnr"> -->
-    <div class='col-6 position-relative'>
+    <div class='col-5 position-relative'>
         <!-- <input type='text' class='form-control' formControlName="bezeichnung"
         #bezeichnung [ngbTypeahead]="search" (selectItem)="onSelectItem($event)">
         <div *ngIf="searching" class="spinner-border text-primary position-absolute" role="status">
@@ -16,4 +16,5 @@
             <option *ngFor="let category of categories" [ngValue]="category">{{category.bezeichnung}}</option>
         </select>
     </div>
+    <div class="col-1"><button type="button" class="btn btn-outline-danger btn-sm" tabindex="-1" (click)="deleteRow.emit(articleForm)">x</button></div>
 </div>
