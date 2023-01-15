@@ -1,6 +1,6 @@
 import { Directive, EventEmitter, Input, NgModule, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AusgabenQueryResultDto } from '@my-app/shared/util/dto';
+// import { AusgabenQueryResultDto } from '@my-app/shared/util/dto';
 
 export interface SearchresultRow {
   datum: string,

@@ -1,3 +1,4 @@
+import { IReceipt } from "@my-app/shared/util/interfaces";
 import { Type } from "class-transformer";
 import { IsDate, IsIn, IsNotEmpty, IsOptional, ValidateIf } from "class-validator";
 import { AusgabenDto } from "./ausgaben.dto"
@@ -5,7 +6,7 @@ import { FamilienmitgliedDto } from "./familienmitglied.dto"
 import { ShopDto } from "./shop.dto"
 
 
-export class RechnungDto {
+export class RechnungDto implements IReceipt {
     @IsNotEmpty()
     id: number
     

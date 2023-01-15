@@ -1,6 +1,13 @@
-import { RechnungDto } from "libs/shared/util/dto/src/lib/rechnung.dto";
+// import { RechnungDto } from "libs/shared/util/dto/src/lib/rechnung.dto";
+import { IExpense, IPerson, IReceipt, IShop } from "@my-app/shared/util/interfaces";
 
-export class Invoice extends RechnungDto {
+export class Invoice implements IReceipt {
+    id?: number | undefined;
+    laden: IShop;
+    datum: string;
+    einmalig: number;
+    person: IPerson;
+    ausgaben: IExpense[];
     get date() : Date {
         return new Date(this.datum)
     }

@@ -1,6 +1,7 @@
+import { ICategory } from "@my-app/shared/util/interfaces"
 import { IsIn, IsNotEmpty } from "class-validator"
 
-export class CategoryDto {
+export class CategoryDto implements ICategory{
     @IsNotEmpty()
     id: number
     @IsNotEmpty()

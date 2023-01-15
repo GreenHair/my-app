@@ -1,1 +1,6 @@
-export * from './lib/shared-util-interfaces';
+export * from './lib/icategory'
+export * from './lib/iexpense'
+export * from './lib/ishop'
+export * from './lib/ireceipt'
+export * from './lib/iperson'
+export * from './lib/iincome'

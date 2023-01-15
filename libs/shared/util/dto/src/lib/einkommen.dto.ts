@@ -1,8 +1,9 @@
+import { IIncome } from "@my-app/shared/util/interfaces";
 import { Type } from "class-transformer";
 import { IsDate, IsNotEmpty } from "class-validator";
 import { FamilienmitgliedDto } from "./familienmitglied.dto";
 
-export class EinkommenDto {
+export class EinkommenDto implements IIncome{
     @IsNotEmpty()
     nr: number
 

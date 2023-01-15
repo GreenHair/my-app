@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, ViewChildren, QueryList } from '@angular/core';
-import { AusgabenQueryResultDto } from '@my-app/shared/util/dto';
+// import { AusgabenQueryResultDto } from '@my-app/shared/util/dto';
 import { SortableDirective, SortEvent, SearchresultRow } from '@my-app/web/search/utils';
 
 @Component({

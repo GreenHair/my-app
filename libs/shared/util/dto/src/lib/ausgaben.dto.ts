@@ -1,8 +1,9 @@
+import { IExpense } from "@my-app/shared/util/interfaces"
 import { Exclude, Type } from "class-transformer"
 import { IsNotEmpty, IsNumber } from "class-validator"
 import { CategoryDto } from "./category.dto"
 
-export class AusgabenDto {
+export class AusgabenDto implements IExpense{
     @IsNotEmpty()
     id: number
     @IsNotEmpty()

@@ -1,6 +1,7 @@
+import { IShop } from "@my-app/shared/util/interfaces"
 import { IsIn, IsNotEmpty } from "class-validator"
 
-export class ShopDto {
+export class ShopDto implements IShop {
     @IsNotEmpty()
     id: number
     @IsNotEmpty()

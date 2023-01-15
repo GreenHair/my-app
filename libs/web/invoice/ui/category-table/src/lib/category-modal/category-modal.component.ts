@@ -10,10 +10,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryModalComponent implements OnInit {
-  @Input() category: CategoryDto
+  @Input() category!: CategoryDto
 
   form = this.fb.group({
-    id: new UntypedFormControl(''),
+    id: new UntypedFormControl(),
     bezeichnung: new UntypedFormControl('', Validators.required),
     essen: new UntypedFormControl('')
   })

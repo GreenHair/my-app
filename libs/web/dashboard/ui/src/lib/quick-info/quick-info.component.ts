@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
-import { AusgabenDto, CategoryDto, EinkommenDto, ShopDto } from '@my-app/shared/util/dto';
+// import { AusgabenDto, CategoryDto, EinkommenDto, ShopDto } from '@my-app/shared/util/dto';
+import { ICategory, IExpense, IIncome, IShop } from '@my-app/shared/util/interfaces';
 import { Invoice } from '@my-app/web/invoice/data-access';
 import { SumPipe } from '@my-app/web/shared/utils';
 import { BehaviorSubject, combineLatest, map, Observable, startWith, Subject, switchMap, tap } from 'rxjs';
@@ -13,10 +14,10 @@ import { BehaviorSubject, combineLatest, map, Observable, startWith, Subject, sw
 })
 export class QuickInfoComponent implements OnInit, OnChanges {
 
-  @Input() categories!: CategoryDto[]
-  @Input() shops!: ShopDto[]
+  @Input() categories!: ICategory[]
+  @Input() shops!: IShop[]
   @Input() invoices!: Invoice[]
-  @Input() income!: EinkommenDto[]
+  @Input() income!: IIncome[]
 
   catSelect = new UntypedFormControl("")
   shopSelect = new UntypedFormControl("")
@@ -28,10 +29,10 @@ export class QuickInfoComponent implements OnInit, OnChanges {
   })
   onOffLine = new UntypedFormControl("")
 
-  catInvoices$!: Observable<AusgabenDto[]>
+  catInvoices$!: Observable<IExpense[]>
   shopInvoices$!: Observable<Invoice[]>
   fixedOrVariableInvoices$!: Observable<Invoice[]>
-  foodNonFood$!: Observable<AusgabenDto[]>
+  foodNonFood$!: Observable<IExpense[]>
   onOffLine$!: Observable<Invoice[]>
   private onChanges = new BehaviorSubject<boolean>(true)
 
@@ -93,7 +94,7 @@ export class QuickInfoComponent implements OnInit, OnChanges {
       foodNonFood: this.foodOrNot.valueChanges.pipe(startWith(""))
     }).pipe(
       map(val => {
-        const current = this.invoices.filter(i => i.einmalig).reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[])
+        const current = this.invoices.filter(i => i.einmalig).reduce((prev, curr) => prev.concat(curr.ausgaben), [] as IExpense[])
         switch (val.foodNonFood.foodOrNot) {
           case "food":
             return current.filter(a => a.prodGr.essen)
@@ -125,6 +126,6 @@ export class QuickInfoComponent implements OnInit, OnChanges {
 
 
   private extractArticles() {
-    return this.invoices.reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[]);
+    return this.invoices.reduce((prev, curr) => prev.concat(curr.ausgaben), [] as IExpense[]);
   }
 }
