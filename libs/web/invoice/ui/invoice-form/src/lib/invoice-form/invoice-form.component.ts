@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
 import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto } from '@my-app/shared/util/dto';
+import { retry } from 'rxjs';
 
 
 @Component({
@@ -19,9 +20,9 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
 
   invoiceForm = this.fb.group({
     id: [],
-    datum: [''],
-    laden: [''],
-    person: [''],
+    datum: [null, Validators.required],
+    laden: ['', Validators.required],
+    person: ['', Validators.required],
     einmalig: [true],
     ausgaben: this.fb.array([]),
     sum: ['']
@@ -30,10 +31,17 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
   get ausgaben() {
     return this.invoiceForm.get('ausgaben') as UntypedFormArray
   }
+  get laden() {
+    return this.invoiceForm.get('laden') as UntypedFormControl
+  }
+  get person() {
+    return this.invoiceForm.get('person') as UntypedFormControl
+  }
 
   constructor(private fb: UntypedFormBuilder, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
+    console.log("date", this.invoiceForm.get('datum'))
     this.ausgaben.valueChanges.subscribe(() => {
       const sum: number = this.ausgaben.getRawValue().map(a => a ? a.betrag : 0)
         .reduce((previous, current) => current ? previous + current : previous, 0)
@@ -77,6 +85,11 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
   }
 
   submit() {
+    if(this.invoiceForm.invalid){
+      console.log(this.invoiceForm)
+      this.invoiceForm.markAllAsTouched()
+      return
+    }
     const rawValue = this.invoiceForm.getRawValue()
     rawValue.ausgaben.forEach((element: any) => {
       if(element.id == "") {

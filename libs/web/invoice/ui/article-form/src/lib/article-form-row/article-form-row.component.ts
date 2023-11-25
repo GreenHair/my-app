@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
-import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -37,9 +37,9 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
 
   articleForm = this.fb.group({
     id: [''],
-    bezeichnung: [''],
-    betrag: [''],
-    prodGr: [''],
+    bezeichnung: ['', Validators.required],
+    betrag: ['', Validators.required],
+    prodGr: ['', Validators.required],
     //rechnungsnr: ['']
   })
 

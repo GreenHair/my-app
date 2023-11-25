@@ -5,7 +5,7 @@
             <button class="btn btn-secondary" type="reset">Zurücksetzen</button>
         </div>
         <div class="col-2">
-            <button class="btn btn-primary" type="submit" style='width:80%'>Senden</button>
+            <button class="btn btn-primary" type="submit" style='width:80%' [disabled]="invoiceForm.invalid">Senden</button>
         </div>
     </div>
     <div class="row">
@@ -15,13 +15,15 @@
         </div>
         <div class="col-3">
             <label class="form-label" for="laden">Laden</label>
-            <select formControlName="laden" class="form-select mr-sm-2" [compareWith]="compareId">
+            <select formControlName="laden" class="form-select mr-sm-2" [ngClass]="{'is-invalid' : laden.invalid && laden.touched} " [compareWith]="compareId">
+                <option value=""></option>
                 <option *ngFor="let shop of shops" [ngValue]="shop">{{shop.name}}</option>
             </select>
         </div>
         <div class="col-3">
             <label class="form-label" for="person">Person</label>
-            <select formControlName="person" class="form-select mr-sm-2" [compareWith]="compareId">
+            <select formControlName="person" class="form-select mr-sm-2" [ngClass]="{'is-invalid' : laden.invalid && laden.touched}" [compareWith]="compareId">
+                <option value=""></option>
                 <option *ngFor="let familyMember of family" [ngValue]="familyMember">{{familyMember.vorname}}</option>
             </select>
         </div>

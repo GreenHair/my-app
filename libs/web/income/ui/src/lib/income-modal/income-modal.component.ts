@@ -16,8 +16,8 @@ import { Observable } from 'rxjs';
 })
 export class IncomeModalComponent implements OnInit, OnChanges {
 
-  @Input() family: Observable<FamilienmitgliedDto[]>
-  @Input() data: EinkommenDto
+  @Input() family!: Observable<FamilienmitgliedDto[]>
+  @Input() data?: EinkommenDto
 
   form = this.fb.group({
     nr: new UntypedFormControl(),

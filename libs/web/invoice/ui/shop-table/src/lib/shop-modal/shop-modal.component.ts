@@ -11,10 +11,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ShopModalComponent implements OnInit {
 
-  @Input() shop: ShopDto
+  @Input() shop?: ShopDto
 
   form = this.fb.group({
-    id: new UntypedFormControl(''),
+    id: new UntypedFormControl(),
     name: new UntypedFormControl('', Validators.required),
     online: new UntypedFormControl(false)
   })

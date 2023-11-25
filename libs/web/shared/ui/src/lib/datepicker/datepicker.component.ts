@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, NG_VALUE_ACCESSOR, Validator, AbstractControl, ValidationErrors, NG_VALIDATORS, Validators } from '@angular/forms';
 import { CustomAdapter } from '@my-app/web/invoice/utils';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
@@ -15,22 +15,35 @@ import { Subscription } from 'rxjs';
       multi: true,
       useExisting: DatepickerComponent
     },
+    // {
+    //   provide: NG_VALIDATORS,
+    //   multi:true,
+    //   useExisting: DatepickerComponent
+    // },
     {
       provide: NgbDateAdapter,
       useClass: CustomAdapter
     }
   ]
 })
-export class DatepickerComponent implements OnInit, ControlValueAccessor, OnDestroy {
+export class DatepickerComponent implements OnInit, ControlValueAccessor, OnDestroy/*, Validator*/ {
 
-  date = new UntypedFormControl('');
+  date = new UntypedFormControl('', Validators.required);
 
   private onchangeSub!: Subscription
 
   onChange = (date: any) => {}
   onTouched = () => {}
+  // onValidatorChange = () => {}
 
   constructor() { }
+  // validate(control: AbstractControl<any, any>): ValidationErrors | null {
+  //   console.log("validating date")
+  //   return this.date.value != '' ? null : { mustNotBeempty: this.date }
+  // }
+  // registerOnValidatorChange?(fn: () => void): void {
+  //   this.onValidatorChange = fn;
+  // }
 
   writeValue(obj: any): void {
     this.date.patchValue(obj);
