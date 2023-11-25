@@ -5,6 +5,7 @@ import { SumPipe, SumPipeModule } from '@my-app/web/shared/utils';
 import { RouterModule } from '@angular/router';
 import { QuickInfoComponent } from './quick-info/quick-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TypeaheadComponent, WebSharedUiModule } from '@my-app/web/shared/ui';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SumPipeModule,
     RouterModule,
     ReactiveFormsModule,
+    WebSharedUiModule
   ],
   declarations: [
     InvoiceListComponent,

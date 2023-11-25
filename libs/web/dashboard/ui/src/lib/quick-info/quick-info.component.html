@@ -18,14 +18,10 @@
                 <option *ngFor="let cat of categories" [value]="cat.id">{{cat.bezeichnung}}</option>
             </select>
         </div>
-        <div class="col" [formGroup]="fixedOrVariable">
-            <div class="btn-group w-100">
-                <input type="radio" class="btn-check" value="variable" formControlName="fixVar" id="fixVar1">
-                <label class="btn btn-outline-primary" for="fixVar1">Einmalig</label>
-                <input type="radio" class="btn-check" value="fixed" formControlName="fixVar" id="fixVar2">
-                <label class="btn btn-outline-primary" for="fixVar2">Fest</label>
-            </div>
+        <div class="col">
+            <my-app-typeahead [formControl]="articleTotal" (onSelectItem)="articleSelect$.next($event.item)"></my-app-typeahead>
         </div>
+ 
     </div>
     <div class="row pt-1 ps-2">
         <div class="col text-center" *ngIf="shopInvoices$ | async as shopInvoices">
@@ -34,8 +30,8 @@
         <div class="col text-center" *ngIf="catInvoices$ | async as catInvoices">
             {{ catInvoices | sum | currency:'EUR'}}
         </div>
-        <div class="col text-center" *ngIf="fixedOrVariableInvoices$ | async as fixedOrVariableInvoices">
-            {{fixedOrVariableInvoices | sum | currency:'EUR'}}
+        <div class="col text-center" *ngIf="articleSum$ |async as articleSum">
+            {{ articleSum | sum | currency:'EUR' }}
         </div>
     </div>
     <div class="row pt-1 ps-2">
@@ -55,6 +51,14 @@
                 <label class="btn btn-outline-primary" for="offline">Offline</label>
             </div>
         </div>
+        <div class="col" [formGroup]="fixedOrVariable">
+            <div class="btn-group w-100">
+                <input type="radio" class="btn-check" value="variable" formControlName="fixVar" id="fixVar1">
+                <label class="btn btn-outline-primary" for="fixVar1">Einmalig</label>
+                <input type="radio" class="btn-check" value="fixed" formControlName="fixVar" id="fixVar2">
+                <label class="btn btn-outline-primary" for="fixVar2">Fest</label>
+            </div>
+        </div>
     </div>
     <div class="row pt-1 ps-2">
         <div class="col text-center" *ngIf="foodNonFood$ | async as foodNonFood">
@@ -62,6 +66,9 @@
         </div>
         <div class="col text-center" *ngIf="onOffLine$ |async as onOffLine">
             {{ onOffLine | sum | currency:'EUR' }}
+        </div>
+        <div class="col text-center" *ngIf="fixedOrVariableInvoices$ | async as fixedOrVariableInvoices">
+            {{fixedOrVariableInvoices | sum | currency:'EUR'}}
         </div>
     </div>
 </fieldset>

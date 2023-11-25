@@ -28,6 +28,10 @@ export class QuickInfoComponent implements OnInit, OnChanges {
   })
   onOffLine = new UntypedFormControl("")
 
+  articleTotal = new UntypedFormControl("")
+  articleSelect$ = new BehaviorSubject<string>("")
+  articleSum$!: Observable<AusgabenDto[]>
+
   catInvoices$!: Observable<AusgabenDto[]>
   shopInvoices$!: Observable<Invoice[]>
   fixedOrVariableInvoices$!: Observable<Invoice[]>
@@ -119,6 +123,16 @@ export class QuickInfoComponent implements OnInit, OnChanges {
           default:
             return [];
         }
+      })
+    )
+
+    this.articleSum$ = combineLatest({
+      invoiceChange: this.onChanges,
+      articleSelect: this.articleSelect$
+    }).pipe(
+      map(val => {
+        const current = this.invoices.reduce((prev, curr) => prev.concat(curr.ausgaben), [] as AusgabenDto[])
+        return current.filter(a => a.bezeichnung === val.articleSelect)
       })
     )
   }

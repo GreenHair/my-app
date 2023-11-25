@@ -1,5 +1,5 @@
 <input type='text' class='form-control' [formControl]="article" #articleInput 
-    [ngbTypeahead]="search"
+    [ngbTypeahead]="search" placeholder="article"
     (selectItem)="onSelectItem.emit($event)">
 <div *ngIf="searching" class="spinner-border text-primary position-absolute" role="status">
     <span class="visually-hidden">Loading...</span>
