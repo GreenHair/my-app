@@ -1,10 +1,25 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, UntypedFormArray, UntypedFormBuilder, UntypedFormControl, ValidatorFn, Validators } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { Invoice, InvoiceService } from '@my-app/web/invoice/data-access';
-import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto } from '@my-app/shared/util/dto';
+import { ShopDto, FamilienmitgliedDto, CategoryDto, RechnungDto, AusgabenDto } from '@my-app/shared/util/dto';
 import { retry } from 'rxjs';
 
+export function ausgabenMinLengthValidator(minLength: number) : ValidatorFn {
+  return (control: AbstractControl) => {
+    const ausgaben = control as FormArray
+    console.log("ausgaben", ausgaben)
+    console.log("form array is invalid", ausgaben.length < minLength || ausgaben.controls.some(c => c.invalid))
+    return ausgaben.length < minLength ? {error: {value: "Ausgaben too short"}} : allArticlesValidator() ;
+  }
+}
+
+export function allArticlesValidator(): ValidatorFn {
+  return (control: AbstractControl) => {
+    const ausgaben = control as FormArray
+    return ausgaben.controls.some(c => c.invalid) ? {error: {value: "some articles are invalid"}} : null
+  }
+}
 
 @Component({
   selector: 'my-app-invoice-form',
@@ -24,7 +39,7 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
     laden: ['', Validators.required],
     person: ['', Validators.required],
     einmalig: [true],
-    ausgaben: this.fb.array([]),
+    ausgaben: this.fb.array([], [ausgabenMinLengthValidator(1), allArticlesValidator]),
     sum: ['']
   })
 
@@ -68,12 +83,12 @@ export class InvoiceFormComponent implements OnChanges, OnInit {
   }
 
   addArticle() {
-    this.ausgaben.push(this.fb.control(''))
+    this.ausgaben.push(this.fb.control(null, allArticlesValidator))
   }
 
   deleteArticle(article: any) {
     const idx = this.ausgaben.controls.indexOf(article)
-    this.ausgaben.controls.splice(idx, 1)
+    this.ausgaben.removeAt(idx)
   }
 
   copyPrevious() {

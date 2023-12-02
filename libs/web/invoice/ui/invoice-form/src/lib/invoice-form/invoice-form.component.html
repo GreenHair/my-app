@@ -22,7 +22,7 @@
         </div>
         <div class="col-3">
             <label class="form-label" for="person">Person</label>
-            <select formControlName="person" class="form-select mr-sm-2" [ngClass]="{'is-invalid' : laden.invalid && laden.touched}" [compareWith]="compareId">
+            <select formControlName="person" class="form-select mr-sm-2" [ngClass]="{'is-invalid' : person.invalid && person.touched}" [compareWith]="compareId">
                 <option value=""></option>
                 <option *ngFor="let familyMember of family" [ngValue]="familyMember">{{familyMember.vorname}}</option>
             </select>

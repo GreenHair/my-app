@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryDto } from 'libs/shared/util/dto/src/lib/category.dto';
 import { catchError, debounceTime, distinctUntilChanged, Observable, of, OperatorFunction, Subscription, switchMap, tap } from 'rxjs';
-import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormBuilder, NG_VALUE_ACCESSOR, Validators, NG_VALIDATORS, FormControl, AbstractControl, ValidationErrors, Validator } from '@angular/forms';
 import { compareById } from '@my-app/web/shared/utils';
 import { environment } from 'apps/my-app/src/environments/environment';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -18,10 +18,15 @@ import { TypeaheadComponent } from '@my-app/web/shared/ui'
       provide: NG_VALUE_ACCESSOR,
       useExisting: ArticleFormRowComponent,
       multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: ArticleFormRowComponent,
+      multi: true
     }
   ]
 })
-export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlValueAccessor, OnDestroy {
+export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlValueAccessor, OnDestroy, Validator {
 
   @ViewChild('bezeichnung') bezeichnug: TypeaheadComponent
   @Input() categories: CategoryDto[] | null
@@ -47,6 +52,10 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
     return this.articleForm.get('prodGr')
   }
 
+  get betrag() {
+    return this.articleForm.get('betrag')
+  }
+
   constructor(private categoryService: CategoryService, private fb: UntypedFormBuilder, private http: HttpClient) { }
 
   writeValue(value: any) {
@@ -69,6 +78,11 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
     else {
       this.articleForm.enable();
     }
+  }
+
+  validate(control: AbstractControl): ValidationErrors | null {
+    console.log("arrticle form row validate", control)
+    return this.prodGr?.valid && this.betrag?.valid && this.bezeichnug.article.value.length > 0 ? null : {error: {value: "amount or category missing"}}
   }
 
   // search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
