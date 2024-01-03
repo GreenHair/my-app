@@ -82,7 +82,7 @@ export class ArticleFormRowComponent implements AfterViewInit, OnInit, ControlVa
 
   validate(control: AbstractControl): ValidationErrors | null {
     console.log("arrticle form row validate", control)
-    return this.prodGr?.valid && this.betrag?.valid && this.bezeichnug.article.value.length > 0 ? null : {error: {value: "amount or category missing"}}
+    return this.prodGr?.valid && this.betrag?.valid ? null : {error: {value: "amount or category missing"}}
   }
 
   // search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
